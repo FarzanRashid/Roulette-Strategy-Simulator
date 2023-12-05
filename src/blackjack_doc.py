@@ -44,7 +44,7 @@ class Card:
     :var: Jack
     :var: Queen
     :var: King
-    :var: Ace:
+    :var: Ace
     """
 
     Jack = 11
