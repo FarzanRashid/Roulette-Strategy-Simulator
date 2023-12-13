@@ -20,3 +20,6 @@ class TestOutcome(TestCase):
     def test_winAmount_method(self):
         oc3_winamount_value = self.oc3.winAmount(5)
         self.assertEquals(oc3_winamount_value, 10.0)
+
+    def test_inequality_when_names_differ(self):
+        self.assertNotEquals(self.oc1, self.oc3)
