@@ -11,3 +11,8 @@ class TestOutcome(TestCase):
 
     def test_equality(self):
         self.assertEquals(self.oc1, self.oc2)
+
+    def test_same_hash_values_for_equal_objects(self):
+        oc1_hash_value = self.oc1.__hash__()
+        oc2_hash_value = self.oc2.__hash__()
+        self.assertEquals(oc1_hash_value, oc2_hash_value)
