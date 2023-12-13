@@ -16,3 +16,7 @@ class TestOutcome(TestCase):
         oc1_hash_value = self.oc1.__hash__()
         oc2_hash_value = self.oc2.__hash__()
         self.assertEquals(oc1_hash_value, oc2_hash_value)
+
+    def test_winAmount_method(self):
+        oc3_winamount_value = self.oc3.winAmount(5)
+        self.assertEquals(oc3_winamount_value, 10.0)
