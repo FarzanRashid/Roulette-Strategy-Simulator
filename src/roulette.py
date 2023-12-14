@@ -35,3 +35,10 @@ class Outcome:
 
     name: str
     odds: int
+
+    def __str__(self) -> str:
+        """
+        Easy-to-read representation of outcome instances.
+        :return: str
+        """
+        return f"{self.name:s} ({self.odds:d}:1)"
