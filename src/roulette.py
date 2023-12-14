@@ -42,3 +42,11 @@ class Outcome:
         :return: str
         """
         return f"{self.name:s} ({self.odds:d}:1)"
+
+    def winAmount(self, amount: float) -> float:
+        """
+        Multiply this Outcome’s odds by the given amount. The product is returned.
+        :param amount:
+        :return: float
+        """
+        return self.odds * amount
