@@ -45,3 +45,7 @@ class Outcome:
         :type amount: float
         """
         return self.odds * amount
+
+
+class Bin(frozenset):
+    pass
