@@ -1,3 +1,4 @@
+import random
 from dataclasses import dataclass
 
 
@@ -56,3 +57,9 @@ class Bin(frozenset):
     “Line 1-2-3-4-5-6” , “00-0-1-2-3” , “Dozen 1”, “Low” and “Column 1”. These are collected into a single :class:`Bin`.
     """
     pass
+
+
+class Wheel:
+    def __init__(self) -> None:
+        self.bins = tuple(Bin() for i in range(38))
+        self.rng = random.Random()
