@@ -67,3 +67,6 @@ class Wheel:
     def addOutcome(self, number: int, outcome: Outcome) -> None:
         updated_bin = Bin(list(self.bins[number].union(Bin([outcome]))))
         self.bins = self.bins[:number] + (updated_bin,) + self.bins[number + 1:]
+
+    def choose(self) -> Bin:
+        return random.choice(self.bins)
