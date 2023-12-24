@@ -9,3 +9,8 @@ class TestWheel(TestCase):
         self.b1 = Bin([self.oc1, self.oc2])
         self.b2 = Bin([self.oc2, self.oc2])
         self.wheel = Wheel()
+
+    def test_bin_objects_can_be_added_to_wheel_class(self):
+        expected_bins_length = 38
+        wheel_bins_length = len(self.wheel.bins)
+        self.assertEqual(wheel_bins_length, expected_bins_length)
