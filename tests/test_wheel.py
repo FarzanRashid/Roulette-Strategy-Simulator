@@ -23,3 +23,9 @@ class TestWheel(TestCase):
     def test_choose_returns_random_bin_object(self):
         random_bin = self.wheel.choose()
         self.assertIn(random_bin, self.wheel.bins)
+
+    def test_get_returns_specific_bin_object(self):
+        bin_object_index = 1
+        selected_bin_object = self.wheel.get(bin_object_index)
+        object_at_specific_index = self.wheel.bins[bin_object_index]
+        self.assertEqual(selected_bin_object, object_at_specific_index)
