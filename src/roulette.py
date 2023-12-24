@@ -70,3 +70,6 @@ class Wheel:
 
     def choose(self) -> Bin:
         return random.choice(self.bins)
+
+    def get(self, bin: int) -> Bin:
+        return self.bins[bin]
