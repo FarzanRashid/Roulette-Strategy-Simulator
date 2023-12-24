@@ -63,3 +63,7 @@ class Wheel:
     def __init__(self) -> None:
         self.bins = tuple(Bin() for i in range(38))
         self.rng = random.Random()
+
+    def addOutcome(self, number: int, outcome: Outcome) -> None:
+        updated_bin = Bin(list(self.bins[number].union(Bin([outcome]))))
+        self.bins = self.bins[:number] + (updated_bin,) + self.bins[number + 1:]
