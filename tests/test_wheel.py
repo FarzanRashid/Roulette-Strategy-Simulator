@@ -14,3 +14,8 @@ class TestWheel(TestCase):
         expected_bins_length = 38
         wheel_bins_length = len(self.wheel.bins)
         self.assertEqual(wheel_bins_length, expected_bins_length)
+
+    def test_outcome_objects_can_be_added_to_bin_objects(self):
+        bin_number = 0
+        self.wheel.addOutcome(bin_number, self.oc1)
+        self.assertIn(self.oc1, self.wheel.bins[0])
