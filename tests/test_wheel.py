@@ -19,3 +19,7 @@ class TestWheel(TestCase):
         bin_number = 0
         self.wheel.addOutcome(bin_number, self.oc1)
         self.assertIn(self.oc1, self.wheel.bins[0])
+
+    def test_choose_returns_random_bin_object(self):
+        random_bin = self.wheel.choose()
+        self.assertIn(random_bin, self.wheel.bins)
