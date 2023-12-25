@@ -69,8 +69,7 @@ class Wheel:
         self.bins = self.bins[:number] + (updated_bin,) + self.bins[number + 1:]
 
     def choose(self) -> Bin:
-        random_index_of_bin_objects = self.rng.randint(0, 37)
-        return self.bins[random_index_of_bin_objects]
+        return self.rng.choice(self.bins)
 
     def get(self, bin: int) -> Bin:
         return self.bins[bin]
