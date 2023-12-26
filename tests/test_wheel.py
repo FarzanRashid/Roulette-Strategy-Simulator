@@ -26,12 +26,19 @@ class TestWheel(TestCase):
 
     def test_get_returns_specific_bin_object(self):
         bin_object_index = 1
+
         selected_bin_object = self.wheel.get(bin_object_index)
         object_at_specific_index = self.wheel.bins[bin_object_index]
+
         self.assertEqual(selected_bin_object, object_at_specific_index)
 
     def test_choose_returns_random_bin_object_with_seed(self):
-        self.wheel.addOutcome(8, self.oc1)
-        self.wheel.rng.seed(1)
+        fixed_seed_for_random_object = 1
+        bin_number = 8
+
+        self.wheel.rng.seed(fixed_seed_for_random_object)
+        self.wheel.addOutcome(bin_number, self.oc1)
+
         randomly_selected_bin_object = self.wheel.choose()
+
         self.assertIn(self.oc1, randomly_selected_bin_object)
