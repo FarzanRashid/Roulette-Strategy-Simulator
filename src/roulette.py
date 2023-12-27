@@ -89,7 +89,7 @@ class Wheel:
         At the present time, this does not do the full initialization of the Bin instances. We’ll
         rework this in a future exercise.
         """
-        self.bins = tuple(Bin() for i in range(38))
+        self.bins = tuple(Bin() for _ in range(38))
         self.rng = random.Random()
 
     def addOutcome(self, number: int, outcome: Outcome) -> None:
