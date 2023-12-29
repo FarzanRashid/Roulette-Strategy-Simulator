@@ -126,3 +126,11 @@ class Wheel:
         :rtype: Bin
         """
         return self.bins[bin]
+
+
+class BinBuilder:
+    def __init__(self) -> None:
+        pass
+
+    def buildBins(self, wheel: Wheel) -> None:
+        pass
