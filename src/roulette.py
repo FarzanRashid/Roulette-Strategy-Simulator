@@ -146,3 +146,27 @@ class BinBuilder:
         zero_zero_bet = Outcome("00", 35)
         bin_index_of_zero_zero_outcome = 37
         wheel.addOutcome(bin_index_of_zero_zero_outcome, zero_zero_bet)
+
+    @staticmethod
+    def create_horizontal_split_bets(wheel: Wheel) -> None:
+        odds_for_split_bet = 17
+
+        first_column_numbers = set()
+        for i in range(12):
+            first_column_numbers.add(i * 3 + 1)
+        for i in first_column_numbers:
+            column_one_two_split_bet = Outcome(str(i) + "-" + str(i + 1), odds_for_split_bet)
+            bin_indexes_for_horizontal_split_bets = i, i + 1
+            wheel.addOutcome(bin_indexes_for_horizontal_split_bets[0], column_one_two_split_bet)
+            wheel.addOutcome(bin_indexes_for_horizontal_split_bets[1], column_one_two_split_bet)
+
+        second_column_numbers = set()
+        for i in range(12):
+            second_column_numbers.add(i * 3 + 2)
+        for i in second_column_numbers:
+            column_two_three_split_bet = Outcome(str(i) + "-" + str(i + 1), odds_for_split_bet)
+            bin_indexes_for_horizontal_split_bets = i, i + 1
+            wheel.addOutcome(bin_indexes_for_horizontal_split_bets[0],
+                             column_two_three_split_bet)
+            wheel.addOutcome(bin_indexes_for_horizontal_split_bets[1],
+                             column_two_three_split_bet)
