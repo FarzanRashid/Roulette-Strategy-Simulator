@@ -179,3 +179,16 @@ class BinBuilder:
             bin_indexes_for_vertical_split_outcome = i, i + 3
             wheel.addOutcome(bin_indexes_for_vertical_split_outcome[0], vertical_split_bet)
             wheel.addOutcome(bin_indexes_for_vertical_split_outcome[1], vertical_split_bet)
+
+    @staticmethod
+    def create_street_bets(wheel: Wheel) -> None:
+        odds_for_street_bet = 11
+        numbers_to_create_street_bets = set()
+        for i in range(12):
+            numbers_to_create_street_bets.add(i * 3 + 1)
+        for i in numbers_to_create_street_bets:
+            street_bet = Outcome(str(i) + "-" + str(i + 1) + "-" + str(i + 2), odds_for_street_bet)
+            indexes_for_street_bets = i, i + 1, i + 2
+            wheel.addOutcome(indexes_for_street_bets[0], street_bet)
+            wheel.addOutcome(indexes_for_street_bets[1], street_bet)
+            wheel.addOutcome(indexes_for_street_bets[2], street_bet)
