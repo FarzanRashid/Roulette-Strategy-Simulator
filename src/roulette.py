@@ -133,4 +133,16 @@ class BinBuilder:
         pass
 
     def buildBins(self, wheel: Wheel) -> None:
-        pass
+        self.create_straight_bets(wheel)
+
+    @staticmethod
+    def create_straight_bets(wheel: Wheel) -> None:
+        odd_for_straight_bet = 35
+        straight_bet_numbers = set(_ for _ in range(37))
+
+        for i in straight_bet_numbers:
+            straight_bet = Outcome(str(i), odd_for_straight_bet)
+            wheel.addOutcome(i, straight_bet)
+        zero_zero_bet = Outcome("00", 35)
+        bin_index_of_zero_zero_outcome = 37
+        wheel.addOutcome(bin_index_of_zero_zero_outcome, zero_zero_bet)
