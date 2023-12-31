@@ -247,3 +247,37 @@ class BinBuilder:
 
         for i in bin_indexes_for_five_bet:
             wheel.addOutcome(i, five_bet)
+
+    @staticmethod
+    def create_even_money_bets(wheel: Wheel) -> None:
+        even_bet_odds = 1
+        red_bet_name = "Red"
+        black_bet_name = "Black"
+        low_bet_name = "Low"
+        high_bet_name = "High"
+        even_bet_name = "Even"
+        odd_bet_name = "Odd"
+
+        even_bet_numbers = {_ for _ in range(1, 37)}
+        red_bet_numbers = {1, 3, 5, 7, 9, 12, 14, 16, 18, 19, 21, 23, 25, 27, 30, 32, 34, 36}
+
+        red_bet = Outcome(red_bet_name, even_bet_odds)
+        black_bet = Outcome(black_bet_name, even_bet_odds)
+        low_bet = Outcome(low_bet_name, even_bet_odds)
+        high_bet = Outcome(high_bet_name, even_bet_odds)
+        even_bet = Outcome(even_bet_name, even_bet_odds)
+        odd_bet = Outcome(odd_bet_name, even_bet_odds)
+
+        for number in even_bet_numbers:
+            if number < 19:
+                wheel.addOutcome(number, low_bet)
+            if number >= 19:
+                wheel.addOutcome(number, high_bet)
+            if number % 2 == 0:
+                wheel.addOutcome(number, even_bet)
+            if number % 2 != 0:
+                wheel.addOutcome(number, odd_bet)
+            if number in red_bet_numbers:
+                wheel.addOutcome(number, red_bet)
+            if number not in red_bet_numbers:
+                wheel.addOutcome(number, black_bet)
