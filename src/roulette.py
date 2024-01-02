@@ -149,13 +149,13 @@ class BinBuilder:
 
     @staticmethod
     def create_horizontal_split_bets(wheel: Wheel) -> None:
-        odds_for_split_bet = 17
+        split_bet_odds = 17
 
         split_bet_numbers = {number * 3 + 1 for number in range(12)} | {number * 3 + 2 for number
                                                                         in range(12)}
         for number in split_bet_numbers:
             column_one_two_split_bet = Outcome(str(number) + "-" + str(number + 1),
-                                               odds_for_split_bet)
+                                               split_bet_odds)
             wheel.addOutcome(number, column_one_two_split_bet)
             wheel.addOutcome(number + 1, column_one_two_split_bet)
 
