@@ -183,29 +183,16 @@ class BinBuilder:
     def create_corner_bets(wheel: Wheel) -> None:
         odds_for_corner_bet = 8
 
-        first_column_numbers = set()
-        for i in range(11):
-            first_column_numbers.add(i * 3 + 1)
-        for i in first_column_numbers:
-            first_column_corner_bet = Outcome(str(i) + "-" + str(i + 1) + "=" + str(i + 3) +
-                                              str(i + 4), odds_for_corner_bet)
-            indexes_for_first_column_corner_bets = i, i + 1, i + 3, i + 4
-            wheel.addOutcome(indexes_for_first_column_corner_bets[0], first_column_corner_bet)
-            wheel.addOutcome(indexes_for_first_column_corner_bets[1], first_column_corner_bet)
-            wheel.addOutcome(indexes_for_first_column_corner_bets[2], first_column_corner_bet)
-            wheel.addOutcome(indexes_for_first_column_corner_bets[3], first_column_corner_bet)
-
-        second_column_number = set()
-        for i in range(11):
-            second_column_number.add(i * 3 + 2)
-        for i in second_column_number:
-            second_column_corner_bet = Outcome(str(i) + "-" + str(i + 1) + "=" + str(i + 3) +
-                                               str(i + 4), odds_for_corner_bet)
-            indexes_for_first_column_corner_bets = i, i + 1, i + 3, i + 4
-            wheel.addOutcome(indexes_for_first_column_corner_bets[0], second_column_corner_bet)
-            wheel.addOutcome(indexes_for_first_column_corner_bets[1], second_column_corner_bet)
-            wheel.addOutcome(indexes_for_first_column_corner_bets[2], second_column_corner_bet)
-            wheel.addOutcome(indexes_for_first_column_corner_bets[3], second_column_corner_bet)
+        corner_bet_numbers = {number * 3 + 1 for number in range(11)} | {number * 3 + 2 for
+                                                                         number in range(11)}
+        for number in corner_bet_numbers:
+            first_column_corner_bet = Outcome(str(number) + "-" + str(number + 1) + "-" +
+                                              str(number + 3) + str(number + 4),
+                                              odds_for_corner_bet)
+            wheel.addOutcome(number, first_column_corner_bet)
+            wheel.addOutcome(number + 1, first_column_corner_bet)
+            wheel.addOutcome(number + 3, first_column_corner_bet)
+            wheel.addOutcome(number + 4, first_column_corner_bet)
 
     @staticmethod
     def create_line_bets(wheel: Wheel) -> None:
