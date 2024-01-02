@@ -183,14 +183,13 @@ class BinBuilder:
     @staticmethod
     def create_street_bets(wheel: Wheel) -> None:
         street_bet_odds = 11
-        numbers_to_create_street_bets = set()
-        for i in range(12):
-            numbers_to_create_street_bets.add(i * 3 + 1)
-        for i in numbers_to_create_street_bets:
-            street_bet = Outcome(str(i) + "-" + str(i + 1) + "-" + str(i + 2), street_bet_odds)
-            wheel.addOutcome(i, street_bet)
-            wheel.addOutcome(i + 1, street_bet)
-            wheel.addOutcome(i + 2, street_bet)
+        street_bet_numbers = set(number * 3 + 1 for number in range(12))
+        for number in street_bet_numbers:
+            street_bet = Outcome(str(number) + "-" + str(number + 1) + "-" + str(number + 2),
+                                 street_bet_odds)
+            wheel.addOutcome(number, street_bet)
+            wheel.addOutcome(number + 1, street_bet)
+            wheel.addOutcome(number + 2, street_bet)
 
     @staticmethod
     def create_corner_bets(wheel: Wheel) -> None:
