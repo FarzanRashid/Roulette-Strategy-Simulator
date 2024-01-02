@@ -237,11 +237,12 @@ class BinBuilder:
     @staticmethod
     def generate_five_bets(wheel: Wheel) -> None:
         odds_for_five_bet = 6
-        five_bet = Outcome("00-0-1-2-3", odds_for_five_bet)
-        bin_indexes_for_five_bet = (0, 1, 2, 3, 37)
+        five_bet_name = "00-0-1-2-3"
+        five_bet = Outcome(five_bet_name, odds_for_five_bet)
+        bin_indexes_for_five_bet = {0, 1, 2, 3, 37}
 
-        for i in bin_indexes_for_five_bet:
-            wheel.addOutcome(i, five_bet)
+        for index in bin_indexes_for_five_bet:
+            wheel.addOutcome(index, five_bet)
 
     @staticmethod
     def create_even_money_bets(wheel: Wheel) -> None:
