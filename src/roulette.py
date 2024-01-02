@@ -138,11 +138,11 @@ class BinBuilder:
     @staticmethod
     def create_straight_bets(wheel: Wheel) -> None:
         straight_bet_odds = 35
-        straight_bet_numbers = set(_ for _ in range(37))
+        straight_bet_numbers = {_ for _ in range(37)}
 
-        for i in straight_bet_numbers:
-            straight_bet = Outcome(str(i), straight_bet_odds)
-            wheel.addOutcome(i, straight_bet)
+        for number in straight_bet_numbers:
+            straight_bet = Outcome(str(number), straight_bet_odds)
+            wheel.addOutcome(number, straight_bet)
         zero_zero_bet = Outcome("00", straight_bet_odds)
         bin_index_of_zero_zero_outcome = 37
         wheel.addOutcome(bin_index_of_zero_zero_outcome, zero_zero_bet)
