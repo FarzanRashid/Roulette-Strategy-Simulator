@@ -298,3 +298,20 @@ class BinBuilder:
 
             for bin_number in range(12):
                 wheel.addOutcome(12 * number + bin_number + 1, dozen_bet)
+
+    @staticmethod
+    def create_column_bets(wheel: Wheel) -> None:
+        column_bet_odds = 2
+        for number in range(3):
+            if number + 1 == 1:
+                column_bet_name = "-".join([str(_) for _ in range(1, 35, 3)])
+                column_bet = Outcome(column_bet_name, column_bet_odds)
+            elif number + 1 == 2:
+                column_bet_name = "-".join([str(_) for _ in range(2, 36, 3)])
+                column_bet = Outcome(column_bet_name, column_bet_odds)
+            else:
+                column_bet_name = "-".join([str(_) for _ in range(3, 37, 3)])
+                column_bet = Outcome(column_bet_name, column_bet_odds)
+
+            for bin_number in range(12):
+                wheel.addOutcome(3 * bin_number + number + 1, column_bet)
