@@ -162,11 +162,11 @@ class BinBuilder:
     @staticmethod
     def create_vertical_split_bets(wheel: Wheel) -> None:
         split_bet_odds = 17
-        vertical_split_bet_numbers = set(_ for _ in range(1, 34))
-        for i in vertical_split_bet_numbers:
-            vertical_split_bet = Outcome(str(i) + "-" + str(i + 3), split_bet_odds)
-            wheel.addOutcome(i, vertical_split_bet)
-            wheel.addOutcome(i + 3, vertical_split_bet)
+        vertical_split_bet_numbers = {_ for _ in range(1, 34)}
+        for number in vertical_split_bet_numbers:
+            vertical_split_bet = Outcome(str(number) + "-" + str(number + 3), split_bet_odds)
+            wheel.addOutcome(number, vertical_split_bet)
+            wheel.addOutcome(number + 3, vertical_split_bet)
 
     @staticmethod
     def create_street_bets(wheel: Wheel) -> None:
