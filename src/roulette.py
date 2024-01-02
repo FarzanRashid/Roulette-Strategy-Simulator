@@ -281,3 +281,20 @@ class BinBuilder:
                 wheel.addOutcome(number, red_bet)
             if number not in red_bet_numbers:
                 wheel.addOutcome(number, black_bet)
+
+    @staticmethod
+    def create_dozen_bets(wheel: Wheel) -> None:
+        dozen_bet_odds = 2
+        for number in range(3):
+            if number + 1 == 1:
+                dozen_bet_name = "-".join([str(_) for _ in range(1, 13)])
+                dozen_bet = Outcome(dozen_bet_name, dozen_bet_odds)
+            elif number + 1 == 2:
+                dozen_bet_name = "-".join([str(_) for _ in range(13, 25)])
+                dozen_bet = Outcome(dozen_bet_name, dozen_bet_odds)
+            else:
+                dozen_bet_name = "-".join([str(_) for _ in range(25, 37)])
+                dozen_bet = Outcome(dozen_bet_name, dozen_bet_odds)
+
+            for bin_number in range(12):
+                wheel.addOutcome(12 * number + bin_number + 1, dozen_bet)
