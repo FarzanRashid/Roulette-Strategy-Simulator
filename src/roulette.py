@@ -134,6 +134,15 @@ class BinBuilder:
 
     def buildBins(self, wheel: Wheel) -> None:
         self.create_straight_bets(wheel)
+        self.create_horizontal_split_bets(wheel)
+        self.create_vertical_split_bets(wheel)
+        self.create_street_bets(wheel)
+        self.create_corner_bets(wheel)
+        self.create_line_bets(wheel)
+        self.generate_five_bets(wheel)
+        self.create_even_money_bets(wheel)
+        self.create_dozen_bets(wheel)
+        self.create_column_bets(wheel)
 
     @staticmethod
     def create_straight_bets(wheel: Wheel) -> None:
