@@ -221,12 +221,12 @@ class BinBuilder:
 
     @staticmethod
     def create_line_bets(wheel: Wheel) -> None:
-        odds_for_line_bets = 5
-        numbers_to_generate_line_bets = set(number * 3 + 1 for number in range(11))
-        for number in numbers_to_generate_line_bets:
+        line_bet_odds = 5
+        line_bet_numbers = {number * 3 + 1 for number in range(11)}
+        for number in line_bet_numbers:
             line_bet = Outcome(str(number) + "-" + str(number + 1) + "-" + str(number + 2) + "-" +
                                str(number + 3) + "-" + str(number + 4) + "-" + str(number + 5),
-                               odds_for_line_bets)
+                               line_bet_odds)
             wheel.addOutcome(number, line_bet)
             wheel.addOutcome(number + 1, line_bet)
             wheel.addOutcome(number + 2, line_bet)
