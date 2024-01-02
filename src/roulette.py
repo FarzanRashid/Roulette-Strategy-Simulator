@@ -223,20 +223,17 @@ class BinBuilder:
     @staticmethod
     def create_line_bets(wheel: Wheel) -> None:
         odds_for_line_bets = 5
-        numbers_to_generate_line_bets = set()
-        for i in range(11):
-            numbers_to_generate_line_bets.add(i * 3 + 1)
-
-        for i in numbers_to_generate_line_bets:
-            line_bet = Outcome(str(i) + "-" + str(i + 1) + "-" + str(i + 2) + "-" + str(i + 3) +
-                               "-" + str(i + 4) + "-" + str(i + 5), odds_for_line_bets)
-            indexes_for_line_bets = (i, i + 1, i + 2, i + 3, i + 4, i + 5,)
-            wheel.addOutcome(indexes_for_line_bets[0], line_bet)
-            wheel.addOutcome(indexes_for_line_bets[1], line_bet)
-            wheel.addOutcome(indexes_for_line_bets[2], line_bet)
-            wheel.addOutcome(indexes_for_line_bets[3], line_bet)
-            wheel.addOutcome(indexes_for_line_bets[4], line_bet)
-            wheel.addOutcome(indexes_for_line_bets[5], line_bet)
+        numbers_to_generate_line_bets = set(number * 3 + 1 for number in range(11))
+        for number in numbers_to_generate_line_bets:
+            line_bet = Outcome(str(number) + "-" + str(number + 1) + "-" + str(number + 2) + "-" +
+                               str(number + 3) + "-" + str(number + 4) + "-" + str(number + 5),
+                               odds_for_line_bets)
+            wheel.addOutcome(number, line_bet)
+            wheel.addOutcome(number + 1, line_bet)
+            wheel.addOutcome(number + 2, line_bet)
+            wheel.addOutcome(number + 3, line_bet)
+            wheel.addOutcome(number + 4, line_bet)
+            wheel.addOutcome(number + 5, line_bet)
 
     @staticmethod
     def generate_five_bets(wheel: Wheel) -> None:
