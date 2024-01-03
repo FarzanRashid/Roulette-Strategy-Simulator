@@ -133,19 +133,19 @@ class BinBuilder:
         pass
 
     def buildBins(self, wheel: Wheel) -> None:
-        self.create_straight_bets(wheel)
-        self.create_horizontal_split_bets(wheel)
-        self.create_vertical_split_bets(wheel)
-        self.create_street_bets(wheel)
-        self.create_corner_bets(wheel)
-        self.create_line_bets(wheel)
-        self.generate_five_bets(wheel)
-        self.create_even_money_bets(wheel)
-        self.create_dozen_bets(wheel)
-        self.create_column_bets(wheel)
+        self.build_bins_for_straight_bets(wheel)
+        self.build_bins_for_horizontal_split_bets(wheel)
+        self.build_bins_for_vertical_split_bets(wheel)
+        self.build_bins_for_street_bets(wheel)
+        self.build_bins_for_corner_bets(wheel)
+        self.build_bins_for_line_bets(wheel)
+        self.build_bins_for_five_bet(wheel)
+        self.build_bins_for_even_money_bets(wheel)
+        self.build_bins_for_dozen_bets(wheel)
+        self.build_bins_for_column_bets(wheel)
 
     @staticmethod
-    def create_straight_bets(wheel: Wheel) -> None:
+    def build_bins_for_straight_bets(wheel: Wheel) -> None:
         straight_bet_odds = 35
         straight_bet_numbers = set(range(37))
 
@@ -157,7 +157,7 @@ class BinBuilder:
         wheel.addOutcome(bin_index_of_zero_zero_outcome, zero_zero_bet_outcome)
 
     @staticmethod
-    def create_horizontal_split_bets(wheel: Wheel) -> None:
+    def build_bins_for_horizontal_split_bets(wheel: Wheel) -> None:
         split_bet_odds = 17
 
         split_bet_numbers = {number * 3 + 1 for number in range(12)} | {number * 3 + 2 for number
@@ -169,7 +169,7 @@ class BinBuilder:
             wheel.addOutcome(number + 1, horizontal_split_bet_outcome)
 
     @staticmethod
-    def create_vertical_split_bets(wheel: Wheel) -> None:
+    def build_bins_for_vertical_split_bets(wheel: Wheel) -> None:
         split_bet_odds = 17
         vertical_split_bet_numbers = set(range(1, 34))
         for number in vertical_split_bet_numbers:
@@ -179,7 +179,7 @@ class BinBuilder:
             wheel.addOutcome(number + 3, vertical_split_bet_outcome)
 
     @staticmethod
-    def create_street_bets(wheel: Wheel) -> None:
+    def build_bins_for_street_bets(wheel: Wheel) -> None:
         street_bet_odds = 11
         street_bet_numbers = set(number * 3 + 1 for number in range(12))
         for number in street_bet_numbers:
@@ -191,7 +191,7 @@ class BinBuilder:
             wheel.addOutcome(number + 2, street_bet_outcome)
 
     @staticmethod
-    def create_corner_bets(wheel: Wheel) -> None:
+    def build_bins_for_corner_bets(wheel: Wheel) -> None:
         odds_for_corner_bet = 8
 
         corner_bet_numbers = {number * 3 + 1 for number in range(11)} | {number * 3 + 2 for
@@ -205,7 +205,7 @@ class BinBuilder:
             wheel.addOutcome(number + 4, corner_bet_outcome)
 
     @staticmethod
-    def create_line_bets(wheel: Wheel) -> None:
+    def build_bins_for_line_bets(wheel: Wheel) -> None:
         line_bet_odds = 5
         line_bet_numbers = {number * 3 + 1 for number in range(11)}
         for number in line_bet_numbers:
@@ -220,7 +220,7 @@ class BinBuilder:
             wheel.addOutcome(number + 5, line_bet_outcome)
 
     @staticmethod
-    def generate_five_bets(wheel: Wheel) -> None:
+    def build_bins_for_five_bet(wheel: Wheel) -> None:
         odds_for_five_bet = 6
         five_bet_name = "00-0-1-2-3"
         five_bet_outcome = Outcome(five_bet_name, odds_for_five_bet)
@@ -230,7 +230,7 @@ class BinBuilder:
             wheel.addOutcome(index, five_bet_outcome)
 
     @staticmethod
-    def create_even_money_bets(wheel: Wheel) -> None:
+    def build_bins_for_even_money_bets(wheel: Wheel) -> None:
         even_bet_odds = 1
 
         red_bet_name = "Red"
@@ -265,7 +265,7 @@ class BinBuilder:
                 wheel.addOutcome(number, black_bet)
 
     @staticmethod
-    def create_dozen_bets(wheel: Wheel) -> None:
+    def build_bins_for_dozen_bets(wheel: Wheel) -> None:
         dozen_bet_odds = 2
         for dozen in range(3):
             if dozen + 1 == 1:
@@ -282,7 +282,7 @@ class BinBuilder:
                 wheel.addOutcome(12 * dozen + bin_number + 1, dozen_bet_outcome)
 
     @staticmethod
-    def create_column_bets(wheel: Wheel) -> None:
+    def build_bins_for_column_bets(wheel: Wheel) -> None:
         column_bet_odds = 2
         for column in range(3):
             if column + 1 == 1:
