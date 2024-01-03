@@ -152,9 +152,9 @@ class BinBuilder:
         for number in straight_bet_numbers:
             straight_bet_outcome = Outcome(str(number), straight_bet_odds)
             wheel.addOutcome(number, straight_bet_outcome)
-        zero_zero_bet = Outcome("00", straight_bet_odds)
+        zero_zero_bet_outcome = Outcome("00", straight_bet_odds)
         bin_index_of_zero_zero_outcome = 37
-        wheel.addOutcome(bin_index_of_zero_zero_outcome, zero_zero_bet)
+        wheel.addOutcome(bin_index_of_zero_zero_outcome, zero_zero_bet_outcome)
 
     @staticmethod
     def create_horizontal_split_bets(wheel: Wheel) -> None:
@@ -163,30 +163,32 @@ class BinBuilder:
         split_bet_numbers = {number * 3 + 1 for number in range(12)} | {number * 3 + 2 for number
                                                                         in range(12)}
         for number in split_bet_numbers:
-            horizontal_split_bet = Outcome(str(number) + "-" + str(number + 1),
+            horizontal_split_bet_outcome = Outcome(str(number) + "-" + str(number + 1),
                                            split_bet_odds)
-            wheel.addOutcome(number, horizontal_split_bet)
-            wheel.addOutcome(number + 1, horizontal_split_bet)
+            wheel.addOutcome(number, horizontal_split_bet_outcome)
+            wheel.addOutcome(number + 1, horizontal_split_bet_outcome)
 
     @staticmethod
     def create_vertical_split_bets(wheel: Wheel) -> None:
         split_bet_odds = 17
         vertical_split_bet_numbers = set(range(1, 34))
         for number in vertical_split_bet_numbers:
-            vertical_split_bet = Outcome(str(number) + "-" + str(number + 3), split_bet_odds)
-            wheel.addOutcome(number, vertical_split_bet)
-            wheel.addOutcome(number + 3, vertical_split_bet)
+            vertical_split_bet_outcome = Outcome(str(number) + "-" + str(number + 3),
+                                                 split_bet_odds)
+            wheel.addOutcome(number, vertical_split_bet_outcome)
+            wheel.addOutcome(number + 3, vertical_split_bet_outcome)
 
     @staticmethod
     def create_street_bets(wheel: Wheel) -> None:
         street_bet_odds = 11
         street_bet_numbers = set(number * 3 + 1 for number in range(12))
         for number in street_bet_numbers:
-            street_bet = Outcome(str(number) + "-" + str(number + 1) + "-" + str(number + 2),
-                                 street_bet_odds)
-            wheel.addOutcome(number, street_bet)
-            wheel.addOutcome(number + 1, street_bet)
-            wheel.addOutcome(number + 2, street_bet)
+            street_bet_outcome = Outcome(
+                str(number) + "-" + str(number + 1) + "-" + str(number + 2),
+                street_bet_odds)
+            wheel.addOutcome(number, street_bet_outcome)
+            wheel.addOutcome(number + 1, street_bet_outcome)
+            wheel.addOutcome(number + 2, street_bet_outcome)
 
     @staticmethod
     def create_corner_bets(wheel: Wheel) -> None:
@@ -195,38 +197,37 @@ class BinBuilder:
         corner_bet_numbers = {number * 3 + 1 for number in range(11)} | {number * 3 + 2 for
                                                                          number in range(11)}
         for number in corner_bet_numbers:
-            first_column_corner_bet = Outcome(str(number) + "-" + str(number + 1) + "-" +
-                                              str(number + 3) + str(number + 4),
-                                              odds_for_corner_bet)
-            wheel.addOutcome(number, first_column_corner_bet)
-            wheel.addOutcome(number + 1, first_column_corner_bet)
-            wheel.addOutcome(number + 3, first_column_corner_bet)
-            wheel.addOutcome(number + 4, first_column_corner_bet)
+            corner_bet_outcome = Outcome(str(number) + "-" + str(number + 1) + "-" +
+                                         str(number + 3) + str(number + 4), odds_for_corner_bet)
+            wheel.addOutcome(number, corner_bet_outcome)
+            wheel.addOutcome(number + 1, corner_bet_outcome)
+            wheel.addOutcome(number + 3, corner_bet_outcome)
+            wheel.addOutcome(number + 4, corner_bet_outcome)
 
     @staticmethod
     def create_line_bets(wheel: Wheel) -> None:
         line_bet_odds = 5
         line_bet_numbers = {number * 3 + 1 for number in range(11)}
         for number in line_bet_numbers:
-            line_bet = Outcome(str(number) + "-" + str(number + 1) + "-" + str(number + 2) + "-" +
-                               str(number + 3) + "-" + str(number + 4) + "-" + str(number + 5),
-                               line_bet_odds)
-            wheel.addOutcome(number, line_bet)
-            wheel.addOutcome(number + 1, line_bet)
-            wheel.addOutcome(number + 2, line_bet)
-            wheel.addOutcome(number + 3, line_bet)
-            wheel.addOutcome(number + 4, line_bet)
-            wheel.addOutcome(number + 5, line_bet)
+            line_bet_outcome = Outcome(str(number) + "-" + str(number + 1) + "-" + str(number + 2)
+                                       + "-" + str(number + 3) + "-" + str(number + 4) + "-" +
+                                       str(number + 5), line_bet_odds)
+            wheel.addOutcome(number, line_bet_outcome)
+            wheel.addOutcome(number + 1, line_bet_outcome)
+            wheel.addOutcome(number + 2, line_bet_outcome)
+            wheel.addOutcome(number + 3, line_bet_outcome)
+            wheel.addOutcome(number + 4, line_bet_outcome)
+            wheel.addOutcome(number + 5, line_bet_outcome)
 
     @staticmethod
     def generate_five_bets(wheel: Wheel) -> None:
         odds_for_five_bet = 6
         five_bet_name = "00-0-1-2-3"
-        five_bet = Outcome(five_bet_name, odds_for_five_bet)
+        five_bet_outcome = Outcome(five_bet_name, odds_for_five_bet)
         bin_indexes_for_five_bet = {0, 1, 2, 3, 37}
 
         for index in bin_indexes_for_five_bet:
-            wheel.addOutcome(index, five_bet)
+            wheel.addOutcome(index, five_bet_outcome)
 
     @staticmethod
     def create_even_money_bets(wheel: Wheel) -> None:
@@ -269,16 +270,16 @@ class BinBuilder:
         for dozen in range(3):
             if dozen + 1 == 1:
                 dozen_bet_name = "-".join([str(_) for _ in range(1, 13)])
-                dozen_bet = Outcome(dozen_bet_name, dozen_bet_odds)
+                dozen_bet_outcome = Outcome(dozen_bet_name, dozen_bet_odds)
             elif dozen + 1 == 2:
                 dozen_bet_name = "-".join([str(_) for _ in range(13, 25)])
-                dozen_bet = Outcome(dozen_bet_name, dozen_bet_odds)
+                dozen_bet_outcome = Outcome(dozen_bet_name, dozen_bet_odds)
             else:
                 dozen_bet_name = "-".join([str(_) for _ in range(25, 37)])
-                dozen_bet = Outcome(dozen_bet_name, dozen_bet_odds)
+                dozen_bet_outcome = Outcome(dozen_bet_name, dozen_bet_odds)
 
             for bin_number in range(12):
-                wheel.addOutcome(12 * dozen + bin_number + 1, dozen_bet)
+                wheel.addOutcome(12 * dozen + bin_number + 1, dozen_bet_outcome)
 
     @staticmethod
     def create_column_bets(wheel: Wheel) -> None:
@@ -286,13 +287,13 @@ class BinBuilder:
         for column in range(3):
             if column + 1 == 1:
                 column_bet_name = "-".join([str(_) for _ in range(1, 35, 3)])
-                column_bet = Outcome(column_bet_name, column_bet_odds)
+                column_bet_outcome = Outcome(column_bet_name, column_bet_odds)
             elif column + 1 == 2:
                 column_bet_name = "-".join([str(_) for _ in range(2, 36, 3)])
-                column_bet = Outcome(column_bet_name, column_bet_odds)
+                column_bet_outcome = Outcome(column_bet_name, column_bet_odds)
             else:
                 column_bet_name = "-".join([str(_) for _ in range(3, 37, 3)])
-                column_bet = Outcome(column_bet_name, column_bet_odds)
+                column_bet_outcome = Outcome(column_bet_name, column_bet_odds)
 
             for bin_number in range(12):
-                wheel.addOutcome(3 * bin_number + column + 1, column_bet)
+                wheel.addOutcome(3 * bin_number + column + 1, column_bet_outcome)
