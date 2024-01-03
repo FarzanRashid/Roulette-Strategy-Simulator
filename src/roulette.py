@@ -147,11 +147,11 @@ class BinBuilder:
     @staticmethod
     def create_straight_bets(wheel: Wheel) -> None:
         straight_bet_odds = 35
-        straight_bet_numbers = {_ for _ in range(37)}
+        straight_bet_numbers = set(range(37))
 
         for number in straight_bet_numbers:
-            straight_bet = Outcome(str(number), straight_bet_odds)
-            wheel.addOutcome(number, straight_bet)
+            straight_bet_outcome = Outcome(str(number), straight_bet_odds)
+            wheel.addOutcome(number, straight_bet_outcome)
         zero_zero_bet = Outcome("00", straight_bet_odds)
         bin_index_of_zero_zero_outcome = 37
         wheel.addOutcome(bin_index_of_zero_zero_outcome, zero_zero_bet)
@@ -163,15 +163,15 @@ class BinBuilder:
         split_bet_numbers = {number * 3 + 1 for number in range(12)} | {number * 3 + 2 for number
                                                                         in range(12)}
         for number in split_bet_numbers:
-            column_one_two_split_bet = Outcome(str(number) + "-" + str(number + 1),
-                                               split_bet_odds)
-            wheel.addOutcome(number, column_one_two_split_bet)
-            wheel.addOutcome(number + 1, column_one_two_split_bet)
+            horizontal_split_bet = Outcome(str(number) + "-" + str(number + 1),
+                                           split_bet_odds)
+            wheel.addOutcome(number, horizontal_split_bet)
+            wheel.addOutcome(number + 1, horizontal_split_bet)
 
     @staticmethod
     def create_vertical_split_bets(wheel: Wheel) -> None:
         split_bet_odds = 17
-        vertical_split_bet_numbers = {_ for _ in range(1, 34)}
+        vertical_split_bet_numbers = set(range(1, 34))
         for number in vertical_split_bet_numbers:
             vertical_split_bet = Outcome(str(number) + "-" + str(number + 3), split_bet_odds)
             wheel.addOutcome(number, vertical_split_bet)
@@ -231,6 +231,7 @@ class BinBuilder:
     @staticmethod
     def create_even_money_bets(wheel: Wheel) -> None:
         even_bet_odds = 1
+
         red_bet_name = "Red"
         black_bet_name = "Black"
         low_bet_name = "Low"
@@ -238,7 +239,7 @@ class BinBuilder:
         even_bet_name = "Even"
         odd_bet_name = "Odd"
 
-        even_bet_numbers = {_ for _ in range(1, 37)}
+        even_bet_numbers = set(range(1, 37))
         red_bet_numbers = {1, 3, 5, 7, 9, 12, 14, 16, 18, 19, 21, 23, 25, 27, 30, 32, 34, 36}
 
         red_bet = Outcome(red_bet_name, even_bet_odds)
