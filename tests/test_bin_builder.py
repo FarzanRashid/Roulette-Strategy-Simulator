@@ -5,4 +5,4 @@ from roulette import Outcome, Wheel, BinBuilder
 class TestBinBuilder(TestCase):
     def setUp(self):
         self.bin_builder = BinBuilder()
-        wheel = Wheel()
+        self.wheel = Wheel()
