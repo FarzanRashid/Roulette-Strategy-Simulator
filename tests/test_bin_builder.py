@@ -42,3 +42,15 @@ class TestBinBuilder(TestCase):
         self.bin_builder.build_bins_for_vertical_split_bets(self.wheel)
 
         self.assertIn(vertical_split_outcome, self.wheel.bins[bin_index])
+
+    def test_street_bins_are_filled_properly(self):
+        street_bet_odds = 11
+        street_outcomes = {
+            1: Outcome("1-2-3", street_bet_odds),
+            36: Outcome("34-35-36", street_bet_odds)
+        }
+
+        self.bin_builder.build_bins_for_street_bets(self.wheel)
+
+        for bin_index in street_outcomes:
+            self.assertIn(street_outcomes[bin_index], self.wheel.bins[bin_index])
