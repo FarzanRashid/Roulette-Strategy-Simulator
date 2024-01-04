@@ -20,3 +20,14 @@ class TestBinBuilder(TestCase):
 
         for bin_index in straight_outcomes:
             self.assertIn(straight_outcomes[bin_index], self.wheel.bins[bin_index])
+
+    def test_if_horizontal_split_outcomes_are_generated_properly(self):
+        split_bet_odds = 17
+        split_outcome_name = "1-2"
+        bin_index = 1
+
+        horizontal_split_outcome = Outcome(split_outcome_name, split_bet_odds)
+
+        self.bin_builder.build_bins_for_horizontal_split_bets(self.wheel)
+
+        self.assertIn(horizontal_split_outcome, self.wheel.bins[bin_index])
