@@ -164,7 +164,7 @@ class BinBuilder:
                                                                         in range(12)}
         for number in split_bet_numbers:
             horizontal_split_bet_outcome = Outcome(str(number) + "-" + str(number + 1),
-                                           split_bet_odds)
+                                                   split_bet_odds)
             wheel.addOutcome(number, horizontal_split_bet_outcome)
             wheel.addOutcome(number + 1, horizontal_split_bet_outcome)
 
@@ -198,7 +198,9 @@ class BinBuilder:
                                                                          number in range(11)}
         for number in corner_bet_numbers:
             corner_bet_outcome = Outcome(str(number) + "-" + str(number + 1) + "-" +
-                                         str(number + 3) + str(number + 4), odds_for_corner_bet)
+                                         str(number + 3) + "-" + str(number + 4),
+                                         odds_for_corner_bet)
+
             wheel.addOutcome(number, corner_bet_outcome)
             wheel.addOutcome(number + 1, corner_bet_outcome)
             wheel.addOutcome(number + 3, corner_bet_outcome)

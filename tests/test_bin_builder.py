@@ -54,3 +54,18 @@ class TestBinBuilder(TestCase):
 
         for bin_index in street_outcomes:
             self.assertIn(street_outcomes[bin_index], self.wheel.bins[bin_index])
+
+    def test_corner_bins_are_filled_properly(self):
+        corner_bet_odds = 8
+        corner_outcomes = {
+            1: [Outcome("1-2-4-5", corner_bet_odds)],
+            4: [Outcome("1-2-4-5", corner_bet_odds), Outcome("4-5-7-8", corner_bet_odds)],
+            5: [Outcome("1-2-4-5", corner_bet_odds), Outcome("4-5-7-8", corner_bet_odds),
+                Outcome("2-3-5-6", corner_bet_odds), Outcome("5-6-8-9", corner_bet_odds)]
+                }
+
+        self.bin_builder.build_bins_for_corner_bets(self.wheel)
+
+        for bin_index in corner_outcomes:
+            for outcome in corner_outcomes[bin_index]:
+                self.assertIn(outcome, self.wheel.bins[bin_index])
