@@ -96,3 +96,17 @@ class TestBinBuilder(TestCase):
         for bin_index in dozen_bet_outcomes:
             for outcome in dozen_bet_outcomes[bin_index]:
                 self.assertIn(outcome, self.wheel.bins[bin_index])
+
+    def test_bins_are_filled_for_column_bets(self):
+        column_bet_odds = 2
+        column_bet_outcomes = {
+            1: [Outcome("-".join([str(_) for _ in range(1, 35, 3)]), column_bet_odds)],
+            17: [Outcome("-".join([str(_) for _ in range(2, 36, 3)]), column_bet_odds)],
+            36: [Outcome("-".join([str(_) for _ in range(3, 37, 3)]), column_bet_odds)]
+        }
+
+        self.bin_builder.build_bins_for_column_bets(self.wheel)
+
+        for bin_index in column_bet_outcomes:
+            for outcome in column_bet_outcomes[bin_index]:
+                self.assertIn(outcome, self.wheel.bins[bin_index])
