@@ -69,3 +69,16 @@ class TestBinBuilder(TestCase):
         for bin_index in corner_outcomes:
             for outcome in corner_outcomes[bin_index]:
                 self.assertIn(outcome, self.wheel.bins[bin_index])
+
+    def test_bins_are_filled_for_line_bets(self):
+        line_bet_odds = 5
+        line_outcomes = {
+            1: [Outcome("1-2-3-4-5-6", line_bet_odds)],
+            4: [Outcome("1-2-3-4-5-6", line_bet_odds), Outcome("4-5-6-7-8-9", line_bet_odds)]
+        }
+
+        self.bin_builder.build_bins_for_line_bets(self.wheel)
+
+        for bin_index in line_outcomes:
+            for outcome in line_outcomes[bin_index]:
+                self.assertIn(outcome, self.wheel.bins[bin_index])
