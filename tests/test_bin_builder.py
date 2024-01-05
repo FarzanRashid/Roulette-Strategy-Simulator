@@ -110,3 +110,15 @@ class TestBinBuilder(TestCase):
         for bin_index in column_bet_outcomes:
             for outcome in column_bet_outcomes[bin_index]:
                 self.assertIn(outcome, self.wheel.bins[bin_index])
+
+    def test_bins_are_filed_for_five_bet(self):
+        five_bet_odds = 6
+        five_bet_name = "00-0-1-2-3"
+        five_bet_outcome = Outcome(five_bet_name, five_bet_odds)
+
+        five_bet_bin_indexes = [0, 1, 2, 3, 37]
+
+        self.bin_builder.build_bins_for_five_bet(self.wheel)
+
+        for bin_index in five_bet_bin_indexes:
+            self.assertIn(five_bet_outcome, self.wheel.bins[bin_index])
