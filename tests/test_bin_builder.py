@@ -122,3 +122,33 @@ class TestBinBuilder(TestCase):
 
         for bin_index in five_bet_bin_indexes:
             self.assertIn(five_bet_outcome, self.wheel.bins[bin_index])
+
+    def test_bins_are_filled_for_even_money_bets(self):
+        even_money_bet_odds = 1
+
+        red_bet_outcome = Outcome("Red", even_money_bet_odds)
+        black_bet_outcome = Outcome("Black", even_money_bet_odds)
+        low_bet_outcome = Outcome("Low", even_money_bet_odds)
+        high_bet_outcome = Outcome("High", even_money_bet_odds)
+        even_bet_outcome = Outcome("Even", even_money_bet_odds)
+        odd_bet_outcome = Outcome("Odd", even_money_bet_odds)
+
+        red_bet_numbers = {1, 3, 5, 7, 9, 12, 14, 16, 18, 19, 21, 23, 25, 27, 30, 32, 34, 36}
+
+        even_bet_bin_indexes = {1, 17, 18, 36}
+
+        self.bin_builder.build_bins_for_even_money_bets(self.wheel)
+
+        for bin_index in even_bet_bin_indexes:
+            if bin_index in red_bet_numbers:
+                self.assertIn(red_bet_outcome, self.wheel.bins[bin_index])
+            if bin_index not in red_bet_numbers:
+                self.assertIn(black_bet_outcome, self.wheel.bins[bin_index])
+            if bin_index < 19:
+                self.assertIn(low_bet_outcome, self.wheel.bins[bin_index])
+            if bin_index > 18:
+                self.assertIn(high_bet_outcome, self.wheel.bins[bin_index])
+            if bin_index % 2 == 0:
+                self.assertIn(even_bet_outcome, self.wheel.bins[bin_index])
+            if bin_index % 2 != 0:
+                self.assertIn(odd_bet_outcome, self.wheel.bins[bin_index])
