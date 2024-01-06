@@ -406,6 +406,19 @@ class BinBuilder:
 
     @staticmethod
     def build_bins_for_dozen_bets(wheel: Wheel) -> None:
+        """
+        Populates **Bin** the given **wheel** with dozen bet outcomes, each associated with one of
+        the three dozens on the wheel.
+
+        The function adds dozen bet outcomes for each of the three dozens (1-12, 13-24, 25-36),
+        each with an associated odds value of 2. Each outcome corresponds to a bet on a set of
+        twelve consecutive numbers in a dozen.
+
+        :param wheel: The Wheel object to which the dozen bet outcomes will be added.
+        :type wheel: :class:`Wheel`
+
+        **Note**: The wheel is assumed to have bins for all possible numbers.
+        """
         dozen_bet_odds = 2
         for dozen in range(3):
             if dozen + 1 == 1:
