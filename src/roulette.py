@@ -268,6 +268,24 @@ class BinBuilder:
 
     @staticmethod
     def build_bins_for_corner_bets(wheel: Wheel) -> None:
+        """
+        Populates **Bin** for the given **wheel** with corner bet outcomes, each associated with a
+        set of four numbers forming a square on the wheel.
+
+        The function iterates through sets of four numbers forming a square on the wheel and creates
+        a corner bet outcome for each set, each with an associated odds value of 8. Each outcome
+        corresponds to a bet on the intersection of lines covering four adjacent numbers.
+
+        :param wheel: The Wheel object to which the corner bet outcomes will be added.
+        :type wheel: :class:`Wheel`
+
+        The function iterates through sets of four numbers forming a square on the wheel and creates
+        a corner bet outcome for each set,each with an associated odds value of 8. Each outcome
+        corresponds to a bet on the intersection of lines covering four adjacent numbers.
+
+        **Note**: The wheel is assumed to have bins for all possible numbers, and the corner bet
+        outcomes are added for sets of four numbers forming a square.
+        """
         odds_for_corner_bet = 8
 
         corner_bet_numbers = {number * 3 + 1 for number in range(11)} | {number * 3 + 2 for
