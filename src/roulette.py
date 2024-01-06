@@ -129,6 +129,10 @@ class Wheel:
 
 
 class BinBuilder:
+    """
+    :class:`BinBuilder` creates the :class:`Outcome` instances for all of the 38 individual
+    :class:`Bin` on a Roulette wheel.
+    """
     def __init__(self) -> None:
         pass
 
