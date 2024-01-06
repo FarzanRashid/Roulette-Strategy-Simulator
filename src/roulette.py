@@ -242,6 +242,20 @@ class BinBuilder:
 
     @staticmethod
     def build_bins_for_street_bets(wheel: Wheel) -> None:
+        """
+        Populates **Bin** for the given **wheel** with street bet outcomes, each associated with a
+        set of three consecutive numbers on the wheel.
+
+        The function iterates through sets of three consecutive numbers on the wheel and creates a
+        street bet outcome for each set, each with an associated odds value of 11. Each outcome
+        corresponds to a bet on the line covering three consecutive numbers.
+
+        :param wheel: The Wheel object to which the street bet outcomes will be added.
+        :type wheel: :class:`Wheel`
+
+        **Note**: The **wheel** is assumed to have bins for all possible numbers, and the street
+        bet outcomes are added for sets of three consecutive numbers.
+        """
         street_bet_odds = 11
         street_bet_numbers = set(number * 3 + 1 for number in range(12))
         for number in street_bet_numbers:
