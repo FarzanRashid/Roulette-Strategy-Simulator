@@ -134,6 +134,9 @@ class BinBuilder:
     :class:`Bin` on a Roulette wheel.
     """
     def __init__(self) -> None:
+        """
+        Initializes the :class:`BinBuilder`.
+        """
         pass
 
     def buildBins(self, wheel: Wheel) -> None:
