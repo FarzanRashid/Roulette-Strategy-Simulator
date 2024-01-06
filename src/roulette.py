@@ -163,6 +163,20 @@ class BinBuilder:
 
     @staticmethod
     def build_bins_for_straight_bets(wheel: Wheel) -> None:
+        """
+        Populates **Bin** for the given  **wheel** with straight bet outcomes, each associated
+        with a unique number on the wheel.
+
+        The function iterates through numbers 0 to 36 and creates a straight bet outcome for each
+        number, each with an associated odds value of 35. Additionally, a straight bet outcome
+        for the "00" is created with the same odds.
+
+        :param wheel: The Wheel object to which the straight bet outcomes will be added.
+        :type wheel: :class:`Wheel`
+
+        **Note**: The wheel is assumed to have bins for numbers 0 to 36, and an extra bin at
+        index 37 for the "00" outcome.
+        """
         straight_bet_odds = 35
         straight_bet_numbers = set(range(37))
 
