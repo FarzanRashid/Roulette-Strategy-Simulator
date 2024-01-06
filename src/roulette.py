@@ -138,7 +138,6 @@ class BinBuilder:
         """
         Initializes the :class:`BinBuilder`.
         """
-        pass
 
     def buildBins(self, wheel: Wheel) -> None:
         """
