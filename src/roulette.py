@@ -189,6 +189,21 @@ class BinBuilder:
 
     @staticmethod
     def build_bins_for_horizontal_split_bets(wheel: Wheel) -> None:
+        """
+        Populates **Bin** for  the given **wheel** with horizontal split bet outcomes,
+        each associated with a pair of adjacent numbers on the wheel.
+
+        The function iterates through pairs of adjacent numbers on the wheel and creates a
+        horizontal split bet outcome for each pair, each with an associated odds value of 17. Each
+        outcome corresponds to a bet on the line between two adjacent numbers.
+
+        :param wheel: The Wheel object to which the horizontal split bet outcomes will be added.
+        :type wheel: :class:`Wheel`
+
+
+        **Note**: The wheel is assumed to have bins for all possible numbers, and the split bet
+        outcomes are added for pairs of adjacent numbers.
+        """
         split_bet_odds = 17
 
         split_bet_numbers = {number * 3 + 1 for number in range(12)} | {number * 3 + 2 for number
