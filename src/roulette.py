@@ -302,6 +302,20 @@ class BinBuilder:
 
     @staticmethod
     def build_bins_for_line_bets(wheel: Wheel) -> None:
+        """
+        Populates **Bin** for the given **wheel** with line bet outcomes, each associated
+        with a set of six consecutive numbers on the wheel.
+
+        The function iterates through sets of six consecutive numbers on the wheel and creates a
+        line bet outcome for each set, each with an associated odds value of 5. Each outcome
+        corresponds to a bet on the line covering six consecutive numbers.
+
+        :param wheel: The Wheel object to which the line bet outcomes will be added.
+        :type wheel: :class:`Wheel`
+
+        **Note**: The wheel is assumed to have bins for all possible numbers, and the line bet
+        outcomes are added for sets of six consecutive numbers.
+        """
         line_bet_odds = 5
         line_bet_numbers = {number * 3 + 1 for number in range(11)}
         for number in line_bet_numbers:
