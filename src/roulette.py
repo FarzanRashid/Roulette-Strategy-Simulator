@@ -216,6 +216,22 @@ class BinBuilder:
 
     @staticmethod
     def build_bins_for_vertical_split_bets(wheel: Wheel) -> None:
+        """
+        Populates **Bin** for the given **wheel** with vertical split bet outcomes, each associated
+        with a pair of vertically adjacent numbers on the wheel.
+
+        The function iterates through pairs of vertically adjacent numbers on the wheel and creates
+        a vertical split bet outcome for each pair, each with an associated odds value of 17. Each
+        outcome corresponds to a bet on the line between two vertically adjacent numbers.
+
+
+        :param wheel: The Wheel object to which the vertical split bet outcomes will be added.
+        :type wheel: Wheel
+
+
+        **Note**: The wheel is assumed to have bins for all possible numbers, and the split bet
+        outcomes are added for pairs of vertically adjacent numbers.
+        """
         split_bet_odds = 17
         vertical_split_bet_numbers = set(range(1, 34))
         for number in vertical_split_bet_numbers:
