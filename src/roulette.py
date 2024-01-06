@@ -356,6 +356,21 @@ class BinBuilder:
 
     @staticmethod
     def build_bins_for_even_money_bets(wheel: Wheel) -> None:
+        """
+        Populates **Bin** the given **wheel** with even money bet outcomes, each associated with
+        even money bets in roulette.
+
+        The function adds even money bet outcomes for Red, Black, Low, High, Even, and Odd bets,
+        each with an associated odds value of 1.
+        - Red and Black outcomes correspond to bets on the color of the number.
+        - Low and High outcomes correspond to bets on numbers 1-18 and 19-36, respectively.
+        - Even and Odd outcomes correspond to bets on even and odd numbers, respectively.
+
+        :param wheel: The Wheel object to which the even money bet outcomes will be added.
+        :type wheel: :class:`Wheel`
+
+        **Note**: The wheel is assumed to have bins for all possible numbers.
+        """
         even_bet_odds = 1
 
         red_bet_name = "Red"
