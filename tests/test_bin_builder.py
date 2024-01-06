@@ -1,4 +1,5 @@
 from unittest import TestCase
+from unittest.mock import Mock, patch
 from roulette import Outcome, Wheel, BinBuilder
 
 
@@ -152,3 +153,26 @@ class TestBinBuilder(TestCase):
                 self.assertIn(even_bet_outcome, self.wheel.bins[bin_index])
             if bin_index % 2 != 0:
                 self.assertIn(odd_bet_outcome, self.wheel.bins[bin_index])
+
+    def test_buildBins_invokes_other_helper_methods(self):
+        helper_methods = {
+            "roulette.BinBuilder.build_bins_for_straight_bets",
+            "roulette.BinBuilder.build_bins_for_horizontal_split_bets",
+            "roulette.BinBuilder.build_bins_for_vertical_split_bets",
+            "roulette.BinBuilder.build_bins_for_street_bets",
+            "roulette.BinBuilder.build_bins_for_corner_bets",
+            "roulette.BinBuilder.build_bins_for_line_bets",
+            "roulette.BinBuilder.build_bins_for_five_bet",
+            "roulette.BinBuilder.build_bins_for_even_money_bets",
+            "roulette.BinBuilder.build_bins_for_dozen_bets",
+            "roulette.BinBuilder.build_bins_for_column_bets",
+
+        }
+
+        mock_helper_method = Mock(name="mock_methods", return_value=Mock())
+
+        for method in helper_methods:
+            with patch(method, new=mock_helper_method):
+                self.bin_builder.buildBins(self.wheel)
+                mock_helper_method.assert_called()
+                mock_helper_method.assert_called_with(self.wheel)
