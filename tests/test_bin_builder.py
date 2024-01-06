@@ -7,7 +7,7 @@ class TestBinBuilder(TestCase):
         self.bin_builder = BinBuilder()
         self.wheel = Wheel()
 
-    def test_if_straight_outcomes_are_generated_properly(self):
+    def test_bins_are_filled_for_straight_bets(self):
         straight_bet_odds = 35
         straight_outcomes = {
             0: Outcome("0", straight_bet_odds),
@@ -21,7 +21,7 @@ class TestBinBuilder(TestCase):
         for bin_index in straight_outcomes:
             self.assertIn(straight_outcomes[bin_index], self.wheel.bins[bin_index])
 
-    def test_if_horizontal_split_outcomes_are_generated_properly(self):
+    def test_bins_are_filled_for_horizontal_split_bets(self):
         split_bet_odds = 17
         split_outcome_name = "1-2"
         bin_index = 1
@@ -32,7 +32,7 @@ class TestBinBuilder(TestCase):
 
         self.assertIn(horizontal_split_outcome, self.wheel.bins[bin_index])
 
-    def test_vertical_split_bins_are_filled_properly(self):
+    def test_bins_are_filled_for_vertical_split_bets(self):
         split_bet_odds = 17
         split_outcome_name = "1-4"
         bin_index = 1
@@ -43,7 +43,7 @@ class TestBinBuilder(TestCase):
 
         self.assertIn(vertical_split_outcome, self.wheel.bins[bin_index])
 
-    def test_street_bins_are_filled_properly(self):
+    def test_bins_are_filled_for_street_bets(self):
         street_bet_odds = 11
         street_outcomes = {
             1: Outcome("1-2-3", street_bet_odds),
@@ -55,7 +55,7 @@ class TestBinBuilder(TestCase):
         for bin_index in street_outcomes:
             self.assertIn(street_outcomes[bin_index], self.wheel.bins[bin_index])
 
-    def test_corner_bins_are_filled_properly(self):
+    def test_bins_are_filled_for_corner_bets(self):
         corner_bet_odds = 8
         corner_outcomes = {
             1: [Outcome("1-2-4-5", corner_bet_odds)],
