@@ -140,6 +140,16 @@ class BinBuilder:
         pass
 
     def buildBins(self, wheel: Wheel) -> None:
+        """
+        Creates the :class:`Outcome` instances and uses the **addOutcome()** method to place each
+        :class:`Outcome` in the appropriate Bin of wheel.
+
+        It’s then the :class:`Bin` instances responsibility to update the data structure used to
+        store the :class:`Outcome` instances.
+
+        :param wheel: The Wheel with Bins that must be populated with :class:`Outcome` instances.
+        :type wheel: :class:`Wheel`
+        """
         self.build_bins_for_straight_bets(wheel)
         self.build_bins_for_horizontal_split_bets(wheel)
         self.build_bins_for_vertical_split_bets(wheel)
