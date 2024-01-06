@@ -331,6 +331,21 @@ class BinBuilder:
 
     @staticmethod
     def build_bins_for_five_bet(wheel: Wheel) -> None:
+        """
+        Populates **Bin** for the given **wheel** with five bet outcomes, each associated with the
+        "00-0-1-2-3" combination on the wheel.
+
+
+        The function adds a single five bet outcome for the "00-0-1-2-3" combination, each with an
+        associated odds value of 6. The outcome covers the numbers 0, 00, 1, 2, and 3.
+
+        :param wheel: The Wheel object to which the five bet outcomes will be added.
+        :type wheel: :class:`Wheel`
+
+
+        **Note**: The wheel is assumed to have bins for the numbers 0, 00, 1, 2, 3, and an extra
+        bin at index 37 for the "00" outcome.
+        """
         odds_for_five_bet = 6
         five_bet_name = "00-0-1-2-3"
         five_bet_outcome = Outcome(five_bet_name, odds_for_five_bet)
