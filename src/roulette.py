@@ -436,6 +436,19 @@ class BinBuilder:
 
     @staticmethod
     def build_bins_for_column_bets(wheel: Wheel) -> None:
+        """
+        Populates **Bin** for the given **wheel** with column bet outcomes, each associated with
+        one of the three columns on the wheel.
+
+        The function adds column bet outcomes for each of the three columns, each with an associated
+        odds value of 2. Each outcome corresponds to a bet on a set of twelve consecutive numbers in
+        a column.
+
+        :param wheel: The Wheel object to which the column bet outcomes will be added.
+        :type wheel: :class:`Wheel`
+
+        Note: The wheel is assumed to have bins for all possible numbers.
+        """
         column_bet_odds = 2
         for column in range(3):
             if column + 1 == 1:
