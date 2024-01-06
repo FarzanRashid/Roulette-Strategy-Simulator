@@ -102,7 +102,7 @@ class Wheel:
         :type outcome: Outcome
         """
         updated_bin = Bin(list(self.bins[number].union(Bin([outcome]))))
-        self.bins = self.bins[:number] + (updated_bin,) + self.bins[number + 1:]
+        self.bins = self.bins[:number] + (updated_bin,) + self.bins[number + 1 :]
 
     def choose(self) -> Bin:
         """
@@ -133,6 +133,7 @@ class BinBuilder:
     :class:`BinBuilder` creates the :class:`Outcome` instances for all of the 38 individual
     :class:`Bin` on a Roulette wheel.
     """
+
     def __init__(self) -> None:
         """
         Initializes the :class:`BinBuilder`.
@@ -206,11 +207,11 @@ class BinBuilder:
         """
         split_bet_odds = 17
 
-        split_bet_numbers = {number * 3 + 1 for number in range(12)} | {number * 3 + 2 for number
-                                                                        in range(12)}
+        split_bet_numbers = set(range(1, 36))
         for number in split_bet_numbers:
-            horizontal_split_bet_outcome = Outcome(str(number) + "-" + str(number + 1),
-                                                   split_bet_odds)
+            horizontal_split_bet_outcome = Outcome(
+                str(number) + "-" + str(number + 1), split_bet_odds
+            )
             wheel.addOutcome(number, horizontal_split_bet_outcome)
             wheel.addOutcome(number + 1, horizontal_split_bet_outcome)
 
@@ -235,8 +236,9 @@ class BinBuilder:
         split_bet_odds = 17
         vertical_split_bet_numbers = set(range(1, 34))
         for number in vertical_split_bet_numbers:
-            vertical_split_bet_outcome = Outcome(str(number) + "-" + str(number + 3),
-                                                 split_bet_odds)
+            vertical_split_bet_outcome = Outcome(
+                str(number) + "-" + str(number + 3), split_bet_odds
+            )
             wheel.addOutcome(number, vertical_split_bet_outcome)
             wheel.addOutcome(number + 3, vertical_split_bet_outcome)
 
@@ -261,7 +263,8 @@ class BinBuilder:
         for number in street_bet_numbers:
             street_bet_outcome = Outcome(
                 str(number) + "-" + str(number + 1) + "-" + str(number + 2),
-                street_bet_odds)
+                street_bet_odds,
+            )
             wheel.addOutcome(number, street_bet_outcome)
             wheel.addOutcome(number + 1, street_bet_outcome)
             wheel.addOutcome(number + 2, street_bet_outcome)
@@ -288,12 +291,20 @@ class BinBuilder:
         """
         odds_for_corner_bet = 8
 
-        corner_bet_numbers = {number * 3 + 1 for number in range(11)} | {number * 3 + 2 for
-                                                                         number in range(11)}
+        corner_bet_numbers = {number * 3 + 1 for number in range(11)} | {
+            number * 3 + 2 for number in range(11)
+        }
         for number in corner_bet_numbers:
-            corner_bet_outcome = Outcome(str(number) + "-" + str(number + 1) + "-" +
-                                         str(number + 3) + "-" + str(number + 4),
-                                         odds_for_corner_bet)
+            corner_bet_outcome = Outcome(
+                str(number)
+                + "-"
+                + str(number + 1)
+                + "-"
+                + str(number + 3)
+                + "-"
+                + str(number + 4),
+                odds_for_corner_bet,
+            )
 
             wheel.addOutcome(number, corner_bet_outcome)
             wheel.addOutcome(number + 1, corner_bet_outcome)
@@ -319,9 +330,20 @@ class BinBuilder:
         line_bet_odds = 5
         line_bet_numbers = {number * 3 + 1 for number in range(11)}
         for number in line_bet_numbers:
-            line_bet_outcome = Outcome(str(number) + "-" + str(number + 1) + "-" + str(number + 2)
-                                       + "-" + str(number + 3) + "-" + str(number + 4) + "-" +
-                                       str(number + 5), line_bet_odds)
+            line_bet_outcome = Outcome(
+                str(number)
+                + "-"
+                + str(number + 1)
+                + "-"
+                + str(number + 2)
+                + "-"
+                + str(number + 3)
+                + "-"
+                + str(number + 4)
+                + "-"
+                + str(number + 5),
+                line_bet_odds,
+            )
             wheel.addOutcome(number, line_bet_outcome)
             wheel.addOutcome(number + 1, line_bet_outcome)
             wheel.addOutcome(number + 2, line_bet_outcome)
@@ -381,7 +403,26 @@ class BinBuilder:
         odd_bet_name = "Odd"
 
         even_bet_numbers = set(range(1, 37))
-        red_bet_numbers = {1, 3, 5, 7, 9, 12, 14, 16, 18, 19, 21, 23, 25, 27, 30, 32, 34, 36}
+        red_bet_numbers = {
+            1,
+            3,
+            5,
+            7,
+            9,
+            12,
+            14,
+            16,
+            18,
+            19,
+            21,
+            23,
+            25,
+            27,
+            30,
+            32,
+            34,
+            36,
+        }
 
         red_bet = Outcome(red_bet_name, even_bet_odds)
         black_bet = Outcome(black_bet_name, even_bet_odds)
