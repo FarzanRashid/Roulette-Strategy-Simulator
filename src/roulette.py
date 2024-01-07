@@ -419,26 +419,19 @@ class BinBuilder:
             36,
         }
 
-        red_bet = Outcome(red_bet_name, even_bet_odds)
-        black_bet = Outcome(black_bet_name, even_bet_odds)
-        low_bet = Outcome(low_bet_name, even_bet_odds)
-        high_bet = Outcome(high_bet_name, even_bet_odds)
-        even_bet = Outcome(even_bet_name, even_bet_odds)
-        odd_bet = Outcome(odd_bet_name, even_bet_odds)
-
         for number in even_bet_numbers:
             if number < 19:
-                wheel.addOutcome(number, low_bet)
-            if number >= 19:
-                wheel.addOutcome(number, high_bet)
+                wheel.addOutcome(number, Outcome(low_bet_name, even_bet_odds))
+            else:
+                wheel.addOutcome(number, Outcome(high_bet_name, even_bet_odds))
             if number % 2 == 0:
-                wheel.addOutcome(number, even_bet)
-            if number % 2 != 0:
-                wheel.addOutcome(number, odd_bet)
+                wheel.addOutcome(number, Outcome(even_bet_name, even_bet_odds))
+            else:
+                wheel.addOutcome(number, Outcome(odd_bet_name, even_bet_odds))
             if number in red_bet_numbers:
-                wheel.addOutcome(number, red_bet)
-            if number not in red_bet_numbers:
-                wheel.addOutcome(number, black_bet)
+                wheel.addOutcome(number, Outcome(red_bet_name, even_bet_odds))
+            else:
+                wheel.addOutcome(number, Outcome(black_bet_name, even_bet_odds))
 
     @staticmethod
     def build_bins_for_dozen_bets(wheel: Wheel) -> None:
