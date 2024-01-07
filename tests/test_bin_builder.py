@@ -160,7 +160,7 @@ class TestBinBuilder(TestCase):
             else:
                 self.assertIn(odd_bet_outcome, self.wheel.bins[bin_index])
 
-    def test_buildBins_invokes_other_helper_methods(self):
+    def test_buildBins_invokes_helper_methods(self):
         helper_methods = {
             "roulette.BinBuilder.build_bins_for_straight_bets",
             "roulette.BinBuilder.build_bins_for_horizontal_split_bets",
@@ -175,10 +175,9 @@ class TestBinBuilder(TestCase):
 
         }
 
-        mock_helper_method = Mock(name="mock_methods", return_value=Mock())
+        mock_helper_method = Mock(name="mock_methods")
 
         for method in helper_methods:
             with patch(method, new=mock_helper_method):
                 self.bin_builder.buildBins(self.wheel)
-                mock_helper_method.assert_called()
                 mock_helper_method.assert_called_with(self.wheel)
