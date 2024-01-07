@@ -149,15 +149,15 @@ class TestBinBuilder(TestCase):
         for bin_index in even_bet_bin_indexes:
             if bin_index in red_bet_numbers:
                 self.assertIn(red_bet_outcome, self.wheel.bins[bin_index])
-            if bin_index not in red_bet_numbers:
+            else:
                 self.assertIn(black_bet_outcome, self.wheel.bins[bin_index])
             if bin_index < 19:
                 self.assertIn(low_bet_outcome, self.wheel.bins[bin_index])
-            if bin_index > 18:
+            else:
                 self.assertIn(high_bet_outcome, self.wheel.bins[bin_index])
             if bin_index % 2 == 0:
                 self.assertIn(even_bet_outcome, self.wheel.bins[bin_index])
-            if bin_index % 2 != 0:
+            else:
                 self.assertIn(odd_bet_outcome, self.wheel.bins[bin_index])
 
     def test_buildBins_invokes_other_helper_methods(self):
