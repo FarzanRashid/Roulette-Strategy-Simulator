@@ -211,7 +211,9 @@ class BinBuilder:
         """
         split_bet_odds = 17
 
-        split_bet_numbers = {_ * 3 + 1 for _ in range(12)} | {_ * 3 + 2 for _ in range(12)}
+        split_bet_numbers = {_ * 3 + 1 for _ in range(12)} | {
+            _ * 3 + 2 for _ in range(12)
+        }
         for number in split_bet_numbers:
             horizontal_split_bet_outcome = Outcome(
                 str(number) + "-" + str(number + 1), split_bet_odds
