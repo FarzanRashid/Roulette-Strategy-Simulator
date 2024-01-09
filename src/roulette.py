@@ -199,7 +199,8 @@ class BinBuilder:
         value of 17. Each outcome corresponds to a bet on the line between two horizontally
         adjacent numbers.
 
-        The function considers pairs of numbers formed by adding 1 and 2 successively to each multiple of 3 within the range of 0 to 33 (inclusive).
+        The function considers pairs of numbers formed by adding 1 and 2 successively to each
+        multiple of 3 within the range of 0 to 33 (inclusive).
 
 
         :param wheel: The Wheel object to which the horizontal split bet outcomes will be added.
