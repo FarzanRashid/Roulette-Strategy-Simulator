@@ -175,9 +175,21 @@ class TestBinBuilder(TestCase):
 
         }
 
-        mock_helper_method = Mock(name="mock_methods")
+        mock_helper_methods = []
+        patchers = []
 
         for method in helper_methods:
-            with patch(method, new=mock_helper_method):
-                self.bin_builder.buildBins(self.wheel)
-                mock_helper_method.assert_called_with(self.wheel)
+            mock_helper_method = Mock(name="mock_helper_method")
+            mock_helper_methods.append(mock_helper_method)
+            patchers.append(patch(method, new=mock_helper_method))
+
+        for patcher in patchers:
+            patcher.start()
+
+        self.bin_builder.buildBins(self.wheel)
+
+        for method in mock_helper_methods:
+            method.assert_called_once_with(self.wheel)
+
+        for patcher in patchers:
+            patcher.stop()
