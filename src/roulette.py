@@ -505,3 +505,6 @@ class Bet:
     def __init__(self, amount:int, outcome: Outcome) -> None:
         self.amount = amount
         self.outcome = outcome
+
+    def winAmount(self):
+        return self.amount + self.amount * self.outcome.odds
