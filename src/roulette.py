@@ -506,5 +506,8 @@ class Bet:
         self.amount = amount
         self.outcome = outcome
 
-    def winAmount(self):
+    def winAmount(self) -> int:
         return self.amount + self.amount * self.outcome.odds
+
+    def loseAmount(self) -> int:
+        return self.amount
