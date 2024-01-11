@@ -499,3 +499,7 @@ class BinBuilder:
 
             for bin_number in range(12):
                 wheel.addOutcome(3 * bin_number + column + 1, column_bet_outcome)
+
+
+class Bet:
+    pass
