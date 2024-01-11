@@ -508,12 +508,12 @@ class BinBuilder:
 
 
 class Bet:
-    def __init__(self, amount:int, outcome: Outcome) -> None:
+    def __init__(self, amount: int, outcome: Outcome) -> None:
         self.amount = amount
         self.outcome = outcome
 
     def winAmount(self) -> int:
-        return self.amount + self.amount * self.outcome.odds
+        return int(self.amount + self.outcome.winAmount(float(self.amount)))
 
     def loseAmount(self) -> int:
         return self.amount
