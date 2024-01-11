@@ -514,3 +514,6 @@ class Bet:
 
     def __str__(self):
         return f"{self.amount} on {self.outcome}"
+
+    def __repr__(self):
+        return f"Bet(amount={self.amount}, outcome={self.outcome})"
