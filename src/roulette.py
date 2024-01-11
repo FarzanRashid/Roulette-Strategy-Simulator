@@ -511,3 +511,6 @@ class Bet:
 
     def loseAmount(self) -> int:
         return self.amount
+
+    def __str__(self):
+        return f"{self.amount} on {self.outcome}"
