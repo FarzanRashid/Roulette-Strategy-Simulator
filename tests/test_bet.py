@@ -13,3 +13,11 @@ class TestBet(TestCase):
         win_amount = self.bet1.winAmount()
         expected_win_amount = 10
         self.assertEqual(expected_win_amount, win_amount)
+
+    def test_loseAmount_calculation(self):
+        bet_one_lose_amount = self.bet1.loseAmount()
+        bet_two_lose_amount = self.bet2.loseAmount()
+        bet_one_expected_lose_amount = self.bet1.amount
+        bet_two_expected_lose_amount = self.bet2.amount
+        self.assertEqual(bet_one_expected_lose_amount, bet_one_lose_amount)
+        self.assertEqual(bet_two_expected_lose_amount, bet_two_lose_amount)
