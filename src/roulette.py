@@ -130,6 +130,9 @@ class Wheel:
         """
         return self.bins[bin]
 
+    def get_Outcome(self, name: str) -> Outcome:
+        return self.all_outcomes[name]
+
 
 class BinBuilder:
     """
