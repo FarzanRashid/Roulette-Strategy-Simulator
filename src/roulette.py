@@ -527,9 +527,9 @@ class Bet:
 
     def winAmount(self) -> int:
         """
-        Uses the Outcome’s winAmount to compute the amount won, given the amount of this bet. Note
-        that the amount bet must also be added in. A 1:1 outcome (e.g. a bet on Red) pays the amount
-        bet plus the amount won.
+        Uses the :class:`Outcome`’s **winAmount** to compute the amount won, given the amount of
+        this bet. Note that the amount bet must also be added in. A 1:1 outcome (e.g. a bet on Red)
+        pays the amount bet plus the amount won.
 
         :return:  amount won
         :rtype: int
