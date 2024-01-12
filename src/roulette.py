@@ -131,6 +131,16 @@ class Wheel:
         return self.bins[bin]
 
     def get_Outcome(self, name: str) -> Outcome:
+        """
+        We’ll need to update the :class:`Wheel` class to have the following method. This will
+        return an :class:`Outcome` instance given the string name of the outcome. This works by
+        maintaining a dict of :class:`Outcome` objects sing the name attribute as a key. This is
+        built incrementally as each :class:`Bin` added to the :class:`Wheel` instance.
+
+        :param name: the name of an :class:`Outcome`
+        :return: the :class:`Outcome` object
+        :rtype: :class:`Outcome`
+        """
         return self.all_outcomes[name]
 
 
