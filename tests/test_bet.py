@@ -24,3 +24,12 @@ class TestBet(TestCase):
         bet_two_expected_lose_amount = self.bet2.amount
         self.assertEqual(bet_one_expected_lose_amount, bet_one_lose_amount)
         self.assertEqual(bet_two_expected_lose_amount, bet_two_lose_amount)
+
+    def test_str_returns_amount_and_outcome(self):
+        str_of_bet_one = self.bet1.__str__()
+        str_of_bet_two = self.bet2.__str__()
+        bet_one_expected_str = f"{self.bet1.amount} on {self.bet1.outcome}"
+        bet_two_expected_str = f"{self.bet2.amount} on {self.bet2.outcome}"
+
+        self.assertEqual(bet_one_expected_str, str_of_bet_one)
+        self.assertEqual(bet_two_expected_str, str_of_bet_two)
