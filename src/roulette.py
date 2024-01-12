@@ -538,6 +538,13 @@ class Bet:
         return int(self.amount + self.outcome.winAmount(float(self.amount)))
 
     def loseAmount(self) -> int:
+        """
+        Returns the amount bet as the amount lost. This is the cost of placing the bet.
+
+
+        :return: Returns the amount bet as the amount lost. This is the cost of placing the bet.
+        :rtype: int
+        """
         return self.amount
 
     def __str__(self):
