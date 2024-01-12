@@ -558,4 +558,11 @@ class Bet:
         return f"{self.amount} on {self.outcome}"
 
     def __repr__(self):
+        """
+
+        :return: string representation of this bet with the form
+        :samp:`"Bet(amount={amount}, outcome={outcome})"`
+
+        :rtype: str
+        """
         return f"Bet(amount={self.amount}, outcome={self.outcome})"
