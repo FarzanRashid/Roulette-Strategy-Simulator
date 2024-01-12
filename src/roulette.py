@@ -508,6 +508,10 @@ class BinBuilder:
 
 
 class Bet:
+    """
+    :class:`Bet` associates an amount and an :class:`Outcome`. In a future round of design, we can
+    also associate a :class:`Bet` with a :class:`Player`.
+    """
     def __init__(self, amount: int, outcome: Outcome) -> None:
         self.amount = amount
         self.outcome = outcome
