@@ -507,24 +507,23 @@ class BinBuilder:
                 wheel.addOutcome(3 * bin_number + column + 1, column_bet_outcome)
 
 
+@dataclass
 class Bet:
     """
     :class:`Bet` associates an amount and an :class:`Outcome`. In a future round of design, we can
     also associate a :class:`Bet` with a :class:`Player`.
+
+    .. attribute:: amount
+
+        The amount of the bet.
+
+    .. attribute:: outcome
+
+        The :class:`Outcome` on which the bet is placed.
     """
-    def __init__(self, amount: int, outcome: Outcome) -> None:
-        """
-        Create a new Bet of a specific amount on a specific outcome.
 
-        For these first exercises, we’ll omit the :class:`Player`. We’ll come back to this class when
-        necessary, and add that capability back in to this class.
-
-        :param amount: The amount of the bet.
-        :type amount: int
-        :param outcome: The :class:`Outcome` we’re betting on.
-        """
-        self.amount = amount
-        self.outcome = outcome
+    amount: int
+    outcome: Outcome
 
     def winAmount(self) -> int:
         """
@@ -556,13 +555,3 @@ class Bet:
         :rtype: str
         """
         return f"{self.amount} on {self.outcome}"
-
-    def __repr__(self) -> str:
-        """
-
-        :return: string representation of this bet with the form
-        :samp:`"Bet(amount={amount}, outcome={outcome})"`
-
-        :rtype: str
-        """
-        return f"Bet(amount={self.amount}, outcome={self.outcome})"
