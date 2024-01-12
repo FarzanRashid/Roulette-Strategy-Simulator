@@ -547,7 +547,7 @@ class Bet:
         """
         return self.amount
 
-    def __str__(self):
+    def __str__(self) -> str:
         """
         Returns a string representation of this bet. Note that this method will delegate the much of
         the work to the **__str__()** method of the :class:`Outcome`.
@@ -557,7 +557,7 @@ class Bet:
         """
         return f"{self.amount} on {self.outcome}"
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         """
 
         :return: string representation of this bet with the form
