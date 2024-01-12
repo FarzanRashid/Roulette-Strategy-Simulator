@@ -130,17 +130,20 @@ class Wheel:
         """
         return self.bins[bin]
 
-    def get_Outcome(self, name: str) -> Outcome:
+    def getOutcome(self, name: str) -> Outcome:
         """
-        We’ll need to update the :class:`Wheel` class to have the following method. This will
-        return an :class:`Outcome` instance given the string name of the outcome. This works by
-        maintaining a dict of :class:`Outcome` objects sing the name attribute as a key. This is
-        built incrementally as each :class:`Bin` added to the :class:`Wheel` instance.
+        Retrieve an :class:`Outcome` object based on the provided name.
+
+        This method searches for an :class:`Outcome` with the specified name in the collection of
+        all outcomes (`all_outcomes`). If the outcome is found, it is returned. Otherwise,
+        a KeyError is raised with an error message.
 
         :param name: the name of an :class:`Outcome`
         :return: the :class:`Outcome` object
         :rtype: :class:`Outcome`
         """
+        if name not in self.all_outcomes:
+            raise KeyError(f"Outcome with {name} not found")
         return self.all_outcomes[name]
 
 
