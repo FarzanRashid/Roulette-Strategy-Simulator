@@ -513,6 +513,16 @@ class Bet:
     also associate a :class:`Bet` with a :class:`Player`.
     """
     def __init__(self, amount: int, outcome: Outcome) -> None:
+        """
+        Create a new Bet of a specific amount on a specific outcome.
+
+        For these first exercises, we’ll omit the :class:`Player`. We’ll come back to this class when
+        necessary, and add that capability back in to this class.
+
+        :param amount: The amount of the bet.
+        :type amount: int
+        :param outcome: The :class:`Outcome` we’re betting on.
+        """
         self.amount = amount
         self.outcome = outcome
 
