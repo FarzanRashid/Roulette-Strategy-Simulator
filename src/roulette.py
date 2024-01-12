@@ -548,6 +548,13 @@ class Bet:
         return self.amount
 
     def __str__(self):
+        """
+        Returns a string representation of this bet. Note that this method will delegate the much of
+        the work to the **__str__()** method of the :class:`Outcome`.
+
+        :return: string representation of this bet with the form  :samp:`"{amount} on {outcome}"`
+        :rtype: str
+        """
         return f"{self.amount} on {self.outcome}"
 
     def __repr__(self):
