@@ -45,9 +45,9 @@ class TestWheel(TestCase):
 
     def test_getOutcome_returns_outcome_object(self):
         self.wheel.addOutcome(1, self.oc1)
-        getOutcome_result = self.wheel.getOutcome(self.oc1.name)
+        outcome = self.wheel.getOutcome(self.oc1.name)
         expected_outcome = self.oc1
-        self.assertEqual(expected_outcome, getOutcome_result)
+        self.assertEqual(expected_outcome, outcome)
 
     def test_getOutcome_raises_error_for_invalid_name(self):
         with self.assertRaises(KeyError):
