@@ -43,12 +43,12 @@ class TestWheel(TestCase):
 
         self.assertIn(self.oc1, randomly_selected_bin_object)
 
-    def test_get_outcome_returns_outcome_object(self):
+    def test_getOutcome_returns_outcome_object(self):
         self.wheel.addOutcome(1, self.oc1)
         get_outcome_result = self.wheel.getOutcome(self.oc1.name)
         expected_get_outcome_result = self.oc1
         self.assertEqual(expected_get_outcome_result, get_outcome_result)
 
-    def test_get_outcome_raises_error_for_invalid_name(self):
+    def test_getOutcome_raises_error_for_invalid_name(self):
         with self.assertRaises(KeyError):
             self.wheel.getOutcome("Invalid name")
