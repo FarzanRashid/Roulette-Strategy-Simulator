@@ -1,4 +1,5 @@
 import random
+from typing import Dict
 from dataclasses import dataclass
 
 
@@ -91,6 +92,7 @@ class Wheel:
         """
         self.bins = tuple(Bin() for _ in range(38))
         self.rng = random.Random()
+        self.all_outcomes: Dict[str, Outcome] = {}
 
     def addOutcome(self, number: int, outcome: Outcome) -> None:
         """
@@ -103,6 +105,8 @@ class Wheel:
         """
         updated_bin = Bin(list(self.bins[number].union(Bin([outcome]))))
         self.bins = self.bins[:number] + (updated_bin,) + self.bins[number + 1 :]
+
+        self.all_outcomes[outcome.name] = outcome
 
     def choose(self) -> Bin:
         """
@@ -126,6 +130,22 @@ class Wheel:
         :rtype: Bin
         """
         return self.bins[bin]
+
+    def getOutcome(self, name: str) -> Outcome:
+        """
+        Retrieve an :class:`Outcome` object based on the provided name.
+
+        This method searches for an :class:`Outcome` with the specified name in the collection of
+        all outcomes (`all_outcomes`). If the outcome is found, it is returned. Otherwise,
+        a KeyError is raised with an error message.
+
+        :param name: the name of an :class:`Outcome`
+        :return: the :class:`Outcome` object
+        :rtype: :class:`Outcome`
+        """
+        if name not in self.all_outcomes:
+            raise KeyError(f"Outcome with {name} not found")
+        return self.all_outcomes[name]
 
 
 class BinBuilder:
@@ -499,3 +519,53 @@ class BinBuilder:
 
             for bin_number in range(12):
                 wheel.addOutcome(3 * bin_number + column + 1, column_bet_outcome)
+
+
+@dataclass
+class Bet:
+    """
+    :class:`Bet` associates an amount and an :class:`Outcome`. In a future round of design, we can
+    also associate a :class:`Bet` with a :class:`Player`.
+
+    .. attribute:: amount
+
+        The amount of the bet.
+
+    .. attribute:: outcome
+
+        The :class:`Outcome` on which the bet is placed.
+    """
+
+    amount: int
+    outcome: Outcome
+
+    def winAmount(self) -> int:
+        """
+        Uses the :class:`Outcome`’s **winAmount** to compute the amount won, given the amount of
+        this bet. Note that the amount bet must also be added in. A 1:1 outcome (e.g. a bet on Red)
+        pays the amount bet plus the amount won.
+
+        :return:  amount won
+        :rtype: int
+        """
+        return int(self.amount + self.outcome.winAmount(float(self.amount)))
+
+    def loseAmount(self) -> int:
+        """
+        Returns the amount bet as the amount lost. This is the cost of placing the bet.
+
+
+        :return: Returns the amount bet as the amount lost. This is the cost of placing the bet.
+        :rtype: int
+        """
+        return self.amount
+
+    def __str__(self) -> str:
+        """
+        Returns a string representation of this bet. Note that this method will delegate the much of
+        the work to the **__str__()** method of the :class:`Outcome`.
+
+        :return: string representation of this bet with the form  :samp:`"{amount} on {outcome}"`
+        :rtype: str
+        """
+        return f"{self.amount} on {self.outcome}"
