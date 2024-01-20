@@ -569,3 +569,7 @@ class Bet:
         :rtype: str
         """
         return f"{self.amount} on {self.outcome}"
+
+
+class InvalidBet(Exception):
+    pass
