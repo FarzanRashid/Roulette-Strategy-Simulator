@@ -1,5 +1,5 @@
 import random
-from typing import Dict
+from typing import Dict, Iterator
 from dataclasses import dataclass
 
 
@@ -583,3 +583,6 @@ class Table:
 
     def placeBet(self, bet: Bet) -> None:
         self.bets.append(bet)
+
+    def __iter__(self) -> Iterator[Bet]:
+        return iter(self.bets)
