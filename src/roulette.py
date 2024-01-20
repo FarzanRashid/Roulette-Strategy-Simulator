@@ -586,3 +586,12 @@ class Table:
 
     def __iter__(self) -> Iterator[Bet]:
         return iter(self.bets)
+
+    def isValid(self) -> None:
+        bets_sum = 0
+        for bet in self.bets:
+            if bet.amount < self.minimum:
+                raise InvalidBet
+            bets_sum += bet.amount
+        if bets_sum > self.limit:
+            raise InvalidBet
