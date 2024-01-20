@@ -580,3 +580,6 @@ class Table:
         self.bets = list(bets) if bets else []
         self.minimum = 10
         self.limit = 300
+
+    def placeBet(self, bet: Bet) -> None:
+        self.bets.append(bet)
