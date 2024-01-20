@@ -595,3 +595,9 @@ class Table:
             bets_sum += bet.amount
         if bets_sum > self.limit:
             raise InvalidBet
+
+    def __str__(self):
+        bet_string = [f"{bet.amount} on {bet.outcome}" for bet in self.bets]
+        if not bet_string:
+            return "No current bets"
+        return "Current bets: \n:" + "\n".join(bet_string)
