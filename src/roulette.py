@@ -573,3 +573,10 @@ class Bet:
 
 class InvalidBet(Exception):
     pass
+
+
+class Table:
+    def __init__(self, *bets) -> None:
+        self.bets = list(bets) if bets else []
+        self.minimum = 10
+        self.limit = 300
