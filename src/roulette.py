@@ -601,3 +601,7 @@ class Table:
         if not bet_string:
             return "No current bets"
         return "Current bets: \n:" + "\n".join(bet_string)
+
+    def __repr__(self):
+        bet_reprs = ", ".join(repr(bet) for bet in self.bets)
+        return f"Table({bet_reprs})"
