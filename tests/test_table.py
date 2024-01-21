@@ -8,7 +8,7 @@ class TestTable(TestCase):
         self.oc2 = Outcome("1", 35)
         self.bet1 = Bet(5, self.oc1)
         self.bet2 = Bet(300, self.oc2)
-        self.table = Table(self.bet1, self.bet2)
+        self.table = Table()
 
     def test_placeBet_adds_bets_to_bets_list(self):
         bet3 = Bet(30, self.oc1)
