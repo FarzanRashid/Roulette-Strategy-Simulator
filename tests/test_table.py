@@ -1,5 +1,5 @@
 from unittest import TestCase
-from roulette import Table, Bet, Outcome
+from roulette import Table, Bet, Outcome, InvalidBet
 
 
 class TestTable(TestCase):
@@ -14,3 +14,7 @@ class TestTable(TestCase):
         bet3 = Bet(30, self.oc1)
         self.table.placeBet(bet3)
         self.assertIn(bet3, self.table.bets)
+
+    def test_isValid_raises_exception_for_bets_lower_than_minimum_bet_amount(self):
+        self.table.placeBet(self.bet1)
+        self.assertRaises(InvalidBet)
