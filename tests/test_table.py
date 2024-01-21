@@ -17,4 +17,5 @@ class TestTable(TestCase):
 
     def test_isValid_raises_exception_for_bets_lower_than_minimum_bet_amount(self):
         self.table.placeBet(self.bet1)
-        self.assertRaises(InvalidBet)
+        with self.assertRaises(InvalidBet):
+            self.table.isValid()
