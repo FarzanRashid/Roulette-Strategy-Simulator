@@ -19,3 +19,10 @@ class TestTable(TestCase):
         self.table.placeBet(self.bet1)
         with self.assertRaises(InvalidBet):
             self.table.isValid()
+
+    def test_isValid_raises_exception_when_bet_amounts_cross_table_limit(self):
+        self.table.placeBet(self.bet1)
+        self.table.placeBet(self.bet2)
+
+        with self.assertRaises(InvalidBet):
+            self.table.isValid()
