@@ -629,6 +629,18 @@ class Table:
         return iter(self.bets)
 
     def isValid(self) -> None:
+        """
+        **Raises:** :class:`InvalidBet` if the bets don’t pass the table limit rules.
+
+        Applies the table-limit rules:
+
+            - The sum of all bets is less than or equal to the table limit.
+
+            - All bet amounts are greater than or equal to the table minimum.
+
+        If there’s a problem an :class:`InvalidBet` exception is raised.
+        """
+
         bets_sum = 0
         for bet in self.bets:
             if bet.amount < self.minimum:
