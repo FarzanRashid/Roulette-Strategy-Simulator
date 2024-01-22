@@ -40,3 +40,19 @@ class TestTable(TestCase):
         for bet in iterator_with_bets:
             self.assertIn(bet, self.table.bets)
             self.assertIsInstance(bet, Bet)
+
+    def test_str_returns_current_bets(self):
+        empty_bets_str_result = str(self.table)
+        expected_result_with_no_bets = "No current bets"
+        self.assertEqual(expected_result_with_no_bets, empty_bets_str_result)
+
+        self.table.placeBet(self.bet1)
+        self.table.placeBet(self.bet2)
+
+        str_result_with_bets = str(self.table)
+
+        bet_strings = [f"{self.bet1.amount} on {self.bet1.outcome}", f"{self.bet2.amount} on "
+                                                                     f"{self.bet2.outcome}"]
+        expected_result_with_bets = "Current bets: \n:" + "\n".join(bet_strings)
+
+        self.assertEqual(expected_result_with_bets, str_result_with_bets)
