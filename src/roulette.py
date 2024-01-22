@@ -661,6 +661,12 @@ class Table:
             return "No current bets"
         return "Current bets: \n:" + "\n".join(bet_string)
 
-    def __repr__(self):
+    def __repr__(self) -> str:
+        """
+        Returns a representation of the form  :samp:`Table(bet, bet, ...)`.
+
+        :return: str
+        """
+
         bet_reprs = ", ".join(repr(bet) for bet in self.bets)
         return f"Table({bet_reprs})"
