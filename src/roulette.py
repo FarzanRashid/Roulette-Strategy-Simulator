@@ -578,7 +578,6 @@ class InvalidBet(Exception):
 
     This class simply inherits all features of its superclass.
     """
-    pass
 
 
 class Table:
@@ -603,6 +602,7 @@ class Table:
        either wins or losses to the :class:`Player` object.
 
     """
+
     def __init__(self, *bets) -> None:
         """
         Creates an empty **list** of bets.
