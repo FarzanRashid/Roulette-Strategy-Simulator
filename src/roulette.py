@@ -649,7 +649,13 @@ class Table:
         if bets_sum > self.limit:
             raise InvalidBet
 
-    def __str__(self):
+    def __str__(self) -> str:
+        """
+        Returns an easy-to-read string representation of all current bets.
+
+        :return: str
+        """
+
         bet_string = [f"{bet.amount} on {bet.outcome}" for bet in self.bets]
         if not bet_string:
             return "No current bets"
