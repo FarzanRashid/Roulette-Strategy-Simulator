@@ -610,6 +610,12 @@ class Table:
         self.limit = 300
 
     def placeBet(self, bet: Bet) -> None:
+        """
+        Adds the :class:`Bet` instance to the list of current bets.
+
+        :param bet: A :class:`Bet` instance to be added to the table.
+        """
+
         self.bets.append(bet)
 
     def __iter__(self) -> Iterator[Bet]:
