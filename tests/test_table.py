@@ -51,8 +51,10 @@ class TestTable(TestCase):
 
         str_result_with_bets = str(self.table)
 
-        bet_strings = [f"{self.bet1.amount} on {self.bet1.outcome}", f"{self.bet2.amount} on "
-                                                                     f"{self.bet2.outcome}"]
+        bet_strings = [
+            f"{self.bet1.amount} on {self.bet1.outcome}",
+            f"{self.bet2.amount} on {self.bet2.outcome}",
+        ]
         expected_result_with_bets = "Current bets: \n:" + "\n".join(bet_strings)
 
         self.assertEqual(expected_result_with_bets, str_result_with_bets)
