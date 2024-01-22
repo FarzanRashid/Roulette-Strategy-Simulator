@@ -56,3 +56,19 @@ class TestTable(TestCase):
         expected_result_with_bets = "Current bets: \n:" + "\n".join(bet_strings)
 
         self.assertEqual(expected_result_with_bets, str_result_with_bets)
+
+    def test_repr_returns_current_bets(self):
+        empty_bets_repr_result = repr(self.table)
+        expected_result_with_no_bets = "Table()"
+
+        self.assertEqual(expected_result_with_no_bets, empty_bets_repr_result)
+
+        self.table.placeBet(self.bet1)
+        self.table.placeBet(self.bet2)
+
+        repr_result_with_bets = repr(self.table)
+        repr_string = ", ".join(repr(bet) for bet in self.table.bets)
+
+        expected_result_with_bets = f"Table({repr_string})"
+
+        self.assertEqual(expected_result_with_bets, repr_result_with_bets)
