@@ -576,6 +576,27 @@ class InvalidBet(Exception):
 
 
 class Table:
+    """
+    :class:`Table` contains all the :class:`Bet` instances created by a :class:`Player` object. A
+    table also has a betting limit, and the sum of all of a player’s bets must be less than or
+    equal to this limit. We assume a single :class:`Player` object in the simulation.
+
+    .. attribute:: limit
+
+       This is the table limit. The sum of the bets from a :class:`Player` object must be less than
+       or equal to this limit.
+
+    .. attribute:: minimum
+
+       This is the table minimum. Each individual bet from a :class:`Player` object must be greater
+       than this limit.
+
+    .. attribute:: bets
+
+       This is a **list** of the :class:`Bet` instances currently active. These will result in
+       either wins or losses to the :class:`Player` object.
+
+    """
     def __init__(self, *bets) -> None:
         self.bets = list(bets) if bets else []
         self.minimum = 10
