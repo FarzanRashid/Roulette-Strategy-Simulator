@@ -598,6 +598,13 @@ class Table:
 
     """
     def __init__(self, *bets) -> None:
+        """
+        Creates an empty **list** of bets.
+
+        :param bets: A sequence of :class:`Bet` instances to initialize the table. If omitted,
+                    an empty **list** will be used.
+        """
+
         self.bets = list(bets) if bets else []
         self.minimum = 10
         self.limit = 300
