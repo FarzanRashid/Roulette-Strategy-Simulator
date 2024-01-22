@@ -619,6 +619,13 @@ class Table:
         self.bets.append(bet)
 
     def __iter__(self) -> Iterator[Bet]:
+        """
+        Returns an iterator over the available list of :class:`Bet` instances. This simply returns
+        the iterator over the list of :class:`Bet` objects.
+
+        :return: iterator over all bets.
+        """
+
         return iter(self.bets)
 
     def isValid(self) -> None:
