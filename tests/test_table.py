@@ -21,7 +21,8 @@ class TestTable(TestCase):
             self.table.isValid()
 
     def test_isValid_raises_exception_when_bet_amounts_cross_table_limit(self):
-        self.table.placeBet(self.bet1)
+        bet3 = Bet(100, self.oc1)
+        self.table.placeBet(bet3)
         self.table.placeBet(self.bet2)
 
         with self.assertRaises(InvalidBet):
