@@ -27,3 +27,16 @@ class TestTable(TestCase):
 
         with self.assertRaises(InvalidBet):
             self.table.isValid()
+
+    def test_iter_returns_iterator_of_bets(self):
+        empty_list_iterator = iter(self.table)
+        self.assertEqual([], list(empty_list_iterator))
+
+        self.table.placeBet(self.bet1)
+        self.table.placeBet(self.bet2)
+
+        iterator_with_bets = iter(self.table)
+
+        for bet in iterator_with_bets:
+            self.assertIn(bet, self.table.bets)
+            self.assertIsInstance(bet, Bet)
