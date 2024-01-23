@@ -662,10 +662,10 @@ class Table:
         :return: str
         """
 
-        bet_string = [f"{bet.amount} on {bet.outcome}" for bet in self.bets]
-        if not bet_string:
+        bet_strings = [f"{str(bet)}" for bet in self.bets]
+        if not bet_strings:
             return "No current bets"
-        return "Current bets: \n:" + "\n".join(bet_string)
+        return "Current bets: \n:" + "\n".join(bet_strings)
 
     def __repr__(self) -> str:
         """
