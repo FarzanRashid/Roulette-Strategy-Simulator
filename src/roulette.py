@@ -649,11 +649,9 @@ class Table:
 
         bets_sum = 0
         for bet in self.bets:
-            if bet.amount < self.minimum:
-                raise InvalidBet
             bets_sum += bet.amount
-        if bets_sum > self.limit:
-            raise InvalidBet
+            if bet.amount < self.minimum or bets_sum > self.limit:
+                raise InvalidBet
 
     def __str__(self) -> str:
         """
