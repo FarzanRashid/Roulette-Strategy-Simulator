@@ -660,7 +660,7 @@ class Table:
         :return: str
         """
 
-        bet_strings = [f"{str(bet)}" for bet in self.bets]
+        bet_strings = [str(bet) for bet in self.bets]
         if not bet_strings:
             return "No current bets"
         return "Current bets: \n:" + "\n".join(bet_strings)
