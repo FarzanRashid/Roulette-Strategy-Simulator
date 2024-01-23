@@ -52,8 +52,8 @@ class TestTable(TestCase):
         str_result_with_bets = str(self.table)
 
         bet_strings = [
-            f"{self.bet1.amount} on {self.bet1.outcome}",
-            f"{self.bet2.amount} on {self.bet2.outcome}",
+            f"{str(self.bet1)}",
+            f"{str(self.bet2)}",
         ]
         expected_result_with_bets = "Current bets: \n:" + "\n".join(bet_strings)
 
