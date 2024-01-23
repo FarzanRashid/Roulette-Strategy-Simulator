@@ -35,9 +35,9 @@ class TestTable(TestCase):
         self.table.placeBet(self.bet1)
         self.table.placeBet(self.bet2)
 
-        iterator_with_bets = iter(self.table)
+        bets_iterator = iter(self.table)
 
-        for bet in iterator_with_bets:
+        for bet in bets_iterator:
             self.assertIn(bet, self.table.bets)
             self.assertIsInstance(bet, Bet)
 
