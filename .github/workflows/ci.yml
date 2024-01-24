@@ -23,7 +23,6 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
-
         
     - name: Run pytest with pycov
       run: PYTHONPATH=src pytest tests --cov=src --cov-report=term-missing
@@ -41,6 +40,11 @@ jobs:
       uses: actions/setup-python@v5
       with:
         python-version: 3.11
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
 
     - name: Run mypy
       run: mypy src
