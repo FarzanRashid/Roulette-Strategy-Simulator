@@ -1,0 +1,67 @@
+name: Python CI
+
+on:
+  push:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  install_dependencies:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: 3.8
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+  test:
+    needs: install_dependencies
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: 3.8
+
+    - name: Set PYTHONPATH
+      run: export PYTHONPATH=$PYTHONPATH:$(pwd)/src
+        
+    - name: Run pytest with pycov
+      run: pytest tests --cov=src --cov-report=term-missing
+        
+  static_analysis:
+    needs: test
+    runs-on: ubuntu-latest
+    if: success() # Only run if the 'test' job is successful
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: 3.8
+
+    - name: Run mypy
+      run: mypy src
+
+    - name: Run pylint
+      run: pylint src
+
+    - name: Check code style with black
+      run: black --check src tests
