@@ -30,7 +30,6 @@ jobs:
   static_analysis:
     needs: test
     runs-on: ubuntu-latest
-    if: success() # Only run if the 'test' job is successful
 
     steps:
     - name: Checkout repository
