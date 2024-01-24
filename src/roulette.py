@@ -674,3 +674,10 @@ class Table:
 
         bet_reprs = ", ".join(repr(bet) for bet in self.bets)
         return f"Table({bet_reprs})"
+
+
+class Passenger57:
+    def __init__(self, table: Table, wheel: Wheel) -> None:
+        self.table = table
+        self.wheel = wheel
+        self.black = self.wheel.getOutcome("Black")
