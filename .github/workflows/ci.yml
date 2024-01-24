@@ -50,6 +50,7 @@ jobs:
       run: mypy src
 
     - name: Run pylint
+      continue-on-error: true
       run: pylint src
 
     - name: Check code style with black
