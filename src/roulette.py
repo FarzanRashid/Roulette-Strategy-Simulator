@@ -681,3 +681,7 @@ class Passenger57:
         self.table = table
         self.wheel = wheel
         self.black = self.wheel.getOutcome("Black")
+
+    def placeBets(self) -> None:
+        bet = Bet(20, self.black)
+        self.table.placeBet(bet)
