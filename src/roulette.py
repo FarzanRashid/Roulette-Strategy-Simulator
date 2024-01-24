@@ -685,3 +685,9 @@ class Passenger57:
     def placeBets(self) -> None:
         bet = Bet(20, self.black)
         self.table.placeBet(bet)
+
+    def win(self, bet: Bet) -> None:
+        pass
+
+    def lose(self, bet: Bet) -> None:
+        pass
