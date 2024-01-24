@@ -17,7 +17,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
-        python-version: 3.10
+        python-version: 3.11
 
     - name: Install dependencies
       run: |
@@ -35,7 +35,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
-        python-version: 3.8
+        python-version: 3.11
 
     - name: Set PYTHONPATH
       run: export PYTHONPATH=$PYTHONPATH:$(pwd)/src
@@ -55,7 +55,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
-        python-version: 3.8
+        python-version: 3.11
 
     - name: Run mypy
       run: mypy src
