@@ -692,8 +692,9 @@ class Passenger57:
     def lose(self, bet: Bet) -> None:
         pass
 
-    class Game:
-        def __init__(self, wheel: Wheel, table: Table) -> None:
-            self.wheel = wheel
-            self.table = table
-            self.player = Passenger57(self.table, self.wheel)
+
+class Game:
+    def __init__(self, wheel: Wheel, table: Table) -> None:
+        self.wheel = wheel
+        self.table = table
+        self.player = Passenger57(self.table, self.wheel)
