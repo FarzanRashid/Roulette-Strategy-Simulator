@@ -698,3 +698,13 @@ class Game:
         self.wheel = wheel
         self.table = table
         self.player = Passenger57(self.table, self.wheel)
+
+    def cycle(self, player: Passenger57) -> None:
+        player.placeBets()
+        winning_bin = self.wheel.choose()
+        bet_iterator = iter(self.table)
+        for bet in bet_iterator:
+            if bet in winning_bin:
+                player.win(bet)
+            else:
+                player.lose(bet)
