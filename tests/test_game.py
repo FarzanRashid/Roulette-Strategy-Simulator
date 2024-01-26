@@ -19,3 +19,9 @@ class TestGame(TestCase):
         with patch("roulette.Passenger57.placeBets", place_bets_mock):
             self.game.cycle(self.passenger)
         place_bets_mock.assert_called_once()
+
+    def test_cycle_calls_choose(self):
+        choose_mock = Mock(name="choose_mock", return_value=[])
+        with patch("roulette.Wheel.choose", choose_mock):
+            self.game.cycle(self.passenger)
+        choose_mock.assert_called_once()
