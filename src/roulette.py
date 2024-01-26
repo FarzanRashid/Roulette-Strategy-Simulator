@@ -761,6 +761,13 @@ class Game:
     """
 
     def __init__(self, wheel: Wheel, table: Table) -> None:
+        """
+        Constructs a new :class:`Game`, using a given :class:`Wheel` and :class:`Table`.
+
+        :param wheel: The :class:`Wheel` instance which produces random events
+        :param table: The :class:`Table` instance which holds bets to be resolved.
+        """
+
         self.wheel = wheel
         self.table = table
         self.player = Passenger57(self.table, self.wheel)
