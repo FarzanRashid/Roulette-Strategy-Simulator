@@ -701,6 +701,7 @@ class Game:
 
     def cycle(self, player: Passenger57) -> None:
         player.placeBets()
+        self.table.isValid()  # Ensures bets are valid.
         winning_bin = self.wheel.choose()
         bet_iterator = iter(self.table)
         for bet in bet_iterator:
