@@ -773,6 +773,20 @@ class Game:
         self.player = Passenger57(self.table, self.wheel)
 
     def cycle(self, player: Passenger57) -> None:
+        """
+        :param player: the individual player that places bets, receives winnings and pays losses.
+
+        This will execute a single cycle of play with a given :class:`Player`. It will execute the
+        following steps:
+
+        1. Call **Player.placeBets()** method to create bets.
+        2. Call **Wheel.choose()** method to get the next winning :class:`Bin` object.
+        3. Call **iter()** on the :class:`table` to get all of the :class:`Bet` instances.
+           For each :class:`Bet` instance, if the winning :class:`Bin` contains the
+           :class:`Outcome`, call **Player.win()** method, otherwise, call the
+           **Player.lose()** method.
+        """
+
         player.placeBets()
         self.table.isValid()  # Ensures bets are valid.
         winning_bin = self.wheel.choose()
