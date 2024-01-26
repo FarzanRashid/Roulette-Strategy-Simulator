@@ -708,6 +708,13 @@ class Passenger57:
         self.black = self.wheel.getOutcome("Black")
 
     def placeBets(self) -> None:
+        """
+        Updates the :class:`Table` object with the various bets. This version creates a :class:`Bet`
+        instance from the “Black” :class:`Outcome` instance. It uses **Table.placeBet()** to
+        place that bet.
+
+        """
+
         bet = Bet(20, self.black)
         self.table.placeBet(bet)
 
