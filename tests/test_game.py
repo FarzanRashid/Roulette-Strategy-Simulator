@@ -25,3 +25,12 @@ class TestGame(TestCase):
         with patch("roulette.Wheel.choose", choose_mock):
             self.game.cycle(self.passenger)
         choose_mock.assert_called_once()
+
+    def test_cycle_calls_win_if_bet_wins(self):
+        winning_outcome = self.wheel.getOutcome("Black")
+        choose_mock = Mock(name="choose_mock", return_value=[winning_outcome])
+        win_mock = Mock(name="win_mock")
+        with patch("roulette.Wheel.choose", choose_mock):
+            with patch("roulette.Passenger57.win", win_mock):
+                self.game.cycle(self.passenger)
+        win_mock.assert_called_once()
