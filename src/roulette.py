@@ -704,7 +704,7 @@ class Game:
         winning_bin = self.wheel.choose()
         bet_iterator = iter(self.table)
         for bet in bet_iterator:
-            if bet in winning_bin:
+            if bet.outcome in winning_bin:
                 player.win(bet)
             else:
                 player.lose(bet)
