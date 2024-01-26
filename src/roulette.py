@@ -739,6 +739,12 @@ class Passenger57:
 
 
 class Game:
+    """
+    :class:`Game` manages the sequence of actions that defines the game of Roulette. This includes
+    notifying the :class:`Player` object to place bets, spinning the :class:`Wheel` object and
+    resolving the :class:`Bet` instances actually present on the :class:`Table` object.
+    """
+
     def __init__(self, wheel: Wheel, table: Table) -> None:
         self.wheel = wheel
         self.table = table
