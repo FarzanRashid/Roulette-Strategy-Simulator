@@ -726,16 +726,12 @@ class Passenger57:
         :param bet: The bet which won.
         """
 
-        pass
-
     def lose(self, bet: Bet) -> None:
         """
         Notification from the :class:`Game` object that the :class:`Bet` instance was a loser.
 
         :param bet: The bet which won.
         """
-
-        pass
 
 
 class Game:
