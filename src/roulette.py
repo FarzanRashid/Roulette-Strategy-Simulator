@@ -677,6 +677,22 @@ class Table:
 
 
 class Passenger57:
+    """
+    :class:`Passenger57` constructs a :class:`Bet` instance based on the :class:`Outcome` object
+    named :samp:`"Black"`. This is a very persistent player.
+
+    .. attribute:: black
+
+       This is the outcome on which this player focuses their betting.
+
+       This :class:`Player` will get this from the :class:`Wheel` using a well-known bet name.
+
+    .. attribute:: table
+
+       The :class:`Table` that is used to place individual :class:`Bet` instances.
+
+    """
+
     def __init__(self, table: Table, wheel: Wheel) -> None:
         self.table = table
         self.wheel = wheel
