@@ -694,6 +694,15 @@ class Passenger57:
     """
 
     def __init__(self, table: Table, wheel: Wheel) -> None:
+        """
+        Constructs the :class:`Player` instance with a specific table for placing bets. This also
+        creates the “black” :class:`Outcome`. This is saved in a variable named
+        **Passenger57.black** for use in creating bets.
+
+        :param table: The :class:`Table` instance on which bets are placed.
+        :param wheel: The :class:`Wheel` instance which defines all :class:`Outcome` instances.
+        """
+
         self.table = table
         self.wheel = wheel
         self.black = self.wheel.getOutcome("Black")
