@@ -786,8 +786,7 @@ class Game:
         player.placeBets()
         self.table.isValid()  # Ensures bets are valid.
         winning_bin = self.wheel.choose()
-        bet_iterator = iter(self.table)
-        for bet in bet_iterator:
+        for bet in self.table:
             if bet.outcome in winning_bin:
                 player.win(bet)
             else:
