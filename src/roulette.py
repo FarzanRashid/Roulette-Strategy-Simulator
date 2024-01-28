@@ -674,3 +674,120 @@ class Table:
 
         bet_reprs = ", ".join(repr(bet) for bet in self.bets)
         return f"Table({bet_reprs})"
+
+
+class Passenger57:
+    """
+    :class:`Passenger57` constructs a :class:`Bet` instance based on the :class:`Outcome` object
+    named :samp:`"Black"`. This is a very persistent player.
+
+    .. attribute:: black
+
+       This is the outcome on which this player focuses their betting.
+
+       This :class:`Player` will get this from the :class:`Wheel` using a well-known bet name.
+
+    .. attribute:: table
+
+       The :class:`Table` that is used to place individual :class:`Bet` instances.
+
+    """
+
+    def __init__(self, table: Table, wheel: Wheel) -> None:
+        """
+        Constructs the :class:`Player` instance with a specific table for placing bets. This also
+        creates the “black” :class:`Outcome`. This is saved in a variable named
+        **Passenger57.black** for use in creating bets.
+
+        :param table: The :class:`Table` instance on which bets are placed.
+        :param wheel: The :class:`Wheel` instance which defines all :class:`Outcome` instances.
+        """
+
+        self.table = table
+        self.wheel = wheel
+        self.black = self.wheel.getOutcome("Black")
+
+    def placeBets(self) -> None:
+        """
+        Updates the :class:`Table` object with the various bets. This version creates a :class:`Bet`
+        instance from the “Black” :class:`Outcome` instance. It uses **Table.placeBet()** to
+        place that bet.
+
+        """
+
+        bet = Bet(20, self.black)
+        self.table.placeBet(bet)
+
+    def win(self, bet: Bet) -> None:
+        """
+        Notification from the :class:`Game` object that the :class:`Bet` instance was a winner. The
+        amount of money won is available via the **Bet.winAmount()** method.
+
+        :param bet: The bet which won.
+        """
+
+    def lose(self, bet: Bet) -> None:
+        """
+        Notification from the :class:`Game` object that the :class:`Bet` instance was a loser.
+
+        :param bet: The bet which won.
+        """
+
+
+class Game:
+    """
+    :class:`Game` manages the sequence of actions that defines the game of Roulette. This includes
+    notifying the :class:`Player` object to place bets, spinning the :class:`Wheel` object and
+    resolving the :class:`Bet` instances actually present on the :class:`Table` object.
+
+    .. attribute:: wheel
+
+       The :class:`Wheel` instance that returns a randomly selected :class:`Bin` object of
+       :class:`Outcome` instances.
+
+    .. attribute:: table
+
+       The :class:`Table` object which contains the :class:`Bet` instances placed by the
+       :class:`Player` object.
+
+    .. attribute:: player
+
+       The :class:`Player` object which creates :class:`Bet` instances at the :class:`Table` object.
+
+    """
+
+    def __init__(self, wheel: Wheel, table: Table) -> None:
+        """
+        Constructs a new :class:`Game`, using a given :class:`Wheel` and :class:`Table`.
+
+        :param wheel: The :class:`Wheel` instance which produces random events
+        :param table: The :class:`Table` instance which holds bets to be resolved.
+        """
+
+        self.wheel = wheel
+        self.table = table
+        self.player = Passenger57(self.table, self.wheel)
+
+    def cycle(self, player: Passenger57) -> None:
+        """
+        :param player: the individual player that places bets, receives winnings and pays losses.
+
+        This will execute a single cycle of play with a given :class:`Player`. It will execute the
+        following steps:
+
+        1. Call **Player.placeBets()** method to create bets.
+        2. Call **Wheel.choose()** method to get the next winning :class:`Bin` object.
+        3. Call **iter()** on the :class:`table` to get all of the :class:`Bet` instances.
+           For each :class:`Bet` instance, if the winning :class:`Bin` contains the
+           :class:`Outcome`, call **Player.win()** method, otherwise, call the
+           **Player.lose()** method.
+        """
+
+        player.placeBets()
+        self.table.isValid()  # Ensures bets are valid.
+        winning_bin = self.wheel.choose()
+        for bet in self.table:
+            if bet.outcome in winning_bin:
+                player.win(bet)
+            else:
+                player.lose(bet)
