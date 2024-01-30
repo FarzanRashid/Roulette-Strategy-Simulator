@@ -814,3 +814,9 @@ class Player(ABC):
         if self.stake < self.table.minimum:
             return False
         return True
+
+
+class Martingale(Player):
+    def __init__(self):
+        self.losscount = 0
+        self.betMultiple = 1
