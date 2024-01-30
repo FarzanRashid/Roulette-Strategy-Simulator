@@ -805,3 +805,7 @@ class Player(ABC):
 
     def lose(self, bet: Bet) -> None:
         pass
+
+    @abstractmethod
+    def placeBets(self) -> None:
+        pass
