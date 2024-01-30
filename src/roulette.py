@@ -802,3 +802,6 @@ class Player(ABC):
 
     def win(self, bet: Bet) -> None:
         self.stake += bet.winAmount()
+
+    def lose(self, bet: Bet) -> None:
+        pass
