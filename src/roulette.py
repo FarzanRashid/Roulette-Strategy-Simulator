@@ -1,6 +1,7 @@
 import random
 from typing import Dict, Iterator
 from dataclasses import dataclass
+from abc import ABC, abstractmethod
 
 
 @dataclass(frozen=True)
@@ -791,3 +792,10 @@ class Game:
                 player.win(bet)
             else:
                 player.lose(bet)
+
+
+class Player(ABC):
+    def __init__(self, table: Table) -> None:
+        self.table = table
+        self.stake = 100
+        self.roundsToGo = None
