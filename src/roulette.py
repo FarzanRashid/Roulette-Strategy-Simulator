@@ -826,3 +826,8 @@ class Martingale(Player):
         bet_amount = 2 * self.betMultiple
         bet = Bet(bet_amount, outcome)
         self.table.placeBet(bet)
+
+    def win(self, bet: Bet) -> None:
+        super().win(bet)
+        self.losscount = 0
+        self.betMultiple = 1
