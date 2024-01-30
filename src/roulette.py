@@ -809,3 +809,8 @@ class Player(ABC):
     @abstractmethod
     def placeBets(self) -> None:
         pass
+
+    def playing(self) -> bool:
+        if self.stake < self.table.minimum:
+            return False
+        return True
