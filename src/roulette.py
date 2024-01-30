@@ -831,3 +831,7 @@ class Martingale(Player):
         super().win(bet)
         self.losscount = 0
         self.betMultiple = 1
+
+    def lose(self, bet: Bet):
+        super().lose(bet)
+        self.losscount += 1
