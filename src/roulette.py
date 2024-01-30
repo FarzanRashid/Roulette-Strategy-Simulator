@@ -799,3 +799,6 @@ class Player(ABC):
         self.table = table
         self.stake = 100
         self.roundsToGo = None
+
+    def win(self, bet: Bet) -> None:
+        self.stake += bet.winAmount()
