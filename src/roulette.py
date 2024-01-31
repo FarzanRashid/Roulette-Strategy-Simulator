@@ -677,6 +677,53 @@ class Table:
         return f"Table({bet_reprs})"
 
 
+class Player(ABC):
+    def __init__(self, table: Table) -> None:
+        self.table = table
+        self.stake = 100
+        self.roundsToGo = None
+
+    def win(self, bet: Bet) -> None:
+        self.stake += bet.winAmount()
+
+    def lose(self, bet: Bet) -> None:
+        pass
+
+    @abstractmethod
+    def placeBets(self) -> None:
+        pass
+
+    def playing(self) -> bool:
+        if self.stake < self.table.minimum:
+            return False
+        return True
+
+
+class Martingale(Player):
+    def __init__(self, table: Table):
+        super().__init__(table)
+        self.losscount = 0
+        self.betMultiple = 1
+
+    def placeBets(self) -> None:
+        outcome = Outcome("Black", 1)
+        bet_amount = 2 * self.betMultiple
+        if self.stake >= bet_amount:
+            bet = Bet(bet_amount, outcome)
+            self.table.placeBet(bet)
+        self.stake -= bet_amount
+
+    def win(self, bet: Bet) -> None:
+        super().win(bet)
+        self.losscount = 0
+        self.betMultiple = 1
+
+    def lose(self, bet: Bet):
+        super().lose(bet)
+        self.losscount += 1
+        self.betMultiple *= 2
+
+
 class Passenger57:
     """
     :class:`Passenger57` constructs a :class:`Bet` instance based on the :class:`Outcome` object
@@ -792,46 +839,3 @@ class Game:
                 player.win(bet)
             else:
                 player.lose(bet)
-
-
-class Player(ABC):
-    def __init__(self, table: Table) -> None:
-        self.table = table
-        self.stake = 100
-        self.roundsToGo = None
-
-    def win(self, bet: Bet) -> None:
-        self.stake += bet.winAmount()
-
-    def lose(self, bet: Bet) -> None:
-        pass
-
-    @abstractmethod
-    def placeBets(self) -> None:
-        pass
-
-    def playing(self) -> bool:
-        if self.stake < self.table.minimum:
-            return False
-        return True
-
-
-class Martingale(Player):
-    def __init__(self):
-        self.losscount = 0
-        self.betMultiple = 1
-
-    def placeBets(self) -> None:
-        outcome = Outcome("Black", 1)
-        bet_amount = 2 * self.betMultiple
-        bet = Bet(bet_amount, outcome)
-        self.table.placeBet(bet)
-
-    def win(self, bet: Bet) -> None:
-        super().win(bet)
-        self.losscount = 0
-        self.betMultiple = 1
-
-    def lose(self, bet: Bet):
-        super().lose(bet)
-        self.losscount += 1
