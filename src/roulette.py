@@ -815,9 +815,8 @@ class Game:
 
         self.wheel = wheel
         self.table = table
-        self.player = Passenger57(self.table, self.wheel)
 
-    def cycle(self, player: Passenger57) -> None:
+    def cycle(self, player: Player) -> None:
         """
         :param player: the individual player that places bets, receives winnings and pays losses.
 
