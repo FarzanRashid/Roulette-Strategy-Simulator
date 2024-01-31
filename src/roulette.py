@@ -707,11 +707,11 @@ class Martingale(Player):
 
     def placeBets(self) -> None:
         outcome = Outcome("Black", 1)
-        bet_amount = 2 * self.betMultiple
+        bet_amount = self.betMultiple
         if self.stake >= bet_amount:
             bet = Bet(bet_amount, outcome)
             self.table.placeBet(bet)
-        self.stake -= bet_amount
+            self.stake -= bet_amount
 
     def win(self, bet: Bet) -> None:
         super().win(bet)
