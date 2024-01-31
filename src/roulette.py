@@ -831,11 +831,12 @@ class Game:
            **Player.lose()** method.
         """
 
-        player.placeBets()
-        self.table.isValid()  # Ensures bets are valid.
-        winning_bin = self.wheel.choose()
-        for bet in self.table:
-            if bet.outcome in winning_bin:
-                player.win(bet)
-            else:
-                player.lose(bet)
+        if player.playing():
+            player.placeBets()
+            self.table.isValid()  # Ensures bets are valid.
+            winning_bin = self.wheel.choose()
+            for bet in self.table:
+                if bet.outcome in winning_bin:
+                    player.win(bet)
+                else:
+                    player.lose(bet)
