@@ -724,7 +724,7 @@ class Martingale(Player):
         self.betMultiple *= 2
 
 
-class Passenger57:
+class Passenger57(Player):
     """
     :class:`Passenger57` constructs a :class:`Bet` instance based on the :class:`Outcome` object
     named :samp:`"Black"`. This is a very persistent player.
@@ -751,6 +751,7 @@ class Passenger57:
         :param wheel: The :class:`Wheel` instance which defines all :class:`Outcome` instances.
         """
 
+        super().__init__(table)
         self.table = table
         self.wheel = wheel
         self.black = self.wheel.getOutcome("Black")
