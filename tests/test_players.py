@@ -24,3 +24,9 @@ class TestMartingale(TestCase):
         expected_bets_on_table = []
         actual_bets_on_table = self.table.bets
         self.assertEqual(expected_bets_on_table, actual_bets_on_table)
+
+    def test_stake_reduced_when_bet_placed(self):
+        self.martingale.betMultiple = 10
+        self.game.cycle(self.martingale)
+        expected_stake_after_bet = 90
+        self.assertEqual(self.martingale.stake, expected_stake_after_bet)
