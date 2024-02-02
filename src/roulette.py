@@ -773,6 +773,13 @@ class Martingale(Player):
     """
 
     def __init__(self, table: Table):
+        """
+        Constructs the :class:`Martingale` :class:`Player` instance with a specific :class:`Table`
+        object for placing :class:`Bet` instances.
+
+        :param table: the table to use
+        """
+
         super().__init__(table)
         self.losscount = 0
         self.betMultiple = 1
