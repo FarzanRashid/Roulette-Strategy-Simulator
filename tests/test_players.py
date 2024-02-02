@@ -1,5 +1,8 @@
 from unittest import TestCase
 
+from unittest.mock import Mock, patch
+
+import roulette
 from roulette import Game, Martingale, Table, Wheel, Bet, BinBuilder
 
 
@@ -29,6 +32,7 @@ class TestMartingale(TestCase):
 
     def test_stake_reduced_when_bet_placed(self):
         self.martingale.betMultiple = 10
-        self.game.cycle(self.martingale)
+        with patch("roulette.Wheel.choose", Mock(return_value=[])):
+            self.game.cycle(self.martingale)
         expected_stake_after_bet = 90
         self.assertEqual(self.martingale.stake, expected_stake_after_bet)
