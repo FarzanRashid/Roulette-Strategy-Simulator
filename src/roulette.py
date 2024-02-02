@@ -728,6 +728,13 @@ class Player(ABC):
         self.stake += bet.winAmount()
 
     def lose(self, bet: Bet) -> None:
+        """
+        :param bet: The bet which won
+
+        Notification from the :class:`Game` object that the :class:`Bet` instance was a loser. Note
+        that the amount was already deducted from the stake when the bet was created.
+        """
+
         pass
 
     @abstractmethod
