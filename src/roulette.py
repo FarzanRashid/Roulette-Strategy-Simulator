@@ -761,6 +761,15 @@ class Martingale(Player):
     """
     :class:`Martingale` is a :class:`Player` who places bets in Roulette. This player doubles their
     bet on every loss and resets their bet to a base amount on each win.
+
+    .. attribute:: losscount
+
+       The number of losses. This is the number of times to double the bet.
+
+    .. attribute:: betMultiple
+
+       The the bet multiplier, based on the number of losses. This starts at 1, and is reset to 1 on
+       each win. It is doubled in each loss. This is always equal to :math:`2^{lossCount}`.
     """
 
     def __init__(self, table: Table):
