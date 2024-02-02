@@ -802,6 +802,14 @@ class Martingale(Player):
         self.betMultiple = 2**self.losscount
 
     def lose(self, bet: Bet):
+        """
+        :param bet:
+
+        Uses the superclass **Player.loss()** to do whatever bookkeeping the superclass already
+        does.
+        Increments **lossCount** by :samp:`1` and doubles **betMultiple**.
+        """
+
         super().lose(bet)
         self.losscount += 1
         self.betMultiple = 2**self.losscount
