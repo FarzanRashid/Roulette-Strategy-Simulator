@@ -1,12 +1,14 @@
 from unittest import TestCase
 
-from roulette import Game, Martingale, Table, Wheel, Bet, Outcome
+from roulette import Game, Martingale, Table, Wheel, Bet, BinBuilder
 
 
 class TestMartingale(TestCase):
     def setUp(self):
         self.table = Table()
         self.wheel = Wheel()
+        bin_builder = BinBuilder()
+        bin_builder.buildBins(self.wheel)
         self.game = Game(self.wheel, self.table)
         self.martingale = Martingale(self.table)
 
@@ -14,7 +16,7 @@ class TestMartingale(TestCase):
         self.martingale.betMultiple = 10
         bet_amount = self.martingale.betMultiple
         self.game.cycle(self.martingale)
-        bet = Bet(bet_amount, Outcome("Black", 1))
+        bet = Bet(bet_amount, self.wheel.getOutcome("Black"))
         self.assertIn(bet, self.table.bets)
 
     def test_placeBets_dont_make_bets_if_stake_not_enough(self):
