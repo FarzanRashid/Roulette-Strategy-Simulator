@@ -2,7 +2,6 @@ from unittest import TestCase
 
 from unittest.mock import Mock, patch
 
-import roulette
 from roulette import Game, Martingale, Table, Wheel, Bet, BinBuilder
 
 
