@@ -703,6 +703,16 @@ class Player(ABC):
     """
 
     def __init__(self, table: Table) -> None:
+        """
+        Constructs the :class:`Player` instance with a specific :class:`Table` object for placing
+        :class:`Bet` instances.
+
+        :param table:  the table to use
+
+        Since the table has access to the Wheel instance, we can use this wheel to extract
+        :class:`Outcome` objects.
+        """
+
         self.table = table
         self.stake = 100
         self.roundsToGo = None
