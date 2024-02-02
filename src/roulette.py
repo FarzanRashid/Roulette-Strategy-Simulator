@@ -735,8 +735,6 @@ class Player(ABC):
         that the amount was already deducted from the stake when the bet was created.
         """
 
-        pass
-
     @abstractmethod
     def placeBets(self) -> None:
         """
@@ -746,8 +744,6 @@ class Player(ABC):
         bet from the stake when the bet is created. See the Table **Roulette Table Analysis**
         for more information.
         """
-
-        pass  # pragma: no cover
 
     def playing(self) -> bool:
         """
