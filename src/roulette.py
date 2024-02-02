@@ -750,6 +750,10 @@ class Player(ABC):
         pass  # pragma: no cover
 
     def playing(self) -> bool:
+        """
+        Returns :samp:`True` while the player is still active.
+        """
+
         return self.stake >= self.table.minimum
 
 
