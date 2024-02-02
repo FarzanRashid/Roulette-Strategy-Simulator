@@ -718,6 +718,13 @@ class Player(ABC):
         self.roundsToGo = None
 
     def win(self, bet: Bet) -> None:
+        """
+        :param bet: The bet which won
+
+        Notification from the :class:`Game` object that the :class:`Bet` instance was a winner. The
+        amount of money won is available via the **Bet.winAmount()** method.
+        """
+
         self.stake += bet.winAmount()
 
     def lose(self, bet: Bet) -> None:
