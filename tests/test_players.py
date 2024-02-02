@@ -43,3 +43,8 @@ class TestMartingale(TestCase):
             self.game.cycle(self.martingale)
         expected_stake = 110
         self.assertEqual(expected_stake, self.martingale.stake)
+
+    def test_playing_returns_false_if_stake_less_than_limit(self):
+        self.martingale.stake = 3
+        playing_result = self.martingale.playing()
+        self.assertEqual(False, playing_result)
