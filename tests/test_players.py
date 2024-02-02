@@ -39,7 +39,9 @@ class TestMartingale(TestCase):
 
     def test_stake_raised_if_bet_wins(self):
         self.martingale.betMultiple = 10
-        with patch("roulette.Wheel.choose", Mock(return_value=[self.wheel.getOutcome("Black")])):
+        with patch(
+            "roulette.Wheel.choose", Mock(return_value=[self.wheel.getOutcome("Black")])
+        ):
             self.game.cycle(self.martingale)
         expected_stake = 110
         self.assertEqual(expected_stake, self.martingale.stake)
