@@ -790,6 +790,13 @@ class Martingale(Player):
             self.stake -= self.betMultiple
 
     def win(self, bet: Bet) -> None:
+        """
+        :param bet: The bet which won
+
+        Notification from the :class:`Game` object that the :class:`Bet` instance was a winner. The
+        amount of money won is available via the **Bet.winAmount()** method.
+        """
+
         super().win(bet)
         self.losscount = 0
         self.betMultiple = 2**self.losscount
