@@ -739,6 +739,14 @@ class Player(ABC):
 
     @abstractmethod
     def placeBets(self) -> None:
+        """
+        Updates the :class:`Table` object with the various :class:`Bet` objects.
+
+        When designing the :class:`Table` class, we decided that we needed to deduct the amount of a
+        bet from the stake when the bet is created. See the Table **Roulette Table Analysis**
+        for more information.
+        """
+
         pass  # pragma: no cover
 
     def playing(self) -> bool:
