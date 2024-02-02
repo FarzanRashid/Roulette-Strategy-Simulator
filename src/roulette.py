@@ -778,6 +778,11 @@ class Martingale(Player):
         self.betMultiple = 1
 
     def placeBets(self) -> None:
+        """
+        Updates the :class:`Table` object with a bet on “black”. The amount bet is
+        :math:`2^{lossCount}`, which is the value of **betMultiple**.
+        """
+
         outcome = Outcome("Black", 1)
         if self.stake >= self.betMultiple:
             bet = Bet(self.betMultiple, outcome)
