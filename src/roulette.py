@@ -691,7 +691,7 @@ class Player(ABC):
 
     @abstractmethod
     def placeBets(self) -> None:
-        pass
+        pass  # pragma: no cover
 
     def playing(self) -> bool:
         if self.stake < self.table.minimum:
