@@ -694,9 +694,7 @@ class Player(ABC):
         pass  # pragma: no cover
 
     def playing(self) -> bool:
-        if self.stake < self.table.minimum:
-            return False
-        return True
+        return self.stake >= self.table.minimum
 
 
 class Martingale(Player):
