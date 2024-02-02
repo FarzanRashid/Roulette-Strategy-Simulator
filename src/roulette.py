@@ -716,12 +716,12 @@ class Martingale(Player):
     def win(self, bet: Bet) -> None:
         super().win(bet)
         self.losscount = 0
-        self.betMultiple = 1
+        self.betMultiple = 2 ** self.losscount
 
     def lose(self, bet: Bet):
         super().lose(bet)
         self.losscount += 1
-        self.betMultiple *= 2
+        self.betMultiple = 2 ** self.losscount
 
 
 class Passenger57(Player):
