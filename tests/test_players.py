@@ -16,3 +16,11 @@ class TestMartingale(TestCase):
         self.game.cycle(self.martingale)
         bet = Bet(bet_amount, Outcome("Black", 1))
         self.assertIn(bet, self.table.bets)
+
+    def test_placeBets_dont_make_bets_if_stake_not_enough(self):
+        self.martingale.stake = 10
+        self.martingale.betMultiple = 15
+        self.game.cycle(self.martingale)
+        expected_bets_on_table = []
+        actual_bets_on_table = self.table.bets
+        self.assertEqual(expected_bets_on_table, actual_bets_on_table)
