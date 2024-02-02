@@ -48,18 +48,17 @@ class TestGame(TestCase):
     def test_choose_not_called_if_isValid_raises_exception(self):
         is_valid_mock = Mock(name="is_valid_mock", side_effect=InvalidBet)
         choose_mock = Mock(name="choose_mock")
-        with patch.multiple("roulette.Table", isValid=is_valid_mock), patch.multiple(
-            "roulette.Wheel", choose=choose_mock
-        ):
-            with self.assertRaises(InvalidBet):
-                self.game.cycle(self.passenger)
+        with patch("roulette.Table.isValid", is_valid_mock):
+            with patch("roulette.Wheel.choose", choose_mock):
+                with self.assertRaises(InvalidBet):
+                    self.game.cycle(self.passenger)
         choose_mock.assert_not_called()
 
     def test_cycle_not_executed_if_no_active_players(self):
         playing_mock = Mock(name="playing_mock", return_value=False)
         place_bets_mock = Mock(name="place_bets_mock")
-        with patch.multiple("roulette.Player", playing=playing_mock), patch.multiple(
-            "roulette.Player", placeBets=place_bets_mock
+        with patch.multiple(
+            "roulette.Player", playing=playing_mock, placeBets=place_bets_mock
         ):
             self.game.cycle(self.passenger)
         place_bets_mock.assert_not_called()
