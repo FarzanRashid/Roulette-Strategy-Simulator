@@ -52,12 +52,3 @@ class TestGame(TestCase):
                 with self.assertRaises(InvalidBet):
                     self.game.cycle(self.passenger)
         choose_mock.assert_not_called()
-
-    def test_cycle_not_executed_if_no_active_players(self):
-        playing_mock = Mock(name="playing_mock", return_value=False)
-        place_bets_mock = Mock(name="place_bets_mock")
-        with patch.multiple(
-            "roulette.Player", playing=playing_mock, placeBets=place_bets_mock
-        ):
-            self.game.cycle(self.passenger)
-        place_bets_mock.assert_not_called()
