@@ -47,4 +47,8 @@ class TestMartingale(TestCase):
     def test_player_plays_when_stake_not_less_than_table_minimum(self):
         self.martingale.stake = 3
         playing_result = self.martingale.playing()
-        self.assertEqual(False, playing_result)
+        self.assertFalse(False)
+
+        self.martingale.stake = 15
+        playing_result = self.martingale.playing()
+        self.assertTrue(playing_result)
