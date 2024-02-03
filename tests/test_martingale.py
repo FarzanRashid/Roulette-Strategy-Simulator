@@ -14,7 +14,7 @@ class TestMartingale(TestCase):
         self.game = Game(self.wheel, self.table)
         self.martingale = Martingale(self.table)
 
-    def test_placing_bets_need_minimum_stake(self):
+    def test_bets_placed_when_stake_not_less_than_betMultiple(self):
         self.martingale.stake = 10
         self.martingale.betMultiple = 15
         self.game.cycle(self.martingale)
