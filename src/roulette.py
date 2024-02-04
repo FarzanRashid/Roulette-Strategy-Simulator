@@ -934,3 +934,14 @@ class Game:
                     player.win(bet)
                 else:
                     player.lose(bet)
+
+
+class Simulator:
+    def __init__(self, game: Game, player: Player) -> None:
+        self.game = game
+        self.player = player
+        self.initDuration = 250
+        self.initStake = 100
+        self.samples = 50
+        self.durations = []
+        self.maxima = []
