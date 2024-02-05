@@ -745,12 +745,11 @@ class Player(ABC):
         for more information.
         """
 
+    @abstractmethod
     def playing(self) -> bool:
         """
         Returns :samp:`True` while the player is still active.
         """
-
-        return self.stake >= self.table.minimum
 
 
 class Martingale(Player):
