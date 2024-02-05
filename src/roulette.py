@@ -786,10 +786,13 @@ class Martingale(Player):
         """
 
         outcome = Outcome("Black", 1)
-        if self.stake >= self.betMultiple:
+        if self.playing():
             bet = Bet(self.betMultiple, outcome)
             self.table.placeBet(bet)
             self.stake -= self.betMultiple
+
+    def playing(self) -> bool:
+        return self.stake >= self.table.minimum and self.stake >= self.betMultiple
 
     def win(self, bet: Bet) -> None:
         """
@@ -857,8 +860,12 @@ class Passenger57(Player):
 
         """
 
-        bet = Bet(20, self.black)
-        self.table.placeBet(bet)
+        if self.playing():
+            bet = Bet(20, self.black)
+            self.table.placeBet(bet)
+
+    def playing(self) -> bool:
+        return self.stake >= self.table.minimum
 
     def win(self, bet: Bet) -> None:
         """
