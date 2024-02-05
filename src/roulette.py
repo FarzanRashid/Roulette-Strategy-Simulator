@@ -950,9 +950,10 @@ class Simulator:
         self.player.stake = self.initStake
         self.player.roundsToGo = self.initDuration
         stake_values = []
-        for _ in range(self.initDuration) and self.player.playing():
+        while self.player.roundsToGo > 0 and self.player.playing():
             self.game.cycle(self.player)
             stake_values.append(self.player.stake)
+            self.player.roundsToGo -= 1
         return stake_values
 
     def gather(self) -> None:
