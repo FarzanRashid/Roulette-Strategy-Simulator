@@ -715,7 +715,7 @@ class Player(ABC):
 
         self.table = table
         self.stake = 100
-        self.roundsToGo = None
+        self.roundsToGo = 250
 
     def win(self, bet: Bet) -> None:
         """
@@ -943,8 +943,8 @@ class Simulator:
         self.initDuration = 250
         self.initStake = 100
         self.samples = 50
-        self.durations = []
-        self.maxima = []
+        self.durations: list[int] = []
+        self.maxima: list[int] = []
 
     def session(self) -> list[int]:
         self.player.stake = self.initStake
