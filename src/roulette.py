@@ -945,3 +945,12 @@ class Simulator:
         self.samples = 50
         self.durations = []
         self.maxima = []
+
+    def session(self) -> list[int]:
+        self.player.stake = self.initStake
+        self.player.roundsToGo = self.initDuration
+        stake_values = []
+        for _ in range(self.initDuration) and self.player.playing():
+            self.game.cycle(self.player)
+            stake_values.append(self.player.stake)
+        return stake_values
