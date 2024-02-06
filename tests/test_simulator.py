@@ -2,7 +2,6 @@ from unittest import TestCase
 
 from unittest.mock import Mock, patch
 
-import roulette
 from roulette import Simulator, Game, Martingale, Table, Wheel
 
 
@@ -42,3 +41,10 @@ class TestSimulator(TestCase):
         with patch("roulette.Game.cycle", cycle_mock):
             self.simulator.session()
         cycle_mock.assert_called()
+
+    def test_session_returns_list_of_stake(self):
+        cycle_mock = Mock(name="cycle_mock")
+        with patch("roulette.Game.cycle", cycle_mock):
+            session_result = self.simulator.session()
+
+        self.assertTrue(len(session_result) > 0)
