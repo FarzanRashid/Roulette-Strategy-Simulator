@@ -791,7 +791,11 @@ class Martingale(Player):
         self.stake -= self.betMultiple
 
     def playing(self) -> bool:
-        return self.stake >= self.table.minimum and self.stake >= self.betMultiple
+        return (
+            self.stake >= self.table.minimum
+            and self.stake >= self.betMultiple
+            and self.roundsToGo > 0
+        )
 
     def win(self, bet: Bet) -> None:
         """
@@ -865,7 +869,7 @@ class Passenger57(Player):
         self.stake -= bet_amount
 
     def playing(self) -> bool:
-        return self.stake >= self.table.minimum
+        return self.stake >= self.table.minimum and self.roundsToGo > 0
 
     def win(self, bet: Bet) -> None:
         """
