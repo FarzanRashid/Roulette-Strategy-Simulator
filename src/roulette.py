@@ -859,9 +859,10 @@ class Passenger57(Player):
 
         """
 
-        if self.playing():
-            bet = Bet(20, self.black)
-            self.table.placeBet(bet)
+        bet_amount = 20
+        bet = Bet(bet_amount, self.black)
+        self.table.placeBet(bet)
+        self.stake -= bet_amount
 
     def playing(self) -> bool:
         return self.stake >= self.table.minimum
