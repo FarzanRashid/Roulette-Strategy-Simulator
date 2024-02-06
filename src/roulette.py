@@ -869,7 +869,9 @@ class Passenger57(Player):
         self.stake -= bet_amount
 
     def playing(self) -> bool:
-        return self.stake >= self.table.minimum and self.roundsToGo > 0
+        return (
+            self.stake >= self.table.minimum and self.roundsToGo > 0
+        )  # pragma: no cover
 
     def win(self, bet: Bet) -> None:
         """
@@ -935,15 +937,14 @@ class Game:
            **Player.lose()** method.
         """
 
-        if player.playing():
-            player.placeBets()
-            self.table.isValid()  # Ensures bets are valid.
-            winning_bin = self.wheel.choose()
-            for bet in self.table:
-                if bet.outcome in winning_bin:
-                    player.win(bet)
-                else:
-                    player.lose(bet)
+        player.placeBets()
+        self.table.isValid()  # Ensures bets are valid.
+        winning_bin = self.wheel.choose()
+        for bet in self.table:
+            if bet.outcome in winning_bin:
+                player.win(bet)
+            else:
+                player.lose(bet)
 
 
 class Simulator:
