@@ -50,3 +50,10 @@ class TestMartingale(TestCase):
 
         self.martingale.stake = 15
         self.assertTrue(self.martingale.playing())
+
+    def test_player_if_rounds_are_more_than_zero(self):
+        self.assertTrue(self.martingale.playing())
+
+        self.martingale.roundsToGo = 0
+
+        self.assertFalse(self.martingale.playing())
