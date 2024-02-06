@@ -14,15 +14,20 @@ class TestMartingale(TestCase):
         self.game = Game(self.wheel, self.table)
         self.martingale = Martingale(self.table)
 
-    def test_bets_placed_when_stake_not_less_than_betMultiple(self):
+    def test_bets_placed_when_player_is_playing(self):
         self.martingale.stake = 10
         self.martingale.betMultiple = 15
-        self.game.cycle(self.martingale)
+
+        self.assertFalse(self.martingale.playing())
+
         expected_bets_on_table = []
         actual_bets_on_table = self.table.bets
         self.assertEqual(expected_bets_on_table, actual_bets_on_table)
 
         self.martingale.betMultiple = 10
+
+        self.assertTrue(self.martingale.playing())
+
         bet_amount = self.martingale.betMultiple
         self.game.cycle(self.martingale)
         bet = Bet(bet_amount, self.wheel.getOutcome("Black"))
