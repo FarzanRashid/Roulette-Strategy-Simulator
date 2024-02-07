@@ -943,8 +943,8 @@ class Game:
 
 class Simulator:
     """
-    :class:`Simulator` exercises the Roulette simulation with a given :class:`Player` placing bets. It
-    reports raw statistics on a number of sessions of play.
+    :class:`Simulator` exercises the Roulette simulation with a given :class:`Player` placing bets.
+    It reports raw statistics on a number of sessions of play.
 
     .. attribute:: initDuration
 
@@ -963,8 +963,8 @@ class Simulator:
 
     .. attribute:: durations
 
-       A **list** of lengths of time the :class:`Player` object remained in the game. Each session of
-       play produces a duration metric, which are collected into this list.
+       A **list** of lengths of time the :class:`Player` object remained in the game. Each session
+       of play produces a duration metric, which are collected into this list.
 
     .. attribute:: maxima
 
