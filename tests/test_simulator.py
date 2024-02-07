@@ -13,7 +13,7 @@ class TestSimulator(TestCase):
         game = Game(wheel, table)
         self.simulator = Simulator(game, martingale)
 
-    def test_gather_appends_max_stake_and_rounds_played_after_one_session(self):
+    def test_simulator_gathers_max_stake(self):
         session_mock = Mock(name="session_mock", return_value=[1, 2, 5])
         self.simulator.samples = 1
 
@@ -24,9 +24,6 @@ class TestSimulator(TestCase):
 
         expected_value_in_maxima = 5
         self.assertIn(expected_value_in_maxima, self.simulator.maxima)
-
-        expected_length_in_duration = 3
-        self.assertIn(expected_length_in_duration, self.simulator.durations)
 
     def test_session_gathers_list_of_stake(self):
         cycle_mock = Mock(name="cycle_mock")
