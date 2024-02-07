@@ -42,7 +42,7 @@ class TestSimulator(TestCase):
             self.simulator.session()
         cycle_mock.assert_called()
 
-    def test_session_returns_list_of_stake(self):
+    def test_session_gathers_list_of_stake(self):
         cycle_mock = Mock(name="cycle_mock")
         with patch("roulette.Game.cycle", cycle_mock):
             session_result = self.simulator.session()
