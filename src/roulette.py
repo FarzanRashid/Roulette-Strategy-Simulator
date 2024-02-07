@@ -745,11 +745,11 @@ class Player(ABC):
         for more information.
         """
 
-    @abstractmethod
     def playing(self) -> bool:
         """
         Returns :samp:`True` while the player is still active.
         """
+        return self.stake >= self.table.minimum and self.roundsToGo > 0
 
 
 class Martingale(Player):
@@ -791,11 +791,7 @@ class Martingale(Player):
         self.stake -= self.betMultiple
 
     def playing(self) -> bool:
-        return (
-            self.stake >= self.table.minimum
-            and self.stake >= self.betMultiple
-            and self.roundsToGo > 0
-        )
+        return super().playing() and self.betMultiple <= self.stake
 
     def win(self, bet: Bet) -> None:
         """
@@ -869,9 +865,7 @@ class Passenger57(Player):
         self.stake -= bet_amount
 
     def playing(self) -> bool:
-        return (
-            self.stake >= self.table.minimum and self.roundsToGo > 0
-        )  # pragma: no cover
+        return super().playing()  # pragma: no cover
 
     def win(self, bet: Bet) -> None:
         """
