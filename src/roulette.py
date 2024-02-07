@@ -942,6 +942,45 @@ class Game:
 
 
 class Simulator:
+    """
+    :class:`Simulator` exercises the Roulette simulation with a given :class:`Player` placing bets. It
+    reports raw statistics on a number of sessions of play.
+
+    .. attribute:: initDuration
+
+       The duration value to use when initializing a :class:`Player` instance for a session. A
+       default value of 250 is a good choice here.
+
+    .. attribute:: initStake
+
+       The stake value to use when initializing a :class:`Player` instance for a session. This is a
+       count of the number of bets placed; i.e., 100 $10 bets is $1000 stake. A default value of 100
+       is sensible.
+
+    .. attribute:: samples
+
+       The number of game cycles to simulate. A default value of 50 makes sense.
+
+    .. attribute:: durations
+
+       A **list** of lengths of time the :class:`Player` object remained in the game. Each session of
+       play produces a duration metric, which are collected into this list.
+
+    .. attribute:: maxima
+
+       A **list** of maximum stakes for the :class:`Player` object. Each session of play produces a
+       maximum stake metric, which are collected into this list.
+
+    .. attribute:: player
+
+       The :class:`Player` instance; essentially, the betting strategy we are simulating.
+
+    .. attribute:: game
+
+       The casino game we are simulating. This is an instance of the :class:`Game` class,
+       which embodies the various rules, the :class:`Table` object and the :class:`Wheel` instance.
+    """
+
     def __init__(self, game: Game, player: Player) -> None:
         self.game = game
         self.player = player
