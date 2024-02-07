@@ -999,6 +999,18 @@ class Simulator:
         self.maxima: list[int] = []
 
     def session(self) -> list[int]:
+        """
+        :return: list of stake values.
+        :rtype: list
+
+        Executes a single game session. The :class:`Player` instance is initialized with their
+        initial stake and initial cycles to go. An empty **list** of stake values is created.
+        The session loop executes until the **Player.playing()** method returns false. This loop
+        executes the **Game.cycle()** method; then it gets the stake from the :class:`Player` and
+        appends this amount to the **list** of stake values. The **list** of individual stake
+        values is returned as the result of the session of play.
+        """
+
         self.player.stake = self.initStake
         self.player.roundsToGo = self.initDuration
         stake_values = []
