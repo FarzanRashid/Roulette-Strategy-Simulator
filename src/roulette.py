@@ -982,6 +982,14 @@ class Simulator:
     """
 
     def __init__(self, game: Game, player: Player) -> None:
+        """
+        Saves the Player and :class:`Game` instances so we can gather statistics on the performance
+        of the player’s betting strategy.
+
+        :param game: The game we’re simulating. This includes the :class:`Table` and :class:`Wheel`.
+        :param player: The player. This encapsulates the betting strategy.
+        """
+
         self.game = game
         self.player = player
         self.initDuration = 250
