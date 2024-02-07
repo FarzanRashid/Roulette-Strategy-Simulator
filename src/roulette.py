@@ -864,9 +864,6 @@ class Passenger57(Player):
         self.table.placeBet(bet)
         self.stake -= bet_amount
 
-    def playing(self) -> bool:
-        return super().playing()  # pragma: no cover
-
     def win(self, bet: Bet) -> None:
         """
         Notification from the :class:`Game` object that the :class:`Bet` instance was a winner. The
