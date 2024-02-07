@@ -1021,6 +1021,17 @@ class Simulator:
         return stake_values
 
     def gather(self) -> None:
+        """
+        Executes the number of games sessions in samples. Each game session returns a **list** of
+        stake values. When the session is over (either the play reached their time limit or their
+        stake was spent), then the length of the session **list** and the maximum value in the
+        session **list** are the resulting duration and maximum metrics. These two metrics are
+        appended to the **durations** list and the **maxima** list.
+
+        A client class will either display the durations and maxima raw metrics or produce
+        statistical summaries.
+        """
+
         for _ in range(self.samples):
             stake_values: list[int] = self.session()
             self.maxima.append(max(stake_values))
