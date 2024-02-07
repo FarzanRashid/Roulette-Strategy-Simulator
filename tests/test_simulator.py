@@ -7,11 +7,11 @@ from roulette import Simulator, Game, Martingale, Table, Wheel
 
 class TestSimulator(TestCase):
     def setUp(self):
-        self.table = Table()
-        self.martingale = Martingale(self.table)
-        self.wheel = Wheel()
-        self.game = Game(self.wheel, self.table)
-        self.simulator = Simulator(self.game, self.martingale)
+        table = Table()
+        martingale = Martingale(table)
+        wheel = Wheel()
+        game = Game(wheel, table)
+        self.simulator = Simulator(game, martingale)
 
     def test_gather_appends_max_stake_and_rounds_played_after_one_session(self):
         session_mock = Mock(name="session_mock", return_value=[1, 2, 5])
