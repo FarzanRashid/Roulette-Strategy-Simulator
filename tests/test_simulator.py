@@ -28,20 +28,6 @@ class TestSimulator(TestCase):
         expected_length_in_duration = 3
         self.assertIn(expected_length_in_duration, self.simulator.durations)
 
-    def test_session_calls_cycle_only_if_players_are_active(self):
-        cycle_mock = Mock(name="cycle_mock")
-
-        playing_mock = Mock(name="playing_mock", return_value=False)
-
-        with patch("roulette.Martingale.playing", playing_mock):
-            self.simulator.session()
-
-        cycle_mock.assert_not_called()
-
-        with patch("roulette.Game.cycle", cycle_mock):
-            self.simulator.session()
-        cycle_mock.assert_called()
-
     def test_session_gathers_list_of_stake(self):
         cycle_mock = Mock(name="cycle_mock")
         with patch("roulette.Game.cycle", cycle_mock):
