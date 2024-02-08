@@ -45,9 +45,9 @@ class TestGame(TestCase):
         lose_mock.assert_called_once()
 
     def test_choose_not_called_if_isValid_raises_exception(self):
-        is_valid_mock = Mock(name="is_valid_mock", side_effect=InvalidBet)
+        place_bets_mock = Mock(name="place_bets_mock", side_effect=InvalidBet)
         choose_mock = Mock(name="choose_mock")
-        with patch("roulette.Table.isValid", is_valid_mock):
+        with patch("roulette.Passenger57.placeBets", place_bets_mock):
             with patch("roulette.Wheel.choose", choose_mock):
                 with self.assertRaises(InvalidBet):
                     self.game.cycle(self.passenger)
