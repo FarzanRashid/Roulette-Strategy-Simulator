@@ -613,7 +613,7 @@ class Table:
         """
 
         self.bets = list(bets) if bets else []
-        self.minimum = 10
+        self.minimum = 1
         self.limit = 300
 
     def placeBet(self, bet: Bet) -> None:
@@ -788,10 +788,20 @@ class Martingale(Player):
         outcome = Outcome("Black", 1)
         bet = Bet(self.betMultiple, outcome)
         self.table.placeBet(bet)
+        try:
+            self.table.isValid()
+        except InvalidBet as exc:
+            self.losscount = 0
+            self.betMultiple = 2**self.losscount
+            raise InvalidBet from exc
         self.stake -= self.betMultiple
 
     def playing(self) -> bool:
-        return super().playing() and self.betMultiple <= self.stake
+        if not super().playing() or self.betMultiple > self.stake:
+            self.losscount = 0
+            self.betMultiple = 2**self.losscount
+            return False
+        return True
 
     def win(self, bet: Bet) -> None:
         """
@@ -864,21 +874,6 @@ class Passenger57(Player):
         self.table.placeBet(bet)
         self.stake -= bet_amount
 
-    def win(self, bet: Bet) -> None:
-        """
-        Notification from the :class:`Game` object that the :class:`Bet` instance was a winner. The
-        amount of money won is available via the **Bet.winAmount()** method.
-
-        :param bet: The bet which won.
-        """
-
-    def lose(self, bet: Bet) -> None:
-        """
-        Notification from the :class:`Game` object that the :class:`Bet` instance was a loser.
-
-        :param bet: The bet which won.
-        """
-
 
 class Game:
     """
@@ -929,7 +924,6 @@ class Game:
         """
 
         player.placeBets()
-        self.table.isValid()  # Ensures bets are valid.
         winning_bin = self.wheel.choose()
         for bet in self.table:
             if bet.outcome in winning_bin:
@@ -1011,10 +1005,15 @@ class Simulator:
         self.player.stake = self.initStake
         self.player.roundsToGo = self.initDuration
         stake_values = []
-        while self.player.playing():
-            self.game.cycle(self.player)
-            stake_values.append(self.player.stake)
-            self.player.roundsToGo -= 1
+        self.player.table.bets = []
+        try:
+            while self.player.playing():
+                self.game.cycle(self.player)
+                stake_values.append(self.player.stake)
+                self.player.roundsToGo -= 1
+
+        except InvalidBet:
+            pass
         return stake_values
 
     def gather(self) -> None:
@@ -1033,3 +1032,26 @@ class Simulator:
             stake_values: list[int] = self.session()
             self.maxima.append(max(stake_values))
             self.durations.append(len(stake_values))
+
+
+def main() -> None:  # pragma: no cover
+    """
+    A main application function that creates the necessary objects, runs the Simulator’s gather()
+    method, and writes the available outputs to sys.stdout
+    """
+    wheel = Wheel()
+    bin_builder = BinBuilder()
+    table = Table()
+    game = Game(wheel, table)
+    martingale = Martingale(table)
+    simulator = Simulator(game, martingale)
+
+    bin_builder.buildBins(wheel)
+    simulator.gather()
+
+    print("maxima: ", simulator.maxima)
+    print("duration: ", simulator.durations)
+
+
+if __name__ == "__main__":
+    main()  # pragma: no cover
