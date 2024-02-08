@@ -2,16 +2,16 @@ from unittest import TestCase
 
 from unittest.mock import Mock, patch
 
-from roulette import Simulator, Game, Martingale, Table, Wheel
+from roulette import Simulator, Game, Martingale, Table, Wheel, InvalidBet
 
 
 class TestSimulator(TestCase):
     def setUp(self):
         table = Table()
-        martingale = Martingale(table)
+        self.martingale = Martingale(table)
         wheel = Wheel()
         game = Game(wheel, table)
-        self.simulator = Simulator(game, martingale)
+        self.simulator = Simulator(game, self.martingale)
 
     def test_simulator_gathers_max_stake(self):
         session_mock = Mock(name="session_mock", return_value=[1, 2, 5])
@@ -43,3 +43,14 @@ class TestSimulator(TestCase):
             session_result = self.simulator.session()
 
         self.assertTrue(len(session_result) > 0)
+
+    def test_exceptions_is_handled_in_placeBets(self):
+        self.martingale.betMultiple = 500
+        with self.assertRaises(InvalidBet):
+            self.martingale.placeBets()
+
+        expected_losscount_value = 0
+        expected_betmultiple_value = 2**expected_losscount_value
+
+        self.assertEqual(expected_losscount_value, self.martingale.losscount)
+        self.assertEqual(expected_betmultiple_value, self.martingale.betMultiple)
