@@ -2,7 +2,7 @@ from unittest import TestCase
 
 from unittest.mock import Mock, patch
 
-from roulette import Game, Martingale, Table, Wheel, Bet, BinBuilder
+from roulette import Game, Martingale, Table, Wheel, Bet, BinBuilder, InvalidBet
 
 
 class TestMartingale(TestCase):
@@ -62,3 +62,14 @@ class TestMartingale(TestCase):
         self.martingale.roundsToGo = 0
 
         self.assertFalse(self.martingale.playing())
+
+    def test_attributes_are_reset_if_invalid_bet_is_placed(self):
+        self.martingale.betMultiple = 500
+        with self.assertRaises(InvalidBet):
+            self.martingale.placeBets()
+
+        expected_losscount_value = 0
+        expected_betmultiple_value = 2**expected_losscount_value
+
+        self.assertEqual(expected_losscount_value, self.martingale.losscount)
+        self.assertEqual(expected_betmultiple_value, self.martingale.betMultiple)

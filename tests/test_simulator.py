@@ -2,7 +2,7 @@ from unittest import TestCase
 
 from unittest.mock import Mock, patch
 
-from roulette import Simulator, Game, Martingale, Table, Wheel, InvalidBet
+from roulette import Simulator, Game, Martingale, Table, Wheel
 
 
 class TestSimulator(TestCase):
@@ -43,14 +43,3 @@ class TestSimulator(TestCase):
             session_result = self.simulator.session()
 
         self.assertTrue(len(session_result) > 0)
-
-    def test_exceptions_is_handled_in_placeBets(self):
-        self.martingale.betMultiple = 500
-        with self.assertRaises(InvalidBet):
-            self.martingale.placeBets()
-
-        expected_losscount_value = 0
-        expected_betmultiple_value = 2**expected_losscount_value
-
-        self.assertEqual(expected_losscount_value, self.martingale.losscount)
-        self.assertEqual(expected_betmultiple_value, self.martingale.betMultiple)
