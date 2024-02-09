@@ -1011,8 +1011,7 @@ class Simulator:
                 self.game.cycle(self.player)
                 stake_values.append(self.player.stake)
                 self.player.roundsToGo -= 1
-
-        except InvalidBet:  # pragma: no cover
+        except InvalidBet:
             pass
         return stake_values
 
