@@ -2,7 +2,7 @@ from unittest import TestCase
 
 from unittest.mock import Mock, patch
 
-from roulette import Simulator, Game, Martingale, Table, Wheel
+from roulette import Simulator, Game, Martingale, Table, Wheel, InvalidBet
 
 
 class TestSimulator(TestCase):
@@ -43,3 +43,8 @@ class TestSimulator(TestCase):
             session_result = self.simulator.session()
 
         self.assertTrue(len(session_result) > 0)
+
+    def test_exception_is_handled_in_session(self):
+        cycle_mock = Mock(name="cycle_mock", side_effect=InvalidBet)
+        with patch("roulette.Game.cycle", cycle_mock):
+            self.simulator.session()
