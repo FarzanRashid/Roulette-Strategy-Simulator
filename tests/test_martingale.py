@@ -2,7 +2,7 @@ from unittest import TestCase
 
 from unittest.mock import Mock, patch
 
-from roulette import Game, Martingale, Table, Wheel, Bet, BinBuilder
+from roulette import Game, Martingale, Table, Wheel, Bet, BinBuilder, InvalidBet
 
 
 class TestMartingale(TestCase):
@@ -14,15 +14,20 @@ class TestMartingale(TestCase):
         self.game = Game(self.wheel, self.table)
         self.martingale = Martingale(self.table)
 
-    def test_bets_placed_when_stake_not_less_than_betMultiple(self):
+    def test_bets_placed_when_player_is_playing(self):
         self.martingale.stake = 10
         self.martingale.betMultiple = 15
-        self.game.cycle(self.martingale)
+
+        self.assertFalse(self.martingale.playing())
+
         expected_bets_on_table = []
         actual_bets_on_table = self.table.bets
         self.assertEqual(expected_bets_on_table, actual_bets_on_table)
 
         self.martingale.betMultiple = 10
+
+        self.assertTrue(self.martingale.playing())
+
         bet_amount = self.martingale.betMultiple
         self.game.cycle(self.martingale)
         bet = Bet(bet_amount, self.wheel.getOutcome("Black"))
@@ -45,8 +50,26 @@ class TestMartingale(TestCase):
         self.assertEqual(expected_stake, self.martingale.stake)
 
     def test_player_plays_when_stake_not_less_than_table_minimum(self):
-        self.martingale.stake = 3
+        self.martingale.stake = 0
         self.assertFalse(self.martingale.playing())
 
         self.martingale.stake = 15
         self.assertTrue(self.martingale.playing())
+
+    def test_player_plays_if_rounds_are_more_than_zero(self):
+        self.assertTrue(self.martingale.playing())
+
+        self.martingale.roundsToGo = 0
+
+        self.assertFalse(self.martingale.playing())
+
+    def test_attributes_are_reset_if_invalid_bet_is_placed(self):
+        self.martingale.betMultiple = 500
+        with self.assertRaises(InvalidBet):
+            self.martingale.placeBets()
+
+        expected_losscount_value = 0
+        expected_betmultiple_value = 2**expected_losscount_value
+
+        self.assertEqual(expected_losscount_value, self.martingale.losscount)
+        self.assertEqual(expected_betmultiple_value, self.martingale.betMultiple)
