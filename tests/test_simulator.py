@@ -22,7 +22,7 @@ class TestSimulator(TestCase):
         session_mock = Mock(name="session_mock", return_value=[1, 2, 5])
         self.simulator.samples = 1
 
-        with patch("roulette.Simulator.session", session_mock):
+        with patch("simulator.Simulator.session", session_mock):
             self.simulator.gather()
 
         session_mock.assert_called_once()
@@ -34,7 +34,7 @@ class TestSimulator(TestCase):
         session_mock = Mock(name="session_mock", return_value=[1, 2, 5])
         self.simulator.samples = 1
 
-        with patch("roulette.Simulator.session", session_mock):
+        with patch("simulator.Simulator.session", session_mock):
             self.simulator.gather()
 
         session_mock.assert_called_once()
@@ -44,12 +44,12 @@ class TestSimulator(TestCase):
 
     def test_session_gathers_list_of_stake(self):
         cycle_mock = Mock(name="cycle_mock")
-        with patch("roulette.Game.cycle", cycle_mock):
+        with patch("game.Game.cycle", cycle_mock):
             session_result = self.simulator.session()
 
         self.assertTrue(len(session_result) > 0)
 
     def test_exception_is_handled_in_session(self):
         cycle_mock = Mock(name="cycle_mock", side_effect=InvalidBet)
-        with patch("roulette.Game.cycle", cycle_mock):
+        with patch("game.Game.cycle", cycle_mock):
             self.simulator.session()
