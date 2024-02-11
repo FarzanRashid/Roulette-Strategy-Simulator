@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from roulette import Outcome
+from outcome import Outcome
 
 
 class TestOutcome(TestCase):
