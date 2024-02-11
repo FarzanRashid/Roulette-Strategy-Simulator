@@ -1,4 +1,4 @@
-from player import Player
+from players.player import Player
 from table import Table
 from wheel import Wheel
 from bet import Bet
