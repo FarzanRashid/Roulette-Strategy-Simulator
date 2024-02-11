@@ -2,7 +2,12 @@ from unittest import TestCase
 
 from unittest.mock import Mock, patch
 
-from roulette import Simulator, Game, Martingale, Table, Wheel, InvalidBet
+from simulator import Simulator
+from game import Game
+from table import Table
+from wheel import Wheel
+from invalid_bet import InvalidBet
+from players.martingale import Martingale
 
 
 class TestSimulator(TestCase):
