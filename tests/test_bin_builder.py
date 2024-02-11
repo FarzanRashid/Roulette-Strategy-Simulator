@@ -1,6 +1,8 @@
 from unittest import TestCase
 from unittest.mock import Mock, patch
-from roulette import Outcome, Wheel, BinBuilder
+from outcome import Outcome
+from wheel import Wheel
+from bin_builder import BinBuilder
 
 
 class TestBinBuilder(TestCase):
