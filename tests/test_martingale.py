@@ -41,7 +41,7 @@ class TestMartingale(TestCase):
 
     def test_stake_reduced_when_bet_placed(self):
         self.martingale.betMultiple = 10
-        with patch("roulette.Wheel.choose", Mock(return_value=[])):
+        with patch("wheel.Wheel.choose", Mock(return_value=[])):
             self.game.cycle(self.martingale)
         expected_stake_after_bet = 90
         self.assertEqual(self.martingale.stake, expected_stake_after_bet)
@@ -49,7 +49,7 @@ class TestMartingale(TestCase):
     def test_stake_raised_if_bet_wins(self):
         self.martingale.betMultiple = 10
         with patch(
-            "roulette.Wheel.choose", Mock(return_value=[self.wheel.getOutcome("Black")])
+            "wheel.Wheel.choose", Mock(return_value=[self.wheel.getOutcome("Black")])
         ):
             self.game.cycle(self.martingale)
         expected_stake = 110
