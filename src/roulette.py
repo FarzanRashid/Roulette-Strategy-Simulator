@@ -4,15 +4,6 @@ from dataclasses import dataclass
 from abc import ABC, abstractmethod
 
 
-class InvalidBet(Exception):
-    """
-    :class:`InvalidBet` is raised when a Player instance attempts to place a bet which exceeds the
-    table’s limit.
-
-    This class simply inherits all features of its superclass.
-    """
-
-
 class Table:
     """
     :class:`Table` contains all the :class:`Bet` instances created by a :class:`Player` object. A
