@@ -194,16 +194,16 @@ class TestBinBuilder(TestCase):
 
     def test_buildBins_invokes_helper_methods(self):
         helper_methods = {
-            "roulette.BinBuilder.build_bins_for_straight_bets",
-            "roulette.BinBuilder.build_bins_for_horizontal_split_bets",
-            "roulette.BinBuilder.build_bins_for_vertical_split_bets",
-            "roulette.BinBuilder.build_bins_for_street_bets",
-            "roulette.BinBuilder.build_bins_for_corner_bets",
-            "roulette.BinBuilder.build_bins_for_line_bets",
-            "roulette.BinBuilder.build_bins_for_five_bet",
-            "roulette.BinBuilder.build_bins_for_even_money_bets",
-            "roulette.BinBuilder.build_bins_for_dozen_bets",
-            "roulette.BinBuilder.build_bins_for_column_bets",
+            "bin_builder.BinBuilder.build_bins_for_straight_bets",
+            "bin_builder.BinBuilder.build_bins_for_horizontal_split_bets",
+            "bin_builder.BinBuilder.build_bins_for_vertical_split_bets",
+            "bin_builder.BinBuilder.build_bins_for_street_bets",
+            "bin_builder.BinBuilder.build_bins_for_corner_bets",
+            "bin_builder.BinBuilder.build_bins_for_line_bets",
+            "bin_builder.BinBuilder.build_bins_for_five_bet",
+            "bin_builder.BinBuilder.build_bins_for_even_money_bets",
+            "bin_builder.BinBuilder.build_bins_for_dozen_bets",
+            "bin_builder.BinBuilder.build_bins_for_column_bets",
         }
 
         mock_helper_methods = []
