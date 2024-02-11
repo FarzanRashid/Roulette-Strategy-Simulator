@@ -2,8 +2,8 @@ from wheel import Wheel
 from bin_builder import BinBuilder
 from table import Table
 from game import Game
-from players.martingale import Martingale
 from simulator import Simulator
+from players.martingale import Martingale
 
 
 def main() -> None:  # pragma: no cover
