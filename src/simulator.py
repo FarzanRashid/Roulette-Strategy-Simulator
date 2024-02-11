@@ -1,5 +1,7 @@
 from game import Game
 from invalid_bet import InvalidBet
+from players.player import Player
+
 
 class Simulator:
     """

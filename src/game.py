@@ -1,6 +1,6 @@
 from wheel import Wheel
 from table import Table
-from Players.player import Player
+from players.player import Player
 
 
 class Game:
