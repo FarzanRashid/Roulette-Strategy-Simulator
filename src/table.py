@@ -1,6 +1,6 @@
 from typing import Iterator
 from bet import Bet
-from roulette import InvalidBet
+from invalid_bet import InvalidBet
 
 
 class Table:
