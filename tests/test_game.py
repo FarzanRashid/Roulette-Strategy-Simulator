@@ -2,7 +2,12 @@ from unittest import TestCase
 
 from unittest.mock import Mock, patch
 
-from roulette import Wheel, Table, Passenger57, Game, BinBuilder, InvalidBet
+from game import Game
+from wheel import Wheel
+from table import Table
+from bin_builder import BinBuilder
+from invalid_bet import InvalidBet
+from players.passenger57 import Passenger57
 
 
 class TestGame(TestCase):
