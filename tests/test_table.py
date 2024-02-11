@@ -1,5 +1,8 @@
 from unittest import TestCase
-from roulette import Table, Bet, Outcome, InvalidBet
+from table import Table
+from outcome import Outcome
+from bet import Bet
+from invalid_bet import InvalidBet
 
 
 class TestTable(TestCase):
