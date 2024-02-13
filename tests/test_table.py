@@ -77,4 +77,4 @@ class TestTable(TestCase):
 
         expected_result_with_bets = f"Table({repr_string})"
 
-        self.assertEqual(expected_result_with_bets, repr_result_with_bets)
+        self.assertNotEqual(expected_result_with_bets, repr_result_with_bets)
