@@ -49,8 +49,10 @@ jobs:
       run: mypy src
 
     - name: Run pylint
-      continue-on-error: true
-      run: pylint src
+      run: pylint src --disable=missing-module-docstring,invalid-name,too-few-public-methods,
+           redefined-builtin src
+           pylint --disable=missing-module-docstring,missing-function-docstring,
+           missing-class-docstring,invalid-name tests
 
     - name: Check code style with black
       run: black --check src tests
