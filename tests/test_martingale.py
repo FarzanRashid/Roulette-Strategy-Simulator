@@ -2,7 +2,13 @@ from unittest import TestCase
 
 from unittest.mock import Mock, patch
 
-from roulette import Game, Martingale, Table, Wheel, Bet, BinBuilder, InvalidBet
+from game import Game
+from table import Table
+from bet import Bet
+from bin_builder import BinBuilder
+from invalid_bet import InvalidBet
+from wheel import Wheel
+from players.martingale import Martingale
 
 
 class TestMartingale(TestCase):
@@ -35,7 +41,7 @@ class TestMartingale(TestCase):
 
     def test_stake_reduced_when_bet_placed(self):
         self.martingale.betMultiple = 10
-        with patch("roulette.Wheel.choose", Mock(return_value=[])):
+        with patch("wheel.Wheel.choose", Mock(return_value=[])):
             self.game.cycle(self.martingale)
         expected_stake_after_bet = 90
         self.assertEqual(self.martingale.stake, expected_stake_after_bet)
@@ -43,7 +49,7 @@ class TestMartingale(TestCase):
     def test_stake_raised_if_bet_wins(self):
         self.martingale.betMultiple = 10
         with patch(
-            "roulette.Wheel.choose", Mock(return_value=[self.wheel.getOutcome("Black")])
+            "wheel.Wheel.choose", Mock(return_value=[self.wheel.getOutcome("Black")])
         ):
             self.game.cycle(self.martingale)
         expected_stake = 110

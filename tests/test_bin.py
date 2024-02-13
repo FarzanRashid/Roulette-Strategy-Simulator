@@ -1,5 +1,6 @@
 from unittest import TestCase
-from roulette import Bin, Outcome
+from bin import Bin
+from outcome import Outcome
 
 
 class TestBin(TestCase):

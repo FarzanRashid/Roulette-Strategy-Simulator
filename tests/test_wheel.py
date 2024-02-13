@@ -1,5 +1,7 @@
 from unittest import TestCase
-from roulette import Outcome, Bin, Wheel
+from outcome import Outcome
+from bin import Bin
+from wheel import Wheel
 
 
 class TestWheel(TestCase):
