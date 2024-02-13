@@ -50,9 +50,9 @@ jobs:
 
     - name: Run pylint
       run:
-        pylint --disable=missing-module-docstring,invalid-name,too-few-public-methods,
+        pylint --disable=missing-module-docstring,invalid-name,too-few-public-methods,\
         redefined-builtin,too-many-lines src
-        pylint --disable=missing-module-docstring,missing-function-docstring,
+        pylint --disable=missing-module-docstring,missing-function-docstring,\
         missing-class-docstring,invalid-name tests
 
     - name: Check code style with black
