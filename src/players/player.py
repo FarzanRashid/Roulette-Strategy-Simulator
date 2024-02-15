@@ -75,4 +75,4 @@ class Player(ABC):
         """
         Returns :samp:`True` while the player is still active.
         """
-        return self.stake >= self.table.minimum and self.roundsToGo > 0
+        return self.roundsToGo > 0
