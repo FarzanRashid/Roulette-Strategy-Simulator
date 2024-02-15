@@ -1,4 +1,6 @@
 from abc import ABC, abstractmethod
+from typing import Set
+from outcome import Outcome
 from table import Table
 from bet import Bet
 
@@ -76,3 +78,6 @@ class Player(ABC):
         Returns :samp:`True` while the player is still active.
         """
         return self.roundsToGo > 0
+
+    def winners(self, outcomes: Set[Outcome]) -> None:
+        pass
