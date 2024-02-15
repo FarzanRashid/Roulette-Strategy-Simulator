@@ -35,7 +35,6 @@ class Table:
         """
 
         self.bets = list(bets) if bets else []
-        self.minimum = 1
         self.limit = 300
 
     def placeBet(self, bet: Bet) -> None:
@@ -73,7 +72,7 @@ class Table:
         bets_sum = 0
         for bet in self.bets:
             bets_sum += bet.amount
-            if bet.amount < self.minimum or bets_sum > self.limit:
+            if bets_sum > self.limit:
                 raise InvalidBet
 
     def __str__(self) -> str:
