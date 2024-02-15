@@ -31,3 +31,12 @@ class TestSevenReds(TestCase):
         expected_redCount_value = 6
 
         self.assertEqual(expected_redCount_value, self.seven_reds.redCount)
+
+    def test_winners_reset_redCount_if_red_outcome_not_in_winning_outcomes(self):
+        self.seven_reds.redCount = 1
+        black_outcome = Outcome("black", 1)
+        self.seven_reds.winners({black_outcome})
+
+        expected_redCount_value = 7
+
+        self.assertEqual(expected_redCount_value, self.seven_reds.redCount)
