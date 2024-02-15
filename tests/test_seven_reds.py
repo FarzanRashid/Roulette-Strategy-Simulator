@@ -24,7 +24,7 @@ class TestSevenReds(TestCase):
 
         self.assertIn(expected_bet_in_table, self.table.bets)
 
-    def test_winners_reduce_redCount_if_red_outcome_in_winning_bets(self):
+    def test_winners_reduce_redCount_if_red_outcome_in_winning_outcomes(self):
         red_outcome = Outcome("Red", 1)
         self.seven_reds.winners({red_outcome})
 
