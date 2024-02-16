@@ -80,4 +80,10 @@ class Player(ABC):
         return self.roundsToGo > 0
 
     def winners(self, outcomes: Set[Outcome]) -> None:
-        pass
+        """
+        :param outcomes: The set of :py:class:`~outcome.Outcome` instances that are part of the
+        current win.
+
+        The game will notify a player of each spin using this method. This will be invoked even if
+        the player places no bets.
+        """
