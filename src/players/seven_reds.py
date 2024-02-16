@@ -28,6 +28,7 @@ class SevenReds(Martingale):
         """
 
         if self.redCount == 0:
+            self.redCount = 7
             super().placeBets()
 
     def winners(self, outcomes: Set[Outcome]) -> None:
