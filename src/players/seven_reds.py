@@ -23,6 +23,10 @@ class SevenReds(Martingale):
         self.redCount = 7
 
     def placeBets(self) -> None:
+        """
+        If **redCount** is zero, this places a bet on black, using the bet multiplier.
+        """
+
         if self.redCount == 0:
             super().placeBets()
 
