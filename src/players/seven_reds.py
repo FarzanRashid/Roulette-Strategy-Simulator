@@ -4,6 +4,12 @@ from .martingale import Martingale
 
 
 class SevenReds(Martingale):
+    """
+    :class:`SevenReds` is a :py:class:`~players.martingale.Martingale` player who places
+    bets in Roulette. This player waits until the wheel has spun red seven times in a row before
+    betting black.
+    """
+
     def __init__(self, table):
         super().__init__(table)
         self.redCount = 7
