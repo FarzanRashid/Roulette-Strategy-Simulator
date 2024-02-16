@@ -31,6 +31,13 @@ class SevenReds(Martingale):
             super().placeBets()
 
     def winners(self, outcomes: Set[Outcome]) -> None:
+        """
+        :param outcomes: The :py:class:`~outcome.Outcome` set from a Bin.
+
+        This is notification from the :py:class:`~game.Game` of all the winning outcomes. If
+        this vector includes red, redCount is decremented. Otherwise, redCount is reset to 7.
+        """
+
         red_outcome = Outcome("Red", 1)
         if red_outcome in outcomes:
             self.redCount -= 1
