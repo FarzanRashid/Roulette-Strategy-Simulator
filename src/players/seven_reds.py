@@ -1,6 +1,6 @@
 from typing import Set
 from outcome import Outcome
-from .martingale import Martingale
+from players.martingale import Martingale
 
 
 class SevenReds(Martingale):
