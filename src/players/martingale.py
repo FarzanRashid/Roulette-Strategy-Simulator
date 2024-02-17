@@ -2,7 +2,7 @@ from table import Table
 from outcome import Outcome
 from bet import Bet
 from invalid_bet import InvalidBet
-from .player import Player
+from players.player import Player
 
 
 class Martingale(Player):

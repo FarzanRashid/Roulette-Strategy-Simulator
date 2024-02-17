@@ -1,4 +1,6 @@
 from abc import ABC, abstractmethod
+from typing import Set
+from outcome import Outcome
 from table import Table
 from bet import Bet
 
@@ -75,4 +77,13 @@ class Player(ABC):
         """
         Returns :samp:`True` while the player is still active.
         """
-        return self.stake >= self.table.minimum and self.roundsToGo > 0
+        return self.roundsToGo > 0
+
+    def winners(self, outcomes: Set[Outcome]) -> None:
+        """
+        :param outcomes: The set of :py:class:`~outcome.Outcome` instances that are part of the
+        current win.
+
+        The game will notify a player of each spin using this method. This will be invoked even if
+        the player places no bets.
+        """

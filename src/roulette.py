@@ -3,7 +3,7 @@ from bin_builder import BinBuilder
 from table import Table
 from game import Game
 from simulator import Simulator
-from players.martingale import Martingale
+from players.seven_reds import SevenReds
 
 
 def main() -> None:  # pragma: no cover
@@ -15,8 +15,8 @@ def main() -> None:  # pragma: no cover
     bin_builder = BinBuilder()
     table = Table()
     game = Game(wheel, table)
-    martingale = Martingale(table)
-    simulator = Simulator(game, martingale)
+    player = SevenReds(table)
+    simulator = Simulator(game, player)
 
     bin_builder.buildBins(wheel)
     simulator.gather()
