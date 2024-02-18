@@ -9,7 +9,11 @@ class IntegerStatistics(list):
     This extends **list** with some additional methods.
     """
 
-    def mean(self):
+    def mean(self) -> float:
+        """
+        Computes the mean of the **List** of values.
+        """
+
         return sum(self) / len(self)
 
     def stdev(self):
