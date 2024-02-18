@@ -16,6 +16,10 @@ class IntegerStatistics(list):
 
         return sum(self) / len(self)
 
-    def stdev(self):
+    def stdev(self) -> float:
+        """
+        Computes the standard deviation of the **List** values.
+        """
+
         mean = self.mean()
         return round(math.sqrt(sum((x-mean)**2 for x in self) / (len(self)-1)), 3)
