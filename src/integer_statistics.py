@@ -1,2 +1,3 @@
 class IntegerStatistics(list):
-    pass
+    def mean(self):
+        return sum(self) / len(self)
