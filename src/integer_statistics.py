@@ -1,6 +1,14 @@
 import math
 
+
 class IntegerStatistics(list):
+    """
+    :class:`IntegerStatistics` computes several simple descriptive statistics of int values in a
+    list.
+
+    This extends **list** with some additional methods.
+    """
+
     def mean(self):
         return sum(self) / len(self)
 
