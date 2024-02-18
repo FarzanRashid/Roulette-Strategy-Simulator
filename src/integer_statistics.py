@@ -6,4 +6,4 @@ class IntegerStatistics(list):
 
     def stdev(self):
         mean = self.mean()
-        return math.sqrt(sum((x-mean)**2 for x in self) / (len(self)-1))
+        return round(math.sqrt(sum((x-mean)**2 for x in self) / (len(self)-1)), 3)
