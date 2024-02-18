@@ -12,3 +12,9 @@ class TestIntegerStatistics(TestCase):
         actual_mean_result = self.int_stat.mean()
 
         self.assertEqual(expected_mean_result, actual_mean_result)
+
+    def test_calculate_standard_deviation(self):
+        expected_stdev_result = 3.317
+        actual_stdev_result = self.int_stat.stdev()
+
+        self.assertEqual(expected_stdev_result, actual_stdev_result)
