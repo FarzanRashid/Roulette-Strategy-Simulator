@@ -1,5 +1,6 @@
 from game import Game
 from invalid_bet import InvalidBet
+from integer_statistics import IntegerStatistics
 from players.player import Player
 
 
@@ -57,8 +58,8 @@ class Simulator:
         self.initDuration = 250
         self.initStake = 100
         self.samples = 50
-        self.durations: list[int] = []
-        self.maxima: list[int] = []
+        self.durations = IntegerStatistics()
+        self.maxima = IntegerStatistics()
 
     def session(self) -> list[int]:
         """
