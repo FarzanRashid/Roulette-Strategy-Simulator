@@ -1,5 +1,5 @@
 import random
-from typing import Dict
+from typing import Dict, Iterator
 from outcome import Outcome
 from bin import Bin
 
@@ -88,3 +88,6 @@ class Wheel:
         if name not in self.all_outcomes:
             raise KeyError(f"Outcome with {name} not found")
         return self.all_outcomes[name]
+
+    def binIterator(self) -> Iterator[Bin]:
+        return iter(self.bins)
