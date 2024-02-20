@@ -1,5 +1,5 @@
 import random
-
+from bet import Bet
 from players.player import Player
 
 
@@ -12,4 +12,4 @@ class PlayerRandom(Player):
         self.all_OC = set(outcome for bin in bin_iterator for outcome in bin)
 
     def placeBets(self) -> None:
-        self.table.placeBet(self.rng.choice(list(self.all_OC)))
+        self.table.placeBet(Bet(1, self.rng.choice(list(self.all_OC))))
