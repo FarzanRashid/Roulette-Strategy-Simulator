@@ -8,3 +8,7 @@ class Bin(frozenset):
     “Line 1-2-3-4-5-6” , “00-0-1-2-3” , “Dozen 1”, “Low” and “Column 1”. These are collected into a
     single :class:`Bin`.
     """
+
+    def __iter__(self):
+        for outcome in super().__iter__():
+            yield outcome
