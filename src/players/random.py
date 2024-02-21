@@ -4,6 +4,11 @@ from players.player import Player
 
 
 class PlayerRandom(Player):
+    """
+    :class:`PlayerRandom` is a :py:class:`~players.player.Player` who places bets in Roulette.
+    This player makes random bets around the layout.
+    """
+
     def __init__(self, table, wheel):
         super().__init__(table)
         self.wheel = wheel
