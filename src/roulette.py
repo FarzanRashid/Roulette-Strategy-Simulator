@@ -3,7 +3,7 @@ from bin_builder import BinBuilder
 from table import Table
 from game import Game
 from simulator import Simulator
-from players.seven_reds import SevenReds
+from players.random import PlayerRandom
 
 
 def main() -> None:  # pragma: no cover
@@ -15,10 +15,9 @@ def main() -> None:  # pragma: no cover
     bin_builder = BinBuilder()
     table = Table()
     game = Game(wheel, table)
-    player = SevenReds(table)
-    simulator = Simulator(game, player)
-
     bin_builder.buildBins(wheel)
+    player = PlayerRandom(table, wheel)
+    simulator = Simulator(game, player)
     simulator.gather()
 
     print("maxima: ", simulator.maxima)
