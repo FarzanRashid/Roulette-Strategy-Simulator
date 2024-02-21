@@ -38,5 +38,7 @@ class PlayerRandom(Player):
         Updates the :py:class:`~table.Table` object with a randomly placed :py:class:`~bet.Bet`
         instance.
         """
-
-        self.table.placeBet(Bet(1, self.rng.choice(list(self.all_OC))))
+        if super().playing() and self.stake > 0:
+            bet_amount = 1
+            self.table.placeBet(Bet(bet_amount, self.rng.choice(list(self.all_OC))))
+            self.stake -= bet_amount
