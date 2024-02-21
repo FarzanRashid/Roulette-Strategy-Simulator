@@ -77,9 +77,9 @@ class Simulator:
         self.player.stake = self.initStake
         self.player.roundsToGo = self.initDuration
         stake_values = []
-        self.player.table.bets = []
         try:
             while self.player.playing():
+                self.player.table.bets = []
                 self.game.cycle(self.player)
                 stake_values.append(self.player.stake)
                 self.player.roundsToGo -= 1
