@@ -34,4 +34,9 @@ class PlayerRandom(Player):
         self.all_OC = set(outcome for bin in bin_iterator for outcome in bin)
 
     def placeBets(self) -> None:
+        """
+        Updates the :py:class:`~table.Table` object with a randomly placed :py:class:`~bet.Bet`
+        instance.
+        """
+
         self.table.placeBet(Bet(1, self.rng.choice(list(self.all_OC))))
