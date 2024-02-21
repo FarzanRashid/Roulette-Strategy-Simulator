@@ -18,10 +18,12 @@ class TestRandom(TestCase):
 
         self.assertEqual(all_outcomes, self.random_player.all_OC)
 
-    def test_placeBets_bets_on_randomly_selected_outcome_with_seed(self):
-        self.random_player.all_OC = list(self.random_player.all_OC)
+    def test_bets_on_randomly_selected_outcome_with_seed(self):
         fixed_seed = 1
         self.random_player.rng.seed(fixed_seed)
-        radomly_selected_outcome = self.random_player.rng.choice(self.random_player.all_OC)
+        randomly_selected_outcome = self.random_player.rng.choice(
+            list(self.random_player.all_OC)
+        )
+        self.random_player.rng.seed(fixed_seed)
         self.random_player.placeBets()
-        self.assertIn(radomly_selected_outcome, self.table.bets)
+        self.assertEqual(randomly_selected_outcome, self.table.bets[0].outcome)
