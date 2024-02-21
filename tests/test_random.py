@@ -13,12 +13,12 @@ class TestRandom(TestCase):
         bin_builder.buildBins(self.wheel)
         self.random_player = PlayerRandom(self.table, self.wheel)
 
-    def test_all_outcomes_are_added_to_all_OC(self):
+    def test_all_outcomes_are_added(self):
         all_outcomes = set(self.wheel.all_outcomes.values())
 
         self.assertEqual(all_outcomes, self.random_player.all_OC)
 
-    def test_bets_on_randomly_selected_outcome_with_seed(self):
+    def test_bets_on_randomly_selected_outcome(self):
         fixed_seed = 1
         self.random_player.rng.seed(fixed_seed)
         randomly_selected_outcome = self.random_player.rng.choice(
