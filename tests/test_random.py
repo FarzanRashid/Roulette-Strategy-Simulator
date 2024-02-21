@@ -14,7 +14,7 @@ class TestRandom(TestCase):
         self.random_player = PlayerRandom(self.table, self.wheel)
 
     def test_all_outcomes_are_added_to_all_OC(self):
-        all_outcomes = {outcome for outcome in self.wheel.all_outcomes.values()}
+        all_outcomes = set(self.wheel.all_outcomes.values())
 
         self.assertEqual(all_outcomes, self.random_player.all_OC)
 
