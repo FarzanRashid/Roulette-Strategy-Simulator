@@ -7,6 +7,13 @@ class PlayerRandom(Player):
     """
     :class:`PlayerRandom` is a :py:class:`~players.player.Player` who places bets in Roulette.
     This player makes random bets around the layout.
+
+    .. attribute:: rng
+
+       A Random Number Generator which will return the next random number.
+
+       When writing unit tests, we will want to patch this with a mock object to return a known
+       sequence of bets.
     """
 
     def __init__(self, table, wheel):
