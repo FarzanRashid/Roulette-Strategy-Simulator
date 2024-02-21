@@ -90,4 +90,11 @@ class Wheel:
         return self.all_outcomes[name]
 
     def binIterator(self) -> Iterator[Bin]:
+        """
+        Returns an **Iterator** of :py:class:`~bin.Bin` objects.
+
+        :return: **Iterator** of :py:class:`~bin.Bin` objects.
+        :rtype: Iterator
+        """
+
         return iter(self.bins)
