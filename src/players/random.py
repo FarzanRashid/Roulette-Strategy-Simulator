@@ -14,6 +14,10 @@ class PlayerRandom(Player):
 
        When writing unit tests, we will want to patch this with a mock object to return a known
        sequence of bets.
+
+    .. attribute:: all_OC
+
+       **Set** of all known :py:class:`~outcome.Outcome` instances.
     """
 
     def __init__(self, table, wheel) -> None:
