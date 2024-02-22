@@ -26,11 +26,9 @@ class PlayerRandom(Player):
         :param wheel: wheel (wheel) - The :py:class:`~wheel.Wheel` object which will be used to
         populate :py:class:`~outcome.Outcome`s.
         """
-
         super().__init__(table)
-        self.wheel = wheel
         self.rng = random.Random()
-        bin_iterator = self.wheel.binIterator()
+        bin_iterator = wheel.binIterator()
         self.all_OC = set(outcome for bin in bin_iterator for outcome in bin)
 
     def placeBets(self) -> None:
