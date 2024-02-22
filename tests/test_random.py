@@ -27,3 +27,12 @@ class TestRandom(TestCase):
         self.random_player.rng.seed(fixed_seed)
         self.random_player.placeBets()
         self.assertEqual(randomly_selected_outcome, self.table.bets[0].outcome)
+
+    def test_player_plays_when_stake_more_than_zero(self):
+        self.random_player.stake = 0
+
+        self.assertFalse(self.random_player.playing())
+
+        self.random_player.stake = 1
+
+        self.assertTrue(self.random_player.playing())
