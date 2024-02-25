@@ -9,3 +9,4 @@ class Player1326(Player):
         super().__init__(table)
         self.table = table
         self.outcome = wheel.getOutcome("Red")
+        self.state = Player1326NoWin(self)
