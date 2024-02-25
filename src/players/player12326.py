@@ -10,3 +10,6 @@ class Player1326(Player):
         self.table = table
         self.outcome = wheel.getOutcome("Red")
         self.state = Player1326NoWin(self)
+
+    def playing(self) -> bool:
+        return super().playing() and self.stake > 0
