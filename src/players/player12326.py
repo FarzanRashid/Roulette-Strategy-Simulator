@@ -21,3 +21,6 @@ class Player1326(Player):
     def win(self, bet: Bet) -> None:
         super().win(bet)
         self.state = self.state.nextWon()
+
+    def lose(self, bet: Bet) -> None:
+        self.state = self.state.nextLost()
