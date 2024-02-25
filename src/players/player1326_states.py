@@ -18,6 +18,7 @@ class Player1326State:
     def nextLost(self) -> "Player1326State":
         pass
 
+
 class Player1326NoWin(Player1326State):
     def __init__(self, player: Player) -> None:
         super().__init__(player)
@@ -25,3 +26,6 @@ class Player1326NoWin(Player1326State):
     def currentBet(self) -> Bet:
         bet_amount = 1
         return Bet(bet_amount, self.player.outcome)
+
+    def nextWon(self) -> Player1326State:
+        pass
