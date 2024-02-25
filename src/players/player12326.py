@@ -6,6 +6,6 @@ from player1326_states import Player1326NoWin
 
 class Player1326(Player):
     def __init__(self, table: Table, wheel: Wheel) -> None:
+        super().__init__(table)
         self.table = table
         self.outcome = wheel.getOutcome("Red")
-        
