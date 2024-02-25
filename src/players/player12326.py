@@ -13,3 +13,6 @@ class Player1326(Player):
 
     def playing(self) -> bool:
         return super().playing() and self.stake > 0
+
+    def placeBets(self) -> None:
+        self.table.placeBet(self.state.currentBet())
