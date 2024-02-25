@@ -46,3 +46,7 @@ class Player1326OneWin(Player1326State):
 class Player1326TwoWins(Player1326State):
     def __init__(self, player: Player) -> None:
         super().__init__(player)
+
+    def currentBet(self) -> Bet:
+        bet_amount = 2
+        return Bet(bet_amount, self.player.outcome)
