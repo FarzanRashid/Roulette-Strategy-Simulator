@@ -28,7 +28,7 @@ class Player1326NoWin(Player1326State):
         return Bet(bet_amount, self.player.outcome)
 
     def nextWon(self) -> Player1326State:
-        pass
+        return Player1326OneWin(self.player)
 
 
 class Player1326OneWin(Player1326State):
@@ -40,7 +40,7 @@ class Player1326OneWin(Player1326State):
         return Bet(bet_amount, self.player.outcome)
 
     def nextWon(self) -> Player1326State:
-        pass
+        return Player1326TwoWins(self.player)
 
 
 class Player1326TwoWins(Player1326State):
@@ -52,7 +52,7 @@ class Player1326TwoWins(Player1326State):
         return Bet(bet_amount, self.player.outcome)
 
     def nextWon(self) -> Player1326State:
-        pass
+        return Player1326ThreeWins(self.player)
 
 
 class Player1326ThreeWins(Player1326State):
