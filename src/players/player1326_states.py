@@ -38,3 +38,6 @@ class Player1326OneWin(Player1326State):
     def currentBet(self) -> Bet:
         bet_amount = 3
         return Bet(bet_amount, self.player.outcome)
+
+    def nextWon(self) -> Player1326State:
+        pass
