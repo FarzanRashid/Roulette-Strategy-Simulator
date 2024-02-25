@@ -1,3 +1,4 @@
+from bet import Bet
 from wheel import Wheel
 from table import Table
 from player import Player
@@ -16,3 +17,7 @@ class Player1326(Player):
 
     def placeBets(self) -> None:
         self.table.placeBet(self.state.currentBet())
+
+    def win(self, bet: Bet) -> None:
+        super().win(bet)
+        self.state = self.state.nextWon()
