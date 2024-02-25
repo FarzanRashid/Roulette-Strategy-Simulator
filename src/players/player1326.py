@@ -14,3 +14,6 @@ class Player1326State:
     @abstractmethod
     def nextWon(self) -> "Player1326State":
         return NotImplemented
+
+    def nextLost(self) -> "Player1326State":
+        pass
