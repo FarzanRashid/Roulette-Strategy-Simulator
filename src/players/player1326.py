@@ -10,3 +10,7 @@ class Player1326State:
     @abstractmethod
     def currentBet(self) -> Bet:
         return NotImplemented
+
+    @abstractmethod
+    def nextWon(self) -> "Player1326State":
+        return NotImplemented
