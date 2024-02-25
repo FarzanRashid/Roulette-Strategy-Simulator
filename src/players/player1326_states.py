@@ -41,3 +41,8 @@ class Player1326OneWin(Player1326State):
 
     def nextWon(self) -> Player1326State:
         pass
+
+
+class Player1326TwoWins(Player1326State):
+    def __init__(self, player: Player) -> None:
+        super().__init__(player)
