@@ -25,6 +25,7 @@ class Player1326NoWins(Player1326State):
     def __init__(self, player: Player) -> None:
         super().__init__(player)
         self.betAmount = 1
+
     def __new__(cls, *args, **kwargs) -> "Player1326NoWins":
         if cls._player1326_no_wins is None:
             cls._player1326_no_wins = super(Player1326NoWins, cls).__new__(cls)
@@ -92,3 +93,12 @@ class Player1326ThreeWins(Player1326State):
 
     def nextWon(self) -> Player1326State:
         return Player1326NoWins(self.player)
+
+
+class Player1326StateFactory:
+    def __init__(self, player: Player):
+        self.values = {"Player1326NoWins": Player1326NoWins(player),
+                       "Player1326OneWin": Player1326OneWin(player),
+                       "Player1326TwoWins": Player1326TwoWins(player),
+                       "Player1326ThreeWins": Player1326ThreeWins(player),
+                       }
