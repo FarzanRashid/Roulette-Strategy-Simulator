@@ -17,6 +17,7 @@ class Player1326(Player):
 
     def placeBets(self) -> None:
         self.table.placeBet(self.state.currentBet())
+        self.stake -= self.state.betAmount
 
     def win(self, bet: Bet) -> None:
         super().win(bet)
