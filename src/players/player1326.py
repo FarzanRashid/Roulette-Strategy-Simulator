@@ -13,7 +13,7 @@ class Player1326(Player):
         self.state: Player1326State = Player1326StateFactory(self).get("Player1326NoWins")
 
     def playing(self) -> bool:
-        return super().playing() and self.stake > self.state.betAmount
+        return super().playing() and self.stake >= self.state.betAmount
 
     def placeBets(self) -> None:
         self.table.placeBet(self.state.currentBet())
