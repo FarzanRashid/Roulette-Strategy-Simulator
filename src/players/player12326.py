@@ -2,7 +2,7 @@ from bet import Bet
 from wheel import Wheel
 from table import Table
 from player import Player
-from player1326_states import Player1326NoWins
+from player1326_states import Player1326State,Player1326StateFactory
 
 
 class Player1326(Player):
@@ -10,7 +10,7 @@ class Player1326(Player):
         super().__init__(table)
         self.table = table
         self.outcome = wheel.getOutcome("Red")
-        self.state = Player1326NoWins(self)
+        self.state: Player1326State = Player1326StateFactory(self).get("Player1326NoWin")
 
     def playing(self) -> bool:
         return super().playing() and self.stake > 0
