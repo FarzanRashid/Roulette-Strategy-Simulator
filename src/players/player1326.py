@@ -10,7 +10,7 @@ class Player1326(Player):
         super().__init__(table)
         self.table = table
         self.outcome = wheel.getOutcome("Red")
-        self.state: Player1326State = Player1326StateFactory(self).get("Player1326NoWin")
+        self.state: Player1326State = Player1326StateFactory(self).get("Player1326NoWins")
 
     def playing(self) -> bool:
         return super().playing() and self.stake > 0
