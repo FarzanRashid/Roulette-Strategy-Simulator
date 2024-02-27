@@ -3,7 +3,7 @@ from bin_builder import BinBuilder
 from table import Table
 from game import Game
 from simulator import Simulator
-from players.player1326 import Player1326
+from players.player1326.player1326 import Player1326
 
 
 def main() -> None:  # pragma: no cover
