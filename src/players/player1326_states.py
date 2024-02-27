@@ -15,8 +15,8 @@ class Player1326State:
     def nextWon(self) -> "Player1326State":
         return NotImplemented
 
-    def nextLost(self) -> "Player1326State":
-        pass
+    def nextLost(self) -> "Player1326NoWins":
+        return Player1326NoWins(self.player)
 
 
 class Player1326NoWins(Player1326State):
