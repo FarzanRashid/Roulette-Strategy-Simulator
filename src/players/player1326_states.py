@@ -19,16 +19,16 @@ class Player1326State:
         pass
 
 
-class Player1326NoWin(Player1326State):
-    _player1326_nowin = None
+class Player1326NoWins(Player1326State):
+    _player1326_no_wins = None
 
     def __init__(self, player: Player) -> None:
         super().__init__(player)
 
-    def __new__(cls, *args, **kwargs) -> "Player1326NoWin":
-        if cls._player1326_nowin is None:
-            cls._player1326_nowin = super(Player1326NoWin, cls).__new__(cls)
-        return cls._player1326_nowin
+    def __new__(cls, *args, **kwargs) -> "Player1326NoWins":
+        if cls._player1326_no_wins is None:
+            cls._player1326_no_wins = super(Player1326NoWins, cls).__new__(cls)
+        return cls._player1326_no_wins
 
     def currentBet(self) -> Bet:
         bet_amount = 1
@@ -92,4 +92,4 @@ class Player1326ThreeWins(Player1326State):
         return Bet(bet_amount, self.player.outcome)
 
     def nextWon(self) -> Player1326State:
-        return Player1326NoWin(self.player)
+        return Player1326NoWins(self.player)
