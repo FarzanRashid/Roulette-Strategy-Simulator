@@ -1,7 +1,13 @@
+from bet import Bet
+from players.player1326.player1326 import Player1326
+from players.player1326.player1326_state import Player1326State
+from players.player1326.player1326_no_wins import Player1326NoWins
+
+
 class Player1326ThreeWins(Player1326State):
     _player1326_three_wins = None
 
-    def __init__(self, player: Player) -> None:
+    def __init__(self, player: Player1326) -> None:
         super().__init__(player)
         self.betAmount = 6
 
