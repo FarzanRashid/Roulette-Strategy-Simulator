@@ -3,7 +3,7 @@ from bin_builder import BinBuilder
 from table import Table
 from game import Game
 from simulator import Simulator
-from players.random import PlayerRandom
+from players.player1326 import Player1326
 
 
 def main() -> None:  # pragma: no cover
@@ -16,7 +16,7 @@ def main() -> None:  # pragma: no cover
     table = Table()
     game = Game(wheel, table)
     bin_builder.buildBins(wheel)
-    player = PlayerRandom(table, wheel)
+    player = Player1326(table, wheel)
     simulator = Simulator(game, player)
     simulator.gather()
 

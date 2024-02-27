@@ -1,8 +1,8 @@
 from bet import Bet
 from wheel import Wheel
 from table import Table
-from player import Player
-from player1326_states import Player1326State,Player1326StateFactory
+from players.player import Player
+from players.player1326_states import Player1326StateFactory, Player1326State
 
 
 class Player1326(Player):

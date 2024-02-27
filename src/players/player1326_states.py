@@ -1,6 +1,6 @@
 from abc import abstractmethod
 from bet import Bet
-from player import Player
+from players.player import Player
 
 
 class Player1326State:
