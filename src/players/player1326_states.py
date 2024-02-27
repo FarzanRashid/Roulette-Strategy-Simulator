@@ -28,7 +28,7 @@ class Player1326NoWins(Player1326State):
 
     def __new__(cls, *args, **kwargs) -> "Player1326NoWins":
         if cls._player1326_no_wins is None:
-            cls._player1326_no_wins = super(Player1326NoWins, cls).__new__(cls)
+            cls._player1326_no_wins = super().__new__(cls)
         return cls._player1326_no_wins
 
     def currentBet(self) -> Bet:
@@ -47,7 +47,7 @@ class Player1326OneWin(Player1326State):
 
     def __new__(cls, *args, **kwargs) -> "Player1326OneWin":
         if cls._player1326_onewin is None:
-            cls._player1326_onewin = super(Player1326OneWin, cls).__new__(cls)
+            cls._player1326_onewin = super().__new__(cls)
         return cls._player1326_onewin
 
     def currentBet(self) -> Bet:
@@ -66,7 +66,7 @@ class Player1326TwoWins(Player1326State):
 
     def __new__(cls, *args, **kwargs) -> "Player1326TwoWins":
         if cls._player1326_two_wins is None:
-            cls._player1326_two_wins = super(Player1326TwoWins, cls).__new__(cls)
+            cls._player1326_two_wins = super().__new__(cls)
         return cls._player1326_two_wins
 
     def currentBet(self) -> Bet:
@@ -85,7 +85,7 @@ class Player1326ThreeWins(Player1326State):
 
     def __new__(cls, *args, **kwargs) -> "Player1326ThreeWins":
         if cls._player1326_three_wins is None:
-            cls._player1326_three_wins = super(Player1326ThreeWins, cls).__new__(cls)
+            cls._player1326_three_wins = super().__new__(cls)
         return cls._player1326_three_wins
 
     def currentBet(self) -> Bet:
