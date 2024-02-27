@@ -20,8 +20,15 @@ class Player1326State:
 
 
 class Player1326NoWin(Player1326State):
+    _player1326_nowin = None
+
     def __init__(self, player: Player) -> None:
         super().__init__(player)
+
+    def __new__(cls, *args, **kwargs) -> "Player1326NoWin":
+        if cls._player1326_nowin is None:
+            cls._player1326_nowin = super(Player1326NoWin, cls).__new__(cls)
+        return cls._player1326_nowin
 
     def currentBet(self) -> Bet:
         bet_amount = 1
