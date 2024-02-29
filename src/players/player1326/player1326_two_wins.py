@@ -19,4 +19,4 @@ class Player1326TwoWins(Player1326State):
         return Bet(self.betAmount, self.outcome)
 
     def nextWon(self) -> Player1326State:
-        return Player1326ThreeWins(self.player)
+        return Player1326ThreeWins()
