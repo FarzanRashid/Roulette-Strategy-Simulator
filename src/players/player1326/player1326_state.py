@@ -1,5 +1,6 @@
 from abc import abstractmethod
 from bet import Bet
+from outcome import Outcome
 from players.player1326.player1326 import Player1326
 from players.player1326.player1326_no_wins import Player1326NoWins
 from players.player1326.player1326_one_win import Player1326OneWin
@@ -8,9 +9,9 @@ from players.player1326.player1326_three_wins import Player1326ThreeWins
 
 
 class Player1326State:
-    def __init__(self, player: Player1326) -> None:
-        self.player = player
+    def __init__(self) -> None:
         self.betAmount = None
+        self.outcome = Outcome("Red", 1)
 
     @abstractmethod
     def currentBet(self) -> Bet:
