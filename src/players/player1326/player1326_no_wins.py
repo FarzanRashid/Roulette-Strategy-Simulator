@@ -7,8 +7,8 @@ from players.player1326.player1326_one_win import Player1326OneWin
 class Player1326NoWins(Player1326State):
     _player1326_no_wins = None
 
-    def __init__(self, player: Player1326) -> None:
-        super().__init__(player)
+    def __init__(self) -> None:
+        super().__init__()
         self.betAmount = 1
 
     def __new__(cls, *args, **kwargs) -> "Player1326NoWins":
