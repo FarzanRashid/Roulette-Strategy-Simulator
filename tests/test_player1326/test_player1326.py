@@ -26,3 +26,12 @@ class TestPlayer1326(TestCase):
         self.player1326.roundsToGo = 0
 
         self.assertFalse(self.player1326.playing())
+
+    def test_stake_is_reduced_when_bet_placed(self):
+        self.player1326.stake = 100
+        self.player1326.state.betAmount = 10
+        expected_bet_after_bet = 90
+
+        self.player1326.placeBets()
+
+        self.assertEqual(expected_bet_after_bet, self.player1326.stake)
