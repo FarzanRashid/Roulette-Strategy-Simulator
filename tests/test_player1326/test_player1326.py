@@ -17,3 +17,12 @@ class TestPlayer1326(TestCase):
         self.player1326.stake = 0
 
         self.assertFalse(self.player1326.playing())
+
+    def test_player1326_plays_when_roundsToGo_more_than_zero(self):
+        self.player1326.roundsToGo = 1
+
+        self.assertTrue(self.player1326.playing())
+
+        self.player1326.roundsToGo = 0
+
+        self.assertFalse(self.player1326.playing())
