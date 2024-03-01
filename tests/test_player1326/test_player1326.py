@@ -49,3 +49,19 @@ class TestPlayer1326(TestCase):
         expected_state_after_win = Player1326OneWin()
 
         self.assertEqual(self.player1326.state, expected_state_after_win)
+
+    def test_lose_changes_state_to_NoWin(self):
+        initial_state = Player1326NoWins()
+        self.assertEqual(initial_state, self.player1326.state)
+
+        self.player1326.win(Bet(2, Outcome("Red", 1)))
+
+        expected_state_after_win = Player1326OneWin()
+
+        self.assertEqual(self.player1326.state, expected_state_after_win)
+
+        self.player1326.lose(Bet(2, Outcome("Black", 1)))
+
+        expected_state_after_lose = Player1326NoWins()
+
+        self.assertEqual(expected_state_after_lose, self.player1326.state)
