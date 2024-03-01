@@ -16,7 +16,7 @@ def main() -> None:  # pragma: no cover
     table = Table()
     game = Game(wheel, table)
     bin_builder.buildBins(wheel)
-    player = Player1326(table, wheel)
+    player = Player1326(table)
     simulator = Simulator(game, player)
     simulator.gather()
 

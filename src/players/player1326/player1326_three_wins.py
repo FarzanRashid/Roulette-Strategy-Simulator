@@ -1,6 +1,5 @@
 from bet import Bet
 from players.player1326.player1326_state import Player1326State
-from players.player1326.player1326_no_wins import Player1326NoWins
 
 
 class Player1326ThreeWins(Player1326State):
@@ -19,4 +18,4 @@ class Player1326ThreeWins(Player1326State):
         return Bet(self.betAmount, self.outcome)
 
     def nextWon(self) -> Player1326State:
-        return Player1326NoWins()
+        return super().nextLost()
