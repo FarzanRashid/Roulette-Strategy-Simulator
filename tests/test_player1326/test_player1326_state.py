@@ -20,6 +20,6 @@ class TestPlayer1326State(TestCase):
 
     def test_NextWon_returns_NoImplemented(self):
         expected_nextWon_result = NotImplemented
-        actual_nextWon_result = self.player1326_state.currentBet()
+        actual_nextWon_result = self.player1326_state.nextWon()
 
         self.assertIs(expected_nextWon_result, actual_nextWon_result)
