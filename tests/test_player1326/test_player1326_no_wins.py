@@ -1,4 +1,5 @@
 from unittest import TestCase
+from bet import Bet
 from players.player1326.player1326_state import Player1326NoWins
 
 
@@ -12,3 +13,9 @@ class TestPlayer1326NoWins(TestCase):
 
         instance_3 = Player1326NoWins()
         self.assertIs(self.player_1326_no_wins, instance_3)
+
+    def test_currentBet_returns_bet(self):
+        expected_bet = Bet(self.player_1326_no_wins.betAmount, self.player_1326_no_wins.outcome)
+        actual_bet = self.player_1326_no_wins.currentBet()
+
+        self.assertEqual(expected_bet, actual_bet)
