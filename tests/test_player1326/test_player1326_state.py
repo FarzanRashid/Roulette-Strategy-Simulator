@@ -17,3 +17,9 @@ class TestPlayer1326State(TestCase):
         actual_currentBet_result = self.player1326_state.currentBet()
 
         self.assertIs(expected_currentBet_result, actual_currentBet_result)
+
+    def test_NextWon_returns_NoImplemented(self):
+        expected_nextWon_result = NotImplemented
+        actual_nextWon_result = self.player1326_state.currentBet()
+
+        self.assertIs(expected_nextWon_result, actual_nextWon_result)
