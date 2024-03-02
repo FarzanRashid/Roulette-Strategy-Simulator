@@ -1,6 +1,6 @@
 from unittest import TestCase
 from bet import Bet
-from players.player1326.player1326_state import Player1326ThreeWins
+from players.player1326.player1326_state import Player1326ThreeWins, Player1326NoWins
 
 
 class TestPlayer1326ThreeWins(TestCase):
@@ -19,3 +19,8 @@ class TestPlayer1326ThreeWins(TestCase):
         actual_bet = self.player1326_three_wins.currentBet()
 
         self.assertEqual(expected_bet, actual_bet)
+
+    def test_nextWon_changes_state_to_NoWins(self):
+        next_state = Player1326NoWins()
+        nextWon_result = self.player1326_three_wins.nextWon()
+        self.assertIs(next_state, nextWon_result)
