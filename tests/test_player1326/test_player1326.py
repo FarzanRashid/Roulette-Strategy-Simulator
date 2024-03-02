@@ -2,9 +2,7 @@ from unittest import TestCase
 from table import Table
 from bet import Bet
 from outcome import Outcome
-from players.player1326.player1326_no_wins import Player1326NoWins
-from players.player1326.player1326_one_win import Player1326OneWin
-
+from players.player1326.player1326_state import Player1326NoWins, Player1326OneWin
 from players.player1326.player1326 import Player1326
 
 

@@ -1,5 +1,5 @@
 from unittest import TestCase
-from players.player1326.player1326_no_wins import Player1326NoWins
+from players.player1326.player1326_state import Player1326NoWins
 
 
 class TestPlayer1326NoWins(TestCase):
