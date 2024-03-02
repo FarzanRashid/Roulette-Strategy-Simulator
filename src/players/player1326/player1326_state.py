@@ -92,5 +92,5 @@ class Player1326ThreeWins(Player1326State):
     def currentBet(self) -> Bet:
         return Bet(self.betAmount, self.outcome)
 
-    def nextWon(self) -> Player1326State:
-        return super().nextLost()
+    def nextWon(self) -> Player1326NoWins:
+        return Player1326NoWins()
