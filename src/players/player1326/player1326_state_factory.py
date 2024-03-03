@@ -10,6 +10,11 @@ class Player1326StateFactory:
     """
 
     def __init__(self) -> None:
+        """
+        Create a new mapping from the class name to object instance. There are only four objects,
+        so this is relatively simple.
+        """
+
         self.values = {"Player1326NoWins": Player1326NoWins(),
                        "Player1326OneWin": Player1326OneWin(),
                        "Player1326TwoWins": Player1326TwoWins(),
