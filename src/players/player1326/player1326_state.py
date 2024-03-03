@@ -7,7 +7,12 @@ class Player1326State:
     """
     :class:`Player1326State` is the superclass for all of the states in the 1-3-2-6 betting system.
     """
+
     def __init__(self) -> None:
+        """
+        The constructor for this class saves the Player1326 instance.
+        """
+
         self.betAmount: int = 0
         self.outcome = Outcome("Red", 1)
 
