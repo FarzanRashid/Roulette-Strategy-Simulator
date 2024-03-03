@@ -31,6 +31,17 @@ class Player1326State:
 
     @abstractmethod
     def nextWon(self) -> "Player1326State":
+        """
+        Constructs the new :class:`Player1326State` instance to be used when the bet was a winner.
+
+        In Python, this method should return ``NotImplemented``. This is a big debugging aid, it
+        helps us locate subclasses which did not provide a method body.
+
+        Note the type hint for this method is provided as a string. We can’t reference the
+        :class:`Player1326State` type within the body of the class definition. Instead of naming the
+        type directly, we use a string.
+
+        """
         return NotImplemented
 
     def nextLost(self) -> "Player1326NoWins":
