@@ -90,6 +90,11 @@ class Player1326NoWins(Player1326State):
 
 
 class Player1326OneWin(Player1326State):
+    """
+    :class:`Player1326OneWin` defines the bet and state transition rules in the 1-3-2-6 betting
+    system. When there is one wins, the base bet value of 3 is used.
+    """
+
     _player1326_onewin = None
 
     def __init__(self) -> None:
