@@ -19,6 +19,13 @@ class Player1326(Player):
     """
 
     def __init__(self, table: Table) -> None:
+        """
+        Initializes the state. The state is set to the initial state of an instance of
+        ~players.player1326.player1326_state.Player1326NoWins` class.
+
+        :param table: The :py:class:`~table.Table` object which will accept the bets.
+        """
+
         super().__init__(table)
         self.table = table
         self.state = Player1326StateFactory().get("Player1326NoWins")
