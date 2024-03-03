@@ -55,4 +55,11 @@ class Player1326(Player):
         self.state = self.state.nextWon()
 
     def lose(self, bet: Bet) -> None:
+        """
+        :param bet: The Bet which lost
+
+        Uses the current state to determine what the next state will be. This method delegates the
+        next state decision to state object’s **nextLost()** method, saving the result in state.
+        """
+
         self.state = self.state.nextLost()
