@@ -10,6 +10,12 @@ class Player1326(Player):
     :py:class:`~outcome.Outcome` instance. This should be an even money bet like red, black,
     even, odd, high or low. The player also has a current betting state that determines the current
     bet to place, and what next state applies when the bet has won or lost.
+
+    .. attribute:: state
+
+       This is the current state of the 1-3-2-6 betting system. It will be an instance of a subclass
+       of :py:class:`~players.player1326.player1326_state.Player1326State`  class. This will be
+       one of the four states: No Wins, One Win, Two Wins or Three Wins.
     """
 
     def __init__(self, table: Table) -> None:
