@@ -34,6 +34,11 @@ class Player1326(Player):
         return super().playing() and self.stake >= self.state.betAmount
 
     def placeBets(self) -> None:
+        """
+        Updates the :py:class:`~table.Table` with a bet created by the current state.
+        This method delegates the bet creation to state object’s **currentBet()** method.
+        """
+
         self.table.placeBet(self.state.currentBet())
         self.stake -= self.state.betAmount
 
