@@ -18,6 +18,15 @@ class Player1326State:
 
     @abstractmethod
     def currentBet(self) -> Bet:
+        """
+        Constructs a new :py:class:`~bet.Bet` object from the player’s preferred
+        :py:class:`~outcome.Outcome` instance. Each subclass provides a different multiplier used
+        when creating this :py:class:`~bet.Bet` object.
+
+        In Python, the superclass method should return ``NotImplemented``. This is a big debugging aid,
+        it helps us locate subclasses which did not provide a method body.
+        """
+
         return NotImplemented
 
     @abstractmethod
