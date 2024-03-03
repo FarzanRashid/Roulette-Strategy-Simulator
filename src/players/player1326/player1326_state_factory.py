@@ -3,6 +3,12 @@ from players.player1326.player1326_state import Player1326TwoWins, Player1326Thr
 
 
 class Player1326StateFactory:
+    """
+    .. attribute:: values
+
+    This is a map from a class name to an object instance.
+    """
+
     def __init__(self) -> None:
         self.values = {"Player1326NoWins": Player1326NoWins(),
                        "Player1326OneWin": Player1326OneWin(),
