@@ -22,4 +22,11 @@ class Player1326StateFactory:
                        }
 
     def get(self, name: str) -> Player1326State:
+        """
+        :param name: name of one of the subclasses of :py:class:`~.player1326_state.Player1326State`
+
+        :return: a fresh new instance of the desired state
+        :rtype: :py:class:`~players.player1326.player1326_state.Player1326State`
+        """
+
         return self.values[name]
