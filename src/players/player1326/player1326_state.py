@@ -182,4 +182,8 @@ class Player1326ThreeWins(Player1326State):
         return Bet(self.betAmount, self.outcome)
 
     def nextWon(self) -> Player1326NoWins:
+        """
+        Constructs the new :class:`Player1326NoWins` instance to be used when the bet was a winner.
+        """
+
         return Player1326NoWins()
