@@ -108,8 +108,8 @@ class Player1326OneWin(Player1326State):
 
     def currentBet(self) -> Bet:
         """
-        Constructs a new :py:class:`~bet.Bet` from the player’s outcome information. The bet
-        multiplier is 3.
+        Constructs a new :py:class:`~bet.Bet` from the player’s :py:class:`~outcome.Outcome`
+        information. The bet multiplier is 3.
         """
 
         return Bet(self.betAmount, self.outcome)
@@ -140,6 +140,11 @@ class Player1326TwoWins(Player1326State):
         return cls._player1326_two_wins
 
     def currentBet(self) -> Bet:
+        """
+        Constructs a new :py:class:`~bet.Bet` from the player’s :py:class:`~outcome.Outcome`
+        information. The bet multiplier is 2.
+        """
+
         return Bet(self.betAmount, self.outcome)
 
     def nextWon(self) -> Player1326State:
