@@ -15,7 +15,9 @@ class TestPlayer1326OneWin(TestCase):
         self.assertIs(self.player1326_one_win, instance_3)
 
     def test_currentBet_returns_bet(self):
-        expected_bet = Bet(self.player1326_one_win.betAmount, self.player1326_one_win.outcome)
+        expected_bet = Bet(
+            self.player1326_one_win.betAmount, self.player1326_one_win.outcome
+        )
         actual_bet = self.player1326_one_win.currentBet()
 
         self.assertEqual(expected_bet, actual_bet)
