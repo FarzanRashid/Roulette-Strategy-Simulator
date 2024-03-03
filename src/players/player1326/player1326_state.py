@@ -4,6 +4,9 @@ from outcome import Outcome
 
 
 class Player1326State:
+    """
+    :class:`Player1326State` is the superclass for all of the states in the 1-3-2-6 betting system.
+    """
     def __init__(self) -> None:
         self.betAmount: int = 0
         self.outcome = Outcome("Red", 1)
