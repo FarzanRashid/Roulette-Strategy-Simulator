@@ -43,6 +43,14 @@ class Player1326(Player):
         self.stake -= self.state.betAmount
 
     def win(self, bet: Bet) -> None:
+        """
+        :param bet: The Bet which won
+
+        Uses the superclass method to update the stake with an amount won. Uses the current state to
+        determine what the next state will be by calling state’s objects **nextWon()** method and
+        saving the new state in state
+        """
+
         super().win(bet)
         self.state = self.state.nextWon()
 
