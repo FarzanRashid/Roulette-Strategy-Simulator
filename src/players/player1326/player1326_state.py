@@ -40,11 +40,19 @@ class Player1326State:
         Note the type hint for this method is provided as a string. We can’t reference the
         :class:`Player1326State` type within the body of the class definition. Instead of naming the
         type directly, we use a string.
-
         """
+
         return NotImplemented
 
     def nextLost(self) -> "Player1326NoWins":
+        """
+        Constructs the new :class:`Player1326State` instance to be used when the bet was a loser.
+        This method is the same for each subclass: it creates a new instance of
+        :class:`Player1326NoWins`.
+
+        This defined in the superclass to assure that it is available for each subclass.
+        """
+
         return Player1326NoWins()
 
 
