@@ -10,7 +10,8 @@ class Player1326State:
 
     def __init__(self) -> None:
         """
-        The constructor for this class saves the Player1326 instance.
+        The constructor for this class saves the initializes the betaAmount and saves the
+        :py:class:`~outcome.Outcome` to bet on.
         """
 
         self.betAmount: int = 0
