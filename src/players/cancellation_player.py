@@ -9,3 +9,6 @@ class PlayerCancellation(Player):
         self.outcome = Outcome("Red", 1)
         self.sequence = None
         self.resetSequence()
+
+    def resetSequence(self) -> None:
+        self.sequence = [1, 2, 3, 4, 5, 6]
