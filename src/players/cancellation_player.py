@@ -27,3 +27,9 @@ class PlayerCancellation(Player):
 
     def lose(self, bet: Bet) -> None:
         self.sequence.append(bet.amount)
+
+    def playing(self) -> bool:
+        if not super().playing() or len(self.sequence) < 2 or self.stake < self.bet_amount:
+            self.resetSequence()
+            return False
+        return True
