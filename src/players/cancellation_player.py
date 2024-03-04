@@ -1,5 +1,6 @@
 from outcome import Outcome
 from table import Table
+from bet import Bet
 from players.player import Player
 
 
@@ -12,3 +13,8 @@ class PlayerCancellation(Player):
 
     def resetSequence(self) -> None:
         self.sequence = [1, 2, 3, 4, 5, 6]
+
+    def placeBets(self) -> None:
+        bet_amount = self.sequence[0] + self.sequence[-1]
+        self.table.placeBet(Bet(bet_amount, self.outcome))
+        self.stake -= bet_amount
