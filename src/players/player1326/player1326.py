@@ -27,7 +27,6 @@ class Player1326(Player):
         """
 
         super().__init__(table)
-        self.table = table
         self.state = Player1326StateFactory().get("Player1326NoWins")
 
     def playing(self) -> bool:
