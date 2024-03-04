@@ -8,16 +8,17 @@ class PlayerCancellation(Player):
     def __init__(self, table: Table) -> None:
         super().__init__(table)
         self.outcome = Outcome("Red", 1)
-        self.sequence = None
+        self.sequence: list[int] = []
+        self.bet_amount = 0
         self.resetSequence()
 
     def resetSequence(self) -> None:
         self.sequence = [1, 2, 3, 4, 5, 6]
 
     def placeBets(self) -> None:
-        bet_amount = self.sequence[0] + self.sequence[-1]
-        self.table.placeBet(Bet(bet_amount, self.outcome))
-        self.stake -= bet_amount
+        self.bet_amount = self.sequence[0] + self.sequence[-1]
+        self.table.placeBet(Bet(self.bet_amount, self.outcome))
+        self.stake -= self.bet_amount
 
     def win(self, bet: Bet) -> None:
         super().win(bet)
