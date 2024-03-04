@@ -23,3 +23,6 @@ class PlayerCancellation(Player):
         super().win(bet)
         self.sequence.pop()
         self.sequence.pop(0)
+
+    def lose(self, bet: Bet) -> None:
+        self.sequence.append(bet.amount)
