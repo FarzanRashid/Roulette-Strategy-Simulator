@@ -18,3 +18,8 @@ class PlayerCancellation(Player):
         bet_amount = self.sequence[0] + self.sequence[-1]
         self.table.placeBet(Bet(bet_amount, self.outcome))
         self.stake -= bet_amount
+
+    def win(self, bet: Bet) -> None:
+        super().win(bet)
+        self.sequence.pop()
+        self.sequence.pop(0)
