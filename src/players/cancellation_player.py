@@ -36,6 +36,11 @@ class PlayerCancellation(Player):
         self.resetSequence()
 
     def resetSequence(self) -> None:
+        """
+        Puts the initial sequence of six values, ``[1, 2, 3, 4, 5, 6]`` into the **sequence**
+        variable. The sequence ``[1, 1, 1, 1, 1, 1]`` will also work, and the bets will be smaller.
+        """
+
         self.sequence = [1, 2, 3, 4, 5, 6]
 
     def placeBets(self) -> None:
