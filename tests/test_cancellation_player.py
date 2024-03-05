@@ -22,3 +22,14 @@ class TestPlayerCancellation(TestCase):
 
         self.player_cancellation.lose(bet)
         self.assertIn(bet.amount, self.player_cancellation.sequence)
+
+    def test_win_removes_elements_from_sequence(self):
+        bet = Bet(7, Outcome("Red", 1))
+        expected_seq_before_win = [1, 2, 3, 4, 5, 6]
+        self.assertEqual(expected_seq_before_win, self.player_cancellation.sequence)
+
+        expected_seq_after_win = [2, 3, 4, 5]
+
+        self.player_cancellation.win(bet)
+
+        self.assertEqual(expected_seq_after_win, self.player_cancellation.sequence)
