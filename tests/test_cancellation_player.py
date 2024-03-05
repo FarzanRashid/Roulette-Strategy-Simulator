@@ -50,3 +50,12 @@ class TestPlayerCancellation(TestCase):
         self.player_cancellation.placeBets()
 
         self.assertIn(expected_bet_in_table_after_placeBets, self.table.bets)
+
+    def test_player_plays_when_stake_more_than_bet_amount(self):
+        self.player_cancellation.bet_amount = 9
+
+        self.player_cancellation.stake = 10
+        self.assertTrue(self.player_cancellation.playing())
+
+        self.player_cancellation.stake = 8
+        self.assertFalse(self.player_cancellation.playing())
