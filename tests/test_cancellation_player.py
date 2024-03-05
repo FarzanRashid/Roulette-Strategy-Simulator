@@ -33,3 +33,10 @@ class TestPlayerCancellation(TestCase):
         self.player_cancellation.win(bet)
 
         self.assertEqual(expected_seq_after_win, self.player_cancellation.sequence)
+
+    def test_placeBets_reduces_stake(self):
+        self.player_cancellation.stake = 100
+        expected_stake_after_bet = 93
+
+        self.player_cancellation.placeBets()
+        self.assertIs(self.player_cancellation.stake, expected_stake_after_bet)
