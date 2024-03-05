@@ -66,6 +66,13 @@ class PlayerCancellation(Player):
         self.sequence.pop(0)
 
     def lose(self, bet: Bet) -> None:
+        """
+        :param bet: The bet which lost
+
+        Uses the superclass method to update the stake with an amount lost. It then appends the sum
+        of the first and list elements of **sequence** to the end of **sequence** as a new value.
+        """
+
         self.sequence.append(bet.amount)
 
     def playing(self) -> bool:
