@@ -74,3 +74,11 @@ class TestPlayerCancellation(TestCase):
 
         self.player_cancellation.sequence = [1]
         self.assertFalse(self.player_cancellation.playing())
+
+    def test_playing_resets_sequence_if_player_not_playing(self):
+        self.player_cancellation.sequence = []
+        self.player_cancellation.stake = 0
+        expected_sequence_after_playing = [1, 2, 3, 4, 5, 6]
+
+        self.player_cancellation.playing()
+        self.assertEqual(expected_sequence_after_playing, self.player_cancellation.sequence)
