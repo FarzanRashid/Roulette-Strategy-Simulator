@@ -67,3 +67,10 @@ class TestPlayerCancellation(TestCase):
         self.player_cancellation.roundsToGo = 0
 
         self.assertFalse(self.player_cancellation.playing())
+
+    def test_player_plays_when_have_enough_sequence(self):
+        self.player_cancellation.sequence = [1, 2, 3]
+        self.assertTrue(self.player_cancellation.playing())
+
+        self.player_cancellation.sequence = [1]
+        self.assertFalse(self.player_cancellation.playing())
