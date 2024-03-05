@@ -5,6 +5,21 @@ from players.player import Player
 
 
 class PlayerCancellation(Player):
+    """
+    :class:`PlayerCancellation` uses the cancellation betting system. This player allocates their
+    available budget into a sequence of bets that have an accelerating potential gain as well as
+    recouping any losses.
+
+    .. attribute:: sequence
+
+       This **List** keeps the bet amounts; wins are removed from this list and losses are
+       appended to this list. THe current bet is the first value plus the last value.
+
+    .. attribute:: outcome
+
+       This is the player’s preferred :py:class:`~outcome.Outcome` instance.
+    """
+
     def __init__(self, table: Table) -> None:
         super().__init__(table)
         self.outcome = Outcome("Red", 1)
