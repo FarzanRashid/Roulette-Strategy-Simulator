@@ -54,6 +54,13 @@ class PlayerCancellation(Player):
         self.stake -= self.bet_amount
 
     def win(self, bet: Bet) -> None:
+        """
+        :param bet: The bet which won
+
+        Uses the superclass method to update the stake with an amount won. It then removes the first
+        and last element from **sequence**.
+        """
+
         super().win(bet)
         self.sequence.pop()
         self.sequence.pop(0)
