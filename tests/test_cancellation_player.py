@@ -14,7 +14,9 @@ class TestPlayerCancellation(TestCase):
         self.player_cancellation.sequence = []
         expected_seq_after_resetSequence = [1, 2, 3, 4, 5, 6]
         self.player_cancellation.resetSequence()
-        self.assertEqual(self.player_cancellation.sequence, expected_seq_after_resetSequence)
+        self.assertEqual(
+            self.player_cancellation.sequence, expected_seq_after_resetSequence
+        )
 
     def test_lose_adds_bet_amount_to_sequence(self):
         bet = Bet(10, Outcome("Red", 1))
@@ -81,4 +83,6 @@ class TestPlayerCancellation(TestCase):
         expected_sequence_after_playing = [1, 2, 3, 4, 5, 6]
 
         self.player_cancellation.playing()
-        self.assertEqual(expected_sequence_after_playing, self.player_cancellation.sequence)
+        self.assertEqual(
+            expected_sequence_after_playing, self.player_cancellation.sequence
+        )
