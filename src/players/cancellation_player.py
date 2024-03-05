@@ -21,6 +21,14 @@ class PlayerCancellation(Player):
     """
 
     def __init__(self, table: Table) -> None:
+        """
+        This uses the **PlayerCancellation.resetSequence()** method to initialize the
+        sequence of numbers used to establish the bet amount. This also picks a suitable even money
+        :py:class:`~outcome.Outcome`, for example, black.
+
+        :param table: The  object :py:class:`~table.Table` which will accept the bets.
+        """
+
         super().__init__(table)
         self.outcome = Outcome("Red", 1)
         self.sequence: list[int] = []
