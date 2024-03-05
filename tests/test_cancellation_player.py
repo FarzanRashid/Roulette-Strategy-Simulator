@@ -59,3 +59,11 @@ class TestPlayerCancellation(TestCase):
 
         self.player_cancellation.stake = 8
         self.assertFalse(self.player_cancellation.playing())
+
+    def test_player_plays_when_roundstoGo_not_zero(self):
+        self.player_cancellation.roundsToGo = 1
+        self.assertTrue(self.player_cancellation.playing())
+
+        self.player_cancellation.roundsToGo = 0
+
+        self.assertFalse(self.player_cancellation.playing())
