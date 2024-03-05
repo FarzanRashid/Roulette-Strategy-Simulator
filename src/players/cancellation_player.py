@@ -44,6 +44,11 @@ class PlayerCancellation(Player):
         self.sequence = [1, 2, 3, 4, 5, 6]
 
     def placeBets(self) -> None:
+        """
+        Creates a bet from the sum of the first and last values of **sequence** and the preferred
+        outcome.
+        """
+
         self.bet_amount = self.sequence[0] + self.sequence[-1]
         self.table.placeBet(Bet(self.bet_amount, self.outcome))
         self.stake -= self.bet_amount
