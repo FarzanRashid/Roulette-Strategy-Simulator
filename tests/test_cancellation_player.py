@@ -40,3 +40,13 @@ class TestPlayerCancellation(TestCase):
 
         self.player_cancellation.placeBets()
         self.assertIs(self.player_cancellation.stake, expected_stake_after_bet)
+
+    def test_placeBets_places_bet(self):
+        bets_on_table_before_placeBets = []
+        self.assertEqual(bets_on_table_before_placeBets, self.table.bets)
+
+        expected_bet_in_table_after_placeBets = Bet(7, Outcome("Red", 1))
+
+        self.player_cancellation.placeBets()
+
+        self.assertIn(expected_bet_in_table_after_placeBets, self.table.bets)
