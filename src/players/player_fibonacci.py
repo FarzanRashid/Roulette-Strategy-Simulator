@@ -27,3 +27,4 @@ class PlayerFibonacci(Player):
 
     def placeBets(self) -> None:
         self.table.placeBet(Bet(self.bet_amount, self.outcome))
+        self.stake -= self.bet_amount
