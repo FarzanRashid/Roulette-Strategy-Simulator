@@ -69,3 +69,10 @@ class TestPlayerFibonacci(TestCase):
 
         self.player_fibonacci.roundsToGo = 0
         self.assertFalse(self.player_fibonacci.playing())
+
+    def test_placeBets_places_bet(self):
+        self.table.bets = []
+
+        self.player_fibonacci.placeBets()
+
+        self.assertIn(self.bet, self.table.bets)
