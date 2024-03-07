@@ -35,3 +35,11 @@ class TestPlayerFibonacci(TestCase):
         self.player_fibonacci.lose(self.bet)
 
         self.assertEqual(expected_bet_amount_after_lose, self.player_fibonacci.bet_amount)
+
+    def test_lose_updates_previous(self):
+        self.player_fibonacci.previous = 0
+        self.player_fibonacci.recent = 5
+        expected_previous_value_after_lose = self.player_fibonacci.recent
+
+        self.player_fibonacci.lose(self.bet)
+        self.assertEqual(expected_previous_value_after_lose, self.player_fibonacci.previous)
