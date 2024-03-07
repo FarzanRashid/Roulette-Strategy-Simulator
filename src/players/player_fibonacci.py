@@ -21,3 +21,6 @@ class PlayerFibonacci(Player):
         self.bet_amount = self.recent + self.previous
         self.previous = self.recent
         self.recent = self.bet_amount
+
+    def playing(self) -> bool:
+        return super().playing() and self.roundsToGo > 0 and self.stake >= self.bet_amount
