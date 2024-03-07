@@ -52,3 +52,13 @@ class TestPlayerFibonacci(TestCase):
 
         self.player_fibonacci.lose(self.bet)
         self.assertEqual(expected_recent_value_after_lose, self.player_fibonacci.bet_amount)
+
+    def test_player_plays_when_stake_is_enough(self):
+        self.player_fibonacci.stake = 10
+        self.player_fibonacci.bet_amount = 10
+
+        self.assertTrue(self.player_fibonacci.playing())
+
+        self.player_fibonacci.stake = 9
+
+        self.assertFalse(self.player_fibonacci.playing())
