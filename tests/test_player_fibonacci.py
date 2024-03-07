@@ -62,3 +62,10 @@ class TestPlayerFibonacci(TestCase):
         self.player_fibonacci.stake = 9
 
         self.assertFalse(self.player_fibonacci.playing())
+
+    def test_player_plays_when_roundsToGo_is_not_zero(self):
+        self.player_fibonacci.roundsToGo = 1
+        self.assertTrue(self.player_fibonacci.playing())
+
+        self.player_fibonacci.roundsToGo = 0
+        self.assertFalse(self.player_fibonacci.playing())
