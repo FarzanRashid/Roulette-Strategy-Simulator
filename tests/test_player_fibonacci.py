@@ -76,3 +76,12 @@ class TestPlayerFibonacci(TestCase):
         self.player_fibonacci.placeBets()
 
         self.assertIn(self.bet, self.table.bets)
+
+    def test_placeBets_reduces_stake(self):
+        self.player_fibonacci.stake = 100
+        self.player_fibonacci.bet_amount = 10
+        expected_stake_after_placeBets = 90
+
+        self.player_fibonacci.placeBets()
+
+        self.assertEqual(expected_stake_after_placeBets, self.player_fibonacci.stake)
