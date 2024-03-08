@@ -8,6 +8,14 @@ class PlayerFibonacci(Player):
     """
     :class:`PlayerFibonacci` uses the Fibonacci betting system. This player allocates their
     available budget into a sequence of bets that have an accelerating potential gain.
+
+    .. attribute:: recent
+
+       This is the most recent bet amount. Initially, this is 1.
+
+    .. attribute:: previous
+
+       This is the bet amount previous to the most recent bet amount. Initially, this is zero.
     """
 
     def __init__(self, table: Table) -> None:
