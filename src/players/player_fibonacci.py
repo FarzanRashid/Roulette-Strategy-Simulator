@@ -5,6 +5,11 @@ from outcome import Outcome
 
 
 class PlayerFibonacci(Player):
+    """
+    :class:`PlayerFibonacci` uses the Fibonacci betting system. This player allocates their
+    available budget into a sequence of bets that have an accelerating potential gain.
+    """
+
     def __init__(self, table: Table) -> None:
         super().__init__(table)
         self.outcome = Outcome("Black", 1)
