@@ -23,7 +23,12 @@ class PlayerFibonacci(Player):
         self.recent = self.bet_amount
 
     def playing(self) -> bool:
-        return super().playing() and self.stake >= self.bet_amount
+        if not super().playing() or self.stake < self.bet_amount:
+            self.recent = 1
+            self.previous = 0
+            self.bet_amount = self.recent + self.previous
+            return False
+        return True
 
     def placeBets(self) -> None:
         self.table.placeBet(Bet(self.bet_amount, self.outcome))
