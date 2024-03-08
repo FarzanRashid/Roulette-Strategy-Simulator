@@ -4,6 +4,7 @@ from table import Table
 from game import Game
 from simulator import Simulator
 from players.cancellation import PlayerCancellation
+from players.player_fibonacci import PlayerFibonacci
 
 
 def main() -> None:  # pragma: no cover
@@ -16,7 +17,7 @@ def main() -> None:  # pragma: no cover
     table = Table()
     game = Game(wheel, table)
     bin_builder.buildBins(wheel)
-    player = PlayerCancellation(table)
+    player = PlayerFibonacci(table)
     simulator = Simulator(game, player)
     simulator.gather()
 
