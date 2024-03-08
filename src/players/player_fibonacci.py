@@ -32,6 +32,14 @@ class PlayerFibonacci(Player):
         self.bet_amount = self.recent + self.previous
 
     def win(self, bet: Bet) -> None:
+        """
+        :param bet: :py:class:`~bet.Bet`
+
+        Uses the superclass method to update the stake with an amount won. It resets
+        :class:`PlayerFibonacci.recent` and :class:`PlayerFibonacci.previous` to their initial
+        values of 1 and 0.
+        """
+
         super().win(bet)
         self.recent = 1
         self.previous = 0
