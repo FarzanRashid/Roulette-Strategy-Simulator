@@ -19,6 +19,12 @@ class PlayerFibonacci(Player):
     """
 
     def __init__(self, table: Table) -> None:
+        """
+        Initialize the Fibonacci player.
+
+        :param table: The :py:class:`~table.Table` object which will accept the bets.
+        """
+
         super().__init__(table)
         self.outcome = Outcome("Black", 1)
         self.recent = 1
