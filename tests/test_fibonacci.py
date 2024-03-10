@@ -10,7 +10,7 @@ class TestPlayerFibonacci(TestCase):
         self.player_fibonacci = PlayerFibonacci(self.table)
         self.bet = Bet(1, self.player_fibonacci.outcome)
 
-    def test_win_resets_recent_value(self):
+    def test_recent_value_is_reset_after_win(self):
         self.player_fibonacci.recent = 10
         expected_recent_value_after_win = 1
 
@@ -18,7 +18,7 @@ class TestPlayerFibonacci(TestCase):
 
         self.assertEqual(self.player_fibonacci.recent, expected_recent_value_after_win)
 
-    def test_win_resets_previous_value(self):
+    def test_previous_value_is_reset_after_win(self):
         self.player_fibonacci.previous = 10
         expected_previous_value_after_win = 1
 
