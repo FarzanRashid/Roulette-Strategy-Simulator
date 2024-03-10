@@ -2,7 +2,7 @@ from unittest import TestCase
 from table import Table
 from bet import Bet
 from outcome import Outcome
-from players.cancellation_player import PlayerCancellation
+from players.cancellation import PlayerCancellation
 
 
 class TestPlayerCancellation(TestCase):
