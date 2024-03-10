@@ -12,11 +12,9 @@ class TestPlayerCancellation(TestCase):
 
     def test_sequence_is_reset(self):
         self.player_cancellation.sequence = []
-        expected_seq_after_resetSequence = [1, 2, 3, 4, 5, 6]
+        expected_sequence = [1, 2, 3, 4, 5, 6]
         self.player_cancellation.resetSequence()
-        self.assertEqual(
-            self.player_cancellation.sequence, expected_seq_after_resetSequence
-        )
+        self.assertEqual(self.player_cancellation.sequence, expected_sequence)
 
     def test_bet_amount_added_to_sequence_after_lose(self):
         bet = Bet(10, Outcome("Red", 1))
@@ -27,8 +25,8 @@ class TestPlayerCancellation(TestCase):
 
     def test_elements_are_removed_from_sequence(self):
         bet = Bet(7, Outcome("Red", 1))
-        expected_seq_before_win = [1, 2, 3, 4, 5, 6]
-        self.assertEqual(expected_seq_before_win, self.player_cancellation.sequence)
+        expected_sequence = [1, 2, 3, 4, 5, 6]
+        self.assertEqual(expected_sequence, self.player_cancellation.sequence)
 
         expected_seq_after_win = [2, 3, 4, 5]
 
@@ -38,20 +36,20 @@ class TestPlayerCancellation(TestCase):
 
     def test_placing_bet_reduces_stake(self):
         self.player_cancellation.stake = 100
-        expected_stake_after_bet = 93
+        expected_stake = 93
 
         self.player_cancellation.placeBets()
-        self.assertIs(self.player_cancellation.stake, expected_stake_after_bet)
+        self.assertIs(self.player_cancellation.stake, expected_stake)
 
     def test_bets_are_placed(self):
-        bets_on_table_before_placeBets = []
-        self.assertEqual(bets_on_table_before_placeBets, self.table.bets)
+        bets_on_table = []
+        self.assertEqual(bets_on_table, self.table.bets)
 
-        expected_bet_in_table_after_placeBets = Bet(7, Outcome("Red", 1))
+        expected_bet_on_table = Bet(7, Outcome("Red", 1))
 
         self.player_cancellation.placeBets()
 
-        self.assertIn(expected_bet_in_table_after_placeBets, self.table.bets)
+        self.assertIn(expected_bet_on_table, self.table.bets)
 
     def test_player_plays_when_stake_more_than_bet_amount(self):
         self.player_cancellation.bet_amount = 9
