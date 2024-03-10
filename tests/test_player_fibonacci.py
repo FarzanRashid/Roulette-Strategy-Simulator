@@ -1,7 +1,7 @@
 from unittest import TestCase
 from table import Table
 from bet import Bet
-from players.player_fibonacci import PlayerFibonacci
+from players.fibonacci import PlayerFibonacci
 
 
 class TestPlayerFibonacci(TestCase):

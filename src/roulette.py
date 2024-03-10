@@ -3,8 +3,7 @@ from bin_builder import BinBuilder
 from table import Table
 from game import Game
 from simulator import Simulator
-from players.cancellation import PlayerCancellation
-from players.player_fibonacci import PlayerFibonacci
+from players.fibonacci import PlayerFibonacci
 
 
 def main() -> None:  # pragma: no cover
