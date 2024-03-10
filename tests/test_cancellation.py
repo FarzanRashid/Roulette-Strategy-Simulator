@@ -10,7 +10,7 @@ class TestPlayerCancellation(TestCase):
         self.table = Table()
         self.player_cancellation = PlayerCancellation(self.table)
 
-    def test_resetSequence_resets_sequence(self):
+    def test_sequence_is_reset(self):
         self.player_cancellation.sequence = []
         expected_seq_after_resetSequence = [1, 2, 3, 4, 5, 6]
         self.player_cancellation.resetSequence()
@@ -18,14 +18,14 @@ class TestPlayerCancellation(TestCase):
             self.player_cancellation.sequence, expected_seq_after_resetSequence
         )
 
-    def test_lose_adds_bet_amount_to_sequence(self):
+    def test_bet_amount_added_to_sequence_after_lose(self):
         bet = Bet(10, Outcome("Red", 1))
         self.assertNotIn(bet.amount, self.player_cancellation.sequence)
 
         self.player_cancellation.lose(bet)
         self.assertIn(bet.amount, self.player_cancellation.sequence)
 
-    def test_win_removes_elements_from_sequence(self):
+    def test_elements_are_removed_from_sequence(self):
         bet = Bet(7, Outcome("Red", 1))
         expected_seq_before_win = [1, 2, 3, 4, 5, 6]
         self.assertEqual(expected_seq_before_win, self.player_cancellation.sequence)
@@ -36,14 +36,14 @@ class TestPlayerCancellation(TestCase):
 
         self.assertEqual(expected_seq_after_win, self.player_cancellation.sequence)
 
-    def test_placeBets_reduces_stake(self):
+    def test_placing_bet_reduces_stake(self):
         self.player_cancellation.stake = 100
         expected_stake_after_bet = 93
 
         self.player_cancellation.placeBets()
         self.assertIs(self.player_cancellation.stake, expected_stake_after_bet)
 
-    def test_placeBets_places_bet(self):
+    def test_bets_are_placed(self):
         bets_on_table_before_placeBets = []
         self.assertEqual(bets_on_table_before_placeBets, self.table.bets)
 
@@ -62,7 +62,7 @@ class TestPlayerCancellation(TestCase):
         self.player_cancellation.stake = 8
         self.assertFalse(self.player_cancellation.playing())
 
-    def test_player_plays_when_roundstoGo_not_zero(self):
+    def test_player_plays_when_rounds_remaining(self):
         self.player_cancellation.roundsToGo = 1
         self.assertTrue(self.player_cancellation.playing())
 
@@ -77,7 +77,7 @@ class TestPlayerCancellation(TestCase):
         self.player_cancellation.sequence = [1]
         self.assertFalse(self.player_cancellation.playing())
 
-    def test_playing_resets_sequence_if_player_not_playing(self):
+    def test_sequence_is_reset_when_player_is_not_playing(self):
         self.player_cancellation.sequence = []
         self.player_cancellation.stake = 0
         expected_sequence_after_playing = [1, 2, 3, 4, 5, 6]
