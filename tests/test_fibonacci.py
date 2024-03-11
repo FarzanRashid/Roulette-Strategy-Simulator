@@ -40,7 +40,7 @@ class TestPlayerFibonacci(TestCase):
             expected_bet_amount_after_lose, self.player_fibonacci.bet_amount
         )
 
-    def test_lose_updates_previous(self):
+    def test_lose_updates_previous_value(self):
         self.player_fibonacci.previous = 0
         self.player_fibonacci.recent = 5
         expected_previous_value_after_lose = self.player_fibonacci.recent
@@ -50,7 +50,7 @@ class TestPlayerFibonacci(TestCase):
             expected_previous_value_after_lose, self.player_fibonacci.previous
         )
 
-    def test_lose_updates_recent(self):
+    def test_lose_updates_recent_value(self):
         self.player_fibonacci.previous = 1
         self.player_fibonacci.recent = 5
         self.player_fibonacci.bet_amount = 6
