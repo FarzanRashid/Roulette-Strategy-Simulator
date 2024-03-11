@@ -71,21 +71,21 @@ class TestPlayerFibonacci(TestCase):
 
         self.assertFalse(self.player_fibonacci.playing())
 
-    def test_player_plays_when_roundsToGo_is_not_zero(self):
+    def test_player_plays_when_rounds_are_remaining(self):
         self.player_fibonacci.roundsToGo = 1
         self.assertTrue(self.player_fibonacci.playing())
 
         self.player_fibonacci.roundsToGo = 0
         self.assertFalse(self.player_fibonacci.playing())
 
-    def test_placeBets_places_bet(self):
+    def test_bets_are_placed(self):
         self.table.bets = []
 
         self.player_fibonacci.placeBets()
 
         self.assertIn(self.bet, self.table.bets)
 
-    def test_placeBets_reduces_stake(self):
+    def test_stake_reduced_when_bets_are_placed(self):
         self.player_fibonacci.stake = 100
         self.player_fibonacci.bet_amount = 10
         expected_stake_after_placeBets = 90
