@@ -80,7 +80,6 @@ class TestPlayerCancellation(TestCase):
         expected_sequence_after_playing = [1, 2, 3, 4, 5, 6]
 
         self.assertFalse(self.player_cancellation.playing())
-        self.player_cancellation.playing()
         self.assertEqual(
             expected_sequence_after_playing, self.player_cancellation.sequence
         )
