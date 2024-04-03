@@ -11,6 +11,9 @@ from players.player1326.player1326 import Player1326
 
 
 def provide_player(player_name: str, table: Table, wheel: Wheel) -> Player:
+    """
+    Returns an object of available Players.
+    """
 
     players = {
         "Martingale": Martingale(table),
