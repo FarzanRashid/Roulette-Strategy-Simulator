@@ -1,12 +1,15 @@
+import click
 from wheel import Wheel
 from bin_builder import BinBuilder
 from table import Table
 from game import Game
 from simulator import Simulator
-from players.fibonacci import PlayerFibonacci
+from strategy_factory import provide_strategy
 
 
-def main() -> None:  # pragma: no cover
+@click.command()
+@click.option('--strategy_name', prompt='Enter a strategy')
+def main(strategy_name) -> None:  # pragma: no cover
     """
     A main application function that creates the necessary objects, runs the Simulator’s gather()
     method, and writes the available outputs to sys.stdout
@@ -16,7 +19,7 @@ def main() -> None:  # pragma: no cover
     table = Table()
     game = Game(wheel, table)
     bin_builder.buildBins(wheel)
-    player = PlayerFibonacci(table)
+    player = provide_strategy(strategy_name, table, wheel)
     simulator = Simulator(game, player)
     simulator.gather()
 
