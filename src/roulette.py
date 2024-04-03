@@ -4,12 +4,12 @@ from bin_builder import BinBuilder
 from table import Table
 from game import Game
 from simulator import Simulator
-from strategy_factory import provide_strategy
+from player_factory import provide_player
 
 
 @click.command()
-@click.option("--strategy_name", prompt="Enter a strategy")
-def main(strategy_name) -> None:  # pragma: no cover
+@click.option("--player_name", prompt="Enter a player")
+def main(player_name) -> None:  # pragma: no cover
     """
     A main application function that creates the necessary objects, runs the Simulator’s gather()
     method, and writes the available outputs to sys.stdout
@@ -19,11 +19,11 @@ def main(strategy_name) -> None:  # pragma: no cover
     table = Table()
     game = Game(wheel, table)
     bin_builder.buildBins(wheel)
-    player = provide_strategy(strategy_name.capitalize(), table, wheel)
+    player = provide_player(player_name.capitalize(), table, wheel)
     simulator = Simulator(game, player)
     simulator.gather()
 
-    print(f"Simulating {strategy_name} strategy \n")
+    print(f" \nSimulating {player_name} strategy \n")
     print("maxima: ", simulator.maxima)
     print("Mean of maxima:", simulator.maxima.mean())
     print("Standard deviation of maxima:", simulator.maxima.stdev(), "\n")
