@@ -10,12 +10,9 @@ from players.passenger57 import Passenger57
 from players.player1326.player1326 import Player1326
 
 
-def provide_strategy(strategy_name: str, table: Table, wheel: Wheel) -> Player:
-    """
-    Returns an object of the strategies of the Roulette game."
-    """
+def provide_player(player_name: str, table: Table, wheel: Wheel) -> Player:
 
-    strategies = {
+    players = {
         "Martingale": Martingale(table),
         "Cancellation": PlayerCancellation(table),
         "Fibonacci": PlayerFibonacci(table),
@@ -24,6 +21,6 @@ def provide_strategy(strategy_name: str, table: Table, wheel: Wheel) -> Player:
         "Passenger57": Passenger57(table, wheel),
         "Player1326": Player1326(table),
     }
-    if strategy_name not in strategies:
-        raise KeyError("Strategy not found, enter a valid strategy name")
-    return strategies[strategy_name]
+    if player_name not in players:
+        raise ValueError("Player not found, enter a valid player name")
+    return players[player_name]
