@@ -11,6 +11,10 @@ from players.player1326.player1326 import Player1326
 
 
 def provide_strategy(strategy_name: str, table: Table, wheel: Wheel) -> Player:
+    """
+    Returns an object of the strategies of the Roulette game."
+    """
+
     strategies = {
         "Martingale": Martingale(table),
         "Cancellation": PlayerCancellation(table),
