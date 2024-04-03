@@ -12,3 +12,19 @@ class TestPlayerProvide(TestCase):
     def setUp(self):
         self.table = Table()
         self.wheel = Wheel()
+
+    def test_provide_player_provides_player(self):
+        bin_builder = BinBuilder()
+        bin_builder.buildBins(self.wheel)
+
+        martingale_player = provide_player("Martingale", self.table, self.wheel)
+
+        self.assertIsInstance(martingale_player, Martingale)
+
+        sevenreds_player = provide_player("Sevenreds", self.table, self.wheel)
+
+        self.assertIsInstance(sevenreds_player, SevenReds)
+
+        fibonacci_player = provide_player("Fibonacci", self.table, self.wheel)
+
+        self.assertIsInstance(fibonacci_player, PlayerFibonacci)
