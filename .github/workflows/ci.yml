@@ -71,4 +71,4 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/Roulette-Strategy-Simulator:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/roulette-strategy-simulator:latest
