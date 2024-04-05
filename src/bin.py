@@ -10,5 +10,4 @@ class Bin(frozenset):
     """
 
     def __iter__(self):
-        for outcome in super().__iter__():
-            yield outcome
+        yield from super().__iter__()
