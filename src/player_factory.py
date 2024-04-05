@@ -10,7 +10,7 @@ from players.passenger57 import Passenger57
 from players.player1326.player1326 import Player1326
 
 
-def provide_player(player_name: str, table: Table, wheel: Wheel) -> Player:
+def player_factory(player_name: str, table: Table, wheel: Wheel) -> Player:
     """
     Returns an object of desired Player class.
     """

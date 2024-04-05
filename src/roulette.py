@@ -4,7 +4,7 @@ from bin_builder import BinBuilder
 from table import Table
 from game import Game
 from simulator import Simulator
-from player_factory import provide_player
+from player_factory import player_factory
 
 
 @click.command()
@@ -19,7 +19,7 @@ def main(player_name) -> None:  # pragma: no cover
     table = Table()
     game = Game(wheel, table)
     bin_builder.buildBins(wheel)
-    player = provide_player(player_name.capitalize(), table, wheel)
+    player = player_factory(player_name.capitalize(), table, wheel)
     simulator = Simulator(game, player)
     simulator.gather()
 
