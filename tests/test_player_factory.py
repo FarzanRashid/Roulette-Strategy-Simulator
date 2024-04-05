@@ -8,14 +8,14 @@ from players.fibonacci import PlayerFibonacci
 from players.seven_reds import SevenReds
 
 
-class TestPlayerProvide(TestCase):
+class TestPlayerFactory(TestCase):
     def setUp(self):
         self.table = Table()
         self.wheel = Wheel()
         bin_builder = BinBuilder()
         bin_builder.buildBins(self.wheel)
 
-    def test_provide_player_provides_player(self):
+    def test_player_factory_provides_player(self):
         martingale_player = player_factory("Martingale", self.table, self.wheel)
         self.assertIsInstance(martingale_player, Martingale)
 
@@ -25,7 +25,7 @@ class TestPlayerProvide(TestCase):
         fibonacci_player = player_factory("Fibonacci", self.table, self.wheel)
         self.assertIsInstance(fibonacci_player, PlayerFibonacci)
 
-    def test_provide_player_raise_error_when_player_name_not_valid(self):
+    def test_player_factory_raise_error_when_player_name_not_valid(self):
         with self.assertRaises(ValueError):
             player_factory("Martingale123", self.table, self.wheel)
 
