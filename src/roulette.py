@@ -34,4 +34,4 @@ def main(player_name) -> None:  # pragma: no cover
 
 
 if __name__ == "__main__":  # pragma: no cover
-    main()
+    main()  # pylint: disable=no-value-for-parameter
